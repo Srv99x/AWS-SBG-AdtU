@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
   /* -----------------------------------------------------------------------
-     HELPERS: Safe LocalStorage + Toast
+     HELPERS: Safe Storage + Toast
      ----------------------------------------------------------------------- */
   function safeGet(key) {
     try { return localStorage.getItem(key); } catch (e) { return null; }
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
           var elapsed = now - startTime;
           var progress = Math.min(elapsed / totalDuration, 1);
 
-          if (preloaderBar) preloaderBar.style.width = Math.round(progress * 100) + '%';
+          if (preloaderBar) preloaderBar.style.width = (progress * 100).toFixed(1) + '%';
 
           if (preloaderStatus) {
             var statusIdx = Math.min(Math.floor(progress * statusMessages.length), statusMessages.length - 1);
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* -----------------------------------------------------------------------
-     3. FLOATING PARALLAX AWS ICONS (Desktop Mouse Tracking)
+     3. FLOATING 2D PARALLAX AWS ICONS (Desktop Mouse Tracking)
      ----------------------------------------------------------------------- */
   var heroSection = document.getElementById('home');
   var floatWrappers = document.querySelectorAll('.hero-float-wrap');
@@ -309,21 +309,26 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* -----------------------------------------------------------------------
-     5. PILLAR CARDS — 3D TILT ON HOVER
+     5. PILLAR CARDS — 2D/3D TILT ON HOVER (Zero Mousemove Lag)
      ----------------------------------------------------------------------- */
   var pillarCards = document.querySelectorAll('.pillar-card');
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     pillarCards.forEach(function (card) {
+      card.addEventListener('mouseenter', function () {
+        card.classList.add('is-tilting');
+      });
+
       card.addEventListener('mousemove', function (e) {
         var rect = card.getBoundingClientRect();
         var x = (e.clientX - rect.left) / rect.width;
         var y = (e.clientY - rect.top) / rect.height;
-        var rotateX = (0.5 - y) * 7;
-        var rotateY = (x - 0.5) * 7;
-        card.style.transform = 'perspective(800px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) translateY(-3px)';
+        var rotateX = (0.5 - y) * 6;
+        var rotateY = (x - 0.5) * 6;
+        card.style.transform = 'perspective(850px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) translateY(-4px)';
       });
 
       card.addEventListener('mouseleave', function () {
+        card.classList.remove('is-tilting');
         card.style.transform = '';
       });
     });
@@ -447,6 +452,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (selected === 'all' || cats.indexOf(selected) !== -1) {
           card.style.display = '';
           card.classList.remove('hidden');
+          card.classList.add('is-visible');
         } else {
           card.classList.add('hidden');
           card.style.display = 'none';
@@ -456,10 +462,12 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* -----------------------------------------------------------------------
-     7. COHORT SWITCHER PILL (Team Section)
+     7. COHORT SWITCHER PILL (Switches Team Grid <-> Open Seats View)
      ----------------------------------------------------------------------- */
   var cohortBtns = document.querySelectorAll('.cohort-switch-btn');
   var cohortNote = document.getElementById('cohort-status-note');
+  var teamCurrentGrid = document.getElementById('team-grid-current');
+  var teamOpenGrid = document.getElementById('team-grid-open');
 
   cohortBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -474,8 +482,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
 
+      var isCurrent = cohort === 'current';
+      if (teamCurrentGrid && teamOpenGrid) {
+        if (isCurrent) {
+          teamCurrentGrid.classList.remove('hidden');
+          teamOpenGrid.classList.add('hidden');
+          teamCurrentGrid.querySelectorAll('.reveal-item').forEach(function (el) { el.classList.add('is-visible'); });
+        } else {
+          teamCurrentGrid.classList.add('hidden');
+          teamOpenGrid.classList.remove('hidden');
+          teamOpenGrid.querySelectorAll('.reveal-item').forEach(function (el) { el.classList.add('is-visible'); });
+        }
+      }
+
       if (cohortNote) {
-        cohortNote.textContent = cohort === 'current'
+        cohortNote.textContent = isCurrent
           ? 'Founding AdtU Cohort 10 Core Leadership — Active 2026–27 Academic Season.'
           : 'Recruiting Marketing, Community, Operations & Volunteer Leads for 2026–27 Cohort 10.';
       }
@@ -483,18 +504,33 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* -----------------------------------------------------------------------
-     8. ACCESSIBLE MODAL CONTROLLER
+     8. ACCESSIBLE MODAL CONTROLLER (Focus Trap + Scroll Reset)
      ----------------------------------------------------------------------- */
   var activeModalId = null;
   var lastFocusedElement = null;
+
+  function getFocusableElements(container) {
+    return Array.prototype.slice.call(
+      container.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])')
+    ).filter(function (el) {
+      return el.offsetParent !== null;
+    });
+  }
 
   function openModal(modalId) {
     var modal = document.getElementById(modalId);
     if (!modal) return;
     lastFocusedElement = document.activeElement;
     activeModalId = modalId;
-    modal.classList.remove('hidden');
+
+    var scrollbarGap = window.innerWidth - document.documentElement.clientWidth;
+    if (scrollbarGap > 0) document.body.style.paddingRight = scrollbarGap + 'px';
     document.body.style.overflow = 'hidden';
+
+    modal.classList.remove('hidden');
+    var scrollContainer = modal.querySelector('.modal-scroll-area');
+    if (scrollContainer) scrollContainer.scrollTop = 0;
+
     var closeBtn = modal.querySelector('[data-close-modal]');
     if (closeBtn) closeBtn.focus();
   }
@@ -505,6 +541,7 @@ document.addEventListener('DOMContentLoaded', function () {
     modal.classList.add('hidden');
     activeModalId = null;
     document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
     if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
       lastFocusedElement.focus();
     }
@@ -628,7 +665,26 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && activeModalId) closeModal(activeModalId);
+    if (!activeModalId) return;
+    if (e.key === 'Escape') {
+      closeModal(activeModalId);
+      return;
+    }
+    if (e.key === 'Tab') {
+      var modal = document.getElementById(activeModalId);
+      if (!modal) return;
+      var focusables = getFocusableElements(modal);
+      if (!focusables.length) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
 
   /* -----------------------------------------------------------------------
@@ -720,7 +776,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* -----------------------------------------------------------------------
-     11. SCROLL REVEAL & ACTIVE DOCK/NAV SPY
+     11. SCROLL REVEAL & ROBUST SCROLL-SPY (Desktop Nav + Mobile Dock)
      ----------------------------------------------------------------------- */
   var revealItems = document.querySelectorAll('.reveal-item');
   if ('IntersectionObserver' in window) {
@@ -731,20 +787,33 @@ document.addEventListener('DOMContentLoaded', function () {
           ro.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08 });
+    }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
     revealItems.forEach(function (el) { ro.observe(el); });
   } else {
     revealItems.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  // Mobile Bottom Dock Scroll Spy (Home, Events, Team, Resources, Join)
   var dockItems = document.querySelectorAll('.dock-item');
-  var dockIds = ['home', 'events', 'team', 'resources', 'join'];
-  var dockSections = dockIds.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  var navLinks = document.querySelectorAll('.nav-link');
+  var allSectionIds = ['home', 'architecture', 'about', 'pillars', 'events', 'team', 'campus', 'resources', 'join'];
+  var allSections = allSectionIds.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+
+  var dockSectionMap = {
+    home: 'home',
+    architecture: 'home',
+    about: 'home',
+    pillars: 'home',
+    events: 'events',
+    team: 'team',
+    campus: 'team',
+    resources: 'resources',
+    join: 'join'
+  };
 
   function setActiveDock(id) {
+    var mapped = dockSectionMap[id] || 'home';
     dockItems.forEach(function (link) {
-      var match = link.getAttribute('data-dock-target') === id;
+      var match = link.getAttribute('data-dock-target') === mapped;
       if (match) {
         link.classList.add('text-[#0EA5E9]', 'dark:text-[#2EA3F2]', 'bg-[#2EA3F2]/[0.12]');
         link.classList.remove('text-[var(--text-muted)]');
@@ -754,20 +823,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
-
-  if ('IntersectionObserver' in window && dockSections.length) {
-    var dockObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) setActiveDock(entry.target.id);
-      });
-    }, { rootMargin: '-30% 0px -55% 0px' });
-    dockSections.forEach(function (sec) { dockObs.observe(sec); });
-  }
-
-  // Desktop Nav Scroll Spy
-  var navLinks = document.querySelectorAll('.nav-link');
-  var navIds = ['about', 'pillars', 'events', 'team', 'campus', 'resources'];
-  var navSections = navIds.map(function (id) { return document.getElementById(id); }).filter(Boolean);
 
   function setActiveNav(id) {
     navLinks.forEach(function (link) {
@@ -781,12 +836,37 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  if ('IntersectionObserver' in window && navSections.length) {
-    var navObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) setActiveNav(entry.target.id);
-      });
-    }, { rootMargin: '-30% 0px -55% 0px' });
-    navSections.forEach(function (sec) { navObs.observe(sec); });
+  var spyTicking = false;
+  function updateScrollSpy() {
+    spyTicking = false;
+    var scrollBottom = window.innerHeight + window.scrollY;
+    var docHeight = document.documentElement.scrollHeight;
+
+    if (scrollBottom >= docHeight - 60) {
+      setActiveDock('join');
+      setActiveNav('resources');
+      return;
+    }
+
+    var probeY = window.scrollY + window.innerHeight * 0.34;
+    var currentId = 'home';
+
+    for (var i = 0; i < allSections.length; i++) {
+      var sec = allSections[i];
+      if (sec.offsetTop <= probeY) {
+        currentId = sec.id;
+      }
+    }
+
+    setActiveDock(currentId);
+    setActiveNav(currentId);
   }
+
+  window.addEventListener('scroll', function () {
+    if (!spyTicking) {
+      spyTicking = true;
+      requestAnimationFrame(updateScrollSpy);
+    }
+  }, { passive: true });
+  updateScrollSpy();
 });

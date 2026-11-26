@@ -36,6 +36,9 @@
     })();
   </script>
 
+  <!-- Failsafe if JavaScript is disabled -->
+  <noscript><style>#preloader{display:none!important}.reveal-item{opacity:1!important;transform:none!important}</style></noscript>
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -72,9 +75,8 @@
   <div id="preloader" role="status" aria-label="Loading AWS Student Builder Group at Assam down town University" class="fixed inset-0 z-[100] flex flex-col items-center justify-center px-6 text-center cursor-pointer">
     <div class="flex flex-col items-center max-w-lg w-full">
       <!-- Animated SVG Cloud + Smile + SBG Chip Stroke Draw -->
-      <div class="mb-6 p-4 rounded-2xl border border-[#1E293B] bg-[#111827]/90 shadow-2xl">
+      <div class="mb-6 p-4 rounded-2xl border border-white/15 bg-[#152238]/75 backdrop-blur-xl shadow-2xl">
         <svg class="w-16 h-16" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- Crisp Cloud Contour -->
           <path
             class="preloader-stroke-draw"
             d="M22 46H59C64.5 46 69 41.5 69 36C69 30.8 65 26.6 59.9 26.1C58 18.6 51.2 13 43 13C34.2 13 27 19.5 25.8 28C20.2 28.6 16 33.3 16 39C16 42.9 18.7 46 22 46Z"
@@ -83,31 +85,13 @@
             stroke-linecap="round"
             stroke-linejoin="round"
           />
-          <!-- SBG Chip Pins Inside Cloud -->
           <rect x="33" y="25" width="14" height="14" rx="2.5" stroke="#38BDF8" stroke-width="2" class="preloader-stroke-draw" style="animation-delay: 0.25s" />
           <path class="preloader-stroke-draw" style="animation-delay: 0.45s" d="M37 25V21M43 25V21M37 43V39M43 43V39M33 29H29M33 35H29M51 29H47M51 35H47" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" />
-          <!-- AWS Smile Arc -->
-          <path
-            class="preloader-stroke-draw"
-            style="animation-delay: 0.65s"
-            d="M23 55C33.5 62.5 46.5 62.5 57 55"
-            stroke="#2EA3F2"
-            stroke-width="2.4"
-            stroke-linecap="round"
-          />
-          <path
-            class="preloader-stroke-draw"
-            style="animation-delay: 0.8s"
-            d="M53 53.5L58.5 54.5L56.5 59.5"
-            stroke="#2EA3F2"
-            stroke-width="2.2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
+          <path class="preloader-stroke-draw" style="animation-delay: 0.65s" d="M23 55C33.5 62.5 46.5 62.5 57 55" stroke="#2EA3F2" stroke-width="2.4" stroke-linecap="round" />
+          <path class="preloader-stroke-draw" style="animation-delay: 0.8s" d="M53 53.5L58.5 54.5L56.5 59.5" stroke="#2EA3F2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </div>
 
-      <!-- Cyber Scramble Reveal -->
       <p id="preloader-title" class="font-mono text-sm sm:text-base font-bold tracking-[0.16em] text-white uppercase min-h-[1.5rem]">
         AWS STUDENT BUILDER GROUP
       </p>
@@ -115,31 +99,29 @@
         ASSAM DOWN TOWN UNIVERSITY
       </p>
 
-      <!-- Progress Bar -->
       <div class="w-56 sm:w-64 h-1.5 rounded-full bg-[#1E293B] overflow-hidden mt-4">
-        <div id="preloader-bar" class="h-full w-0 bg-gradient-to-r from-[#0EA5E9] to-[#38BDF8] rounded-full transition-all duration-100 ease-linear"></div>
+        <div id="preloader-bar" class="h-full w-0 bg-gradient-to-r from-[#0EA5E9] to-[#38BDF8] rounded-full"></div>
       </div>
 
-      <!-- Status Line -->
       <div class="mt-3 flex items-center gap-2 font-mono text-[11px] text-[#94A3B8]">
         <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#2EA3F2] animate-pulse"></span>
         <span id="preloader-status">Warming up serverless Lambdas...</span>
       </div>
 
-      <button id="skip-preloader" type="button" class="mt-6 font-mono text-[11px] text-[#94A3B8] hover:text-[#38BDF8] underline underline-offset-4 transition-colors">
+      <button id="skip-preloader" type="button" class="mt-6 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 font-mono text-[11px] text-[#CBD5E1] hover:text-[#38BDF8] hover:border-[#38BDF8]/40 transition-colors">
         Skip intro →
       </button>
     </div>
   </div>
 
   <!-- =========================================================================
-       2. CO-BRANDED STICKY NAVBAR
+       2. CO-BRANDED iOS FROSTED-GLASS STICKY NAVBAR
        ========================================================================= -->
-  <header class="sticky top-0 z-40 border-b border-[var(--border-subtle)] nav-glass">
+  <header class="sticky top-0 z-40 nav-glass">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-3">
       <!-- Left: AWS SBG Chip Icon + Chapter Title -->
       <a href="#home" class="flex items-center gap-2.5 group min-w-0">
-        <span class="flex-shrink-0 w-9 h-9 rounded-lg overflow-hidden border border-[#1E293B] shadow-sm bg-[#0F172A] transition-transform group-hover:scale-105">
+        <span class="flex-shrink-0 w-9 h-9 rounded-xl overflow-hidden border border-[#1E293B] shadow-sm bg-[#0F172A] transition-transform group-hover:scale-105">
           <img src="brand-asset-profile-picture-6548650b-20261126T124037.png" alt="AWS SBG Blue Chip Icon" class="w-full h-full object-contain" />
         </span>
         <div class="min-w-0 leading-tight">
@@ -152,17 +134,17 @@
         </div>
       </a>
 
-      <!-- Center: Desktop Navigation -->
-      <nav aria-label="Primary Navigation" class="hidden lg:flex items-center gap-1">
-        <a href="#about" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">About</a>
-        <a href="#pillars" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">Pillars</a>
-        <a href="#events" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">Events</a>
-        <a href="#team" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">Team</a>
-        <a href="#campus" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">Campus</a>
-        <a href="#resources" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">Resources</a>
+      <!-- Center: Desktop Glass Pill Navigation -->
+      <nav aria-label="Primary Navigation" class="hidden lg:flex items-center gap-0.5 p-1 rounded-full border border-[var(--border-subtle)] glass-pill">
+        <a href="#about" class="nav-link px-3 py-1.5 rounded-full text-xs xl:text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">About</a>
+        <a href="#pillars" class="nav-link px-3 py-1.5 rounded-full text-xs xl:text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">Pillars</a>
+        <a href="#events" class="nav-link px-3 py-1.5 rounded-full text-xs xl:text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">Events</a>
+        <a href="#team" class="nav-link px-3 py-1.5 rounded-full text-xs xl:text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">Team</a>
+        <a href="#campus" class="nav-link px-3 py-1.5 rounded-full text-xs xl:text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">Campus</a>
+        <a href="#resources" class="nav-link px-3 py-1.5 rounded-full text-xs xl:text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">Resources</a>
       </nav>
 
-      <!-- Right: Official AdtU Logo + Theme Toggle + Join Meetup CTA -->
+      <!-- Right: Official AdtU Logo + Theme Toggle + Quick Start + Join Meetup -->
       <div class="flex items-center gap-2 flex-shrink-0">
         <!-- Desktop/Tablet Horizontal AdtU Logo -->
         <a href="#campus" title="Host Institution: Assam down town University" class="hidden md:inline-flex adtu-logo-container h-9 hover:border-[#2EA3F2] transition-colors">
@@ -174,7 +156,7 @@
         </a>
 
         <!-- Light / Dark Toggle -->
-        <button id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Switch Light / Dark Mode" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] text-[var(--text-primary)] hover:border-[#2EA3F2] flex items-center justify-center transition-colors">
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Switch Light / Dark Mode" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-[var(--border-subtle)] glass-pill text-[var(--text-primary)] hover:border-[#2EA3F2] flex items-center justify-center transition-colors">
           <svg id="icon-moon" class="w-4 h-4 block dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
           </svg>
@@ -188,13 +170,13 @@
         </button>
 
         <!-- Quick Start Button -->
-        <button id="open-quickstart-btn" type="button" class="hidden xl:inline-flex items-center gap-1.5 h-10 px-3.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] text-xs font-semibold text-[var(--text-primary)] hover:border-[#2EA3F2] transition-colors">
+        <button id="open-quickstart-btn" type="button" class="hidden md:inline-flex items-center gap-1.5 h-10 px-3.5 rounded-xl border border-[var(--border-subtle)] glass-pill text-xs font-semibold text-[var(--text-primary)] hover:border-[#2EA3F2] transition-colors">
           <svg class="w-3.5 h-3.5 text-[#0EA5E9] dark:text-[#2EA3F2]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           <span>Quick Start</span>
         </button>
 
-        <!-- Join Meetup Pill -->
-        <a href="https://www.meetup.com/aws-sbg-at-assam-down-town-university" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 h-9 sm:h-10 px-3.5 sm:px-4 rounded-full bg-[#0EA5E9] hover:bg-[#0284C7] dark:bg-[#2EA3F2] dark:hover:bg-[#38BDF8] text-white dark:text-[#0B1120] text-xs sm:text-sm font-semibold shadow-sm transition-colors whitespace-nowrap">
+        <!-- Join Meetup Pill (2D Tactile Button) -->
+        <a href="https://www.meetup.com/aws-sbg-at-assam-down-town-university" target="_blank" rel="noopener noreferrer" class="btn-2d inline-flex items-center gap-1.5 h-9 sm:h-10 px-3.5 sm:px-4 rounded-full bg-[#0EA5E9] hover:bg-[#0284C7] dark:bg-[#2EA3F2] dark:hover:bg-[#38BDF8] text-white dark:text-[#0B1120] text-xs sm:text-sm font-semibold whitespace-nowrap">
           <span>Join Meetup</span>
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
@@ -203,28 +185,28 @@
   </header>
 
   <!-- =========================================================================
-       MOBILE FLOATING FROSTED-GLASS BOTTOM NAVIGATION BAR
+       MOBILE FLOATING iPHONE-STYLE FROSTED-GLASS BOTTOM NAVIGATION BAR
        (Home, Events, Team, Resources, Join)
        ========================================================================= -->
-  <nav aria-label="Mobile Quick Navigation" class="md:hidden fixed bottom-3 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-1.5rem)] max-w-md rounded-2xl border border-[var(--border-subtle)] mobile-dock bg-[var(--nav-glass)] shadow-xl px-1.5 py-1.5">
+  <nav aria-label="Mobile Quick Navigation" class="md:hidden fixed bottom-3 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-1.5rem)] max-w-md rounded-2xl mobile-dock px-1.5 py-1.5">
     <div class="grid grid-cols-5 gap-1 text-center">
-      <a href="#home" data-dock-target="home" class="dock-item flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-medium text-[#0EA5E9] dark:text-[#2EA3F2] bg-[#2EA3F2]/[0.12] transition-colors">
+      <a href="#home" data-dock-target="home" class="dock-item active:scale-95 flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-medium text-[#0EA5E9] dark:text-[#2EA3F2] bg-[#2EA3F2]/[0.12] transition-all">
         <svg class="w-4 h-4 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         <span>Home</span>
       </a>
-      <a href="#events" data-dock-target="events" class="dock-item flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
+      <a href="#events" data-dock-target="events" class="dock-item active:scale-95 flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all">
         <svg class="w-4 h-4 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         <span>Events</span>
       </a>
-      <a href="#team" data-dock-target="team" class="dock-item flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
+      <a href="#team" data-dock-target="team" class="dock-item active:scale-95 flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all">
         <svg class="w-4 h-4 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         <span>Team</span>
       </a>
-      <a href="#resources" data-dock-target="resources" class="dock-item flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
+      <a href="#resources" data-dock-target="resources" class="dock-item active:scale-95 flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all">
         <svg class="w-4 h-4 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
         <span>Resources</span>
       </a>
-      <a href="#join" data-dock-target="join" class="dock-item flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
+      <a href="#join" data-dock-target="join" class="dock-item active:scale-95 flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all">
         <svg class="w-4 h-4 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
         <span>Join</span>
       </a>
@@ -233,41 +215,51 @@
 
   <main id="main-content">
     <!-- =======================================================================
-         3. INTERACTIVE HERO WITH FLOATING PARALLAX AWS ICONS
+         3. INTERACTIVE HERO WITH 2D FLOATING PARALLAX AWS ICONS
          ======================================================================= -->
     <section id="home" class="relative overflow-hidden bg-dot-grid border-b border-[var(--border-subtle)]">
       <div class="hero-glow absolute inset-0 pointer-events-none" aria-hidden="true"></div>
 
-      <!-- Floating Wireframe AWS / Cloud Icons (Parallax Wrapper + Animated Inner Icon) -->
+      <!-- 2D Glass Floating AWS Service Chips (Mouse Parallax on Desktop) -->
       <div class="hidden lg:block absolute inset-0 pointer-events-none overflow-hidden text-[#0EA5E9] dark:text-[#2EA3F2]" aria-hidden="true">
         <!-- Lambda -->
-        <div class="hero-float-wrap absolute top-[12%] left-[4%]" data-depth="0.9">
-          <svg class="float-icon-a w-11 h-11 opacity-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20L12 4l6 16"/><path d="M9.5 13h5"/></svg>
+        <div class="hero-float-wrap absolute top-[10%] left-[3%]" data-depth="0.9">
+          <div class="float-icon-a hero-float-chip rounded-xl p-2.5 opacity-80">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20L12 4l6 16"/><path d="M9.5 13h5"/></svg>
+          </div>
         </div>
         <!-- S3 Storage Bucket -->
-        <div class="hero-float-wrap absolute top-[18%] right-[6%]" data-depth="1.2">
-          <svg class="float-icon-b w-12 h-12 opacity-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>
+        <div class="hero-float-wrap absolute top-[14%] right-[3%]" data-depth="1.2">
+          <div class="float-icon-b hero-float-chip rounded-xl p-2.5 opacity-80">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>
+          </div>
         </div>
         <!-- Cloud -->
-        <div class="hero-float-wrap absolute bottom-[22%] left-[7%]" data-depth="0.7">
-          <svg class="float-icon-c w-14 h-14 opacity-15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+        <div class="hero-float-wrap absolute bottom-[14%] left-[4%]" data-depth="0.7">
+          <div class="float-icon-c hero-float-chip rounded-xl p-2.5 opacity-75">
+            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          </div>
         </div>
         <!-- DynamoDB Table -->
-        <div class="hero-float-wrap absolute bottom-[24%] right-[4%]" data-depth="1.0">
-          <svg class="float-icon-d w-10 h-10 opacity-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="10" y1="4" x2="10" y2="20"/></svg>
+        <div class="hero-float-wrap absolute bottom-[16%] right-[4%]" data-depth="1.0">
+          <div class="float-icon-d hero-float-chip rounded-xl p-2.5 opacity-80">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="10" y1="4" x2="10" y2="20"/></svg>
+          </div>
         </div>
         <!-- SBG Chip -->
-        <div class="hero-float-wrap absolute top-[8%] left-[44%]" data-depth="0.8">
-          <svg class="float-icon-e w-9 h-9 opacity-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="6" width="12" height="12" rx="2"/><line x1="9" y1="6" x2="9" y2="2"/><line x1="15" y1="6" x2="15" y2="2"/><line x1="9" y1="22" x2="9" y2="18"/><line x1="15" y1="22" x2="15" y2="18"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="22" y1="9" x2="18" y2="9"/><line x1="22" y1="15" x2="18" y2="15"/></svg>
+        <div class="hero-float-wrap absolute top-[6%] left-[46%]" data-depth="0.8">
+          <div class="float-icon-e hero-float-chip rounded-xl p-2 opacity-75">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="6" width="12" height="12" rx="2"/><line x1="9" y1="6" x2="9" y2="2"/><line x1="15" y1="6" x2="15" y2="2"/><line x1="9" y1="22" x2="9" y2="18"/><line x1="15" y1="22" x2="15" y2="18"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="22" y1="9" x2="18" y2="9"/><line x1="22" y1="15" x2="18" y2="15"/></svg>
+          </div>
         </div>
       </div>
 
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-14 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24">
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           <!-- Left: Hero Copy -->
           <div class="lg:col-span-6 text-center lg:text-left">
-            <!-- Announcement Pill -->
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#2EA3F2]/35 bg-[var(--surface)] shadow-sm mb-6">
+            <!-- Glass Announcement Pill -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#2EA3F2]/35 glass-pill mb-6">
               <span class="relative flex h-2 w-2">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2EA3F2] opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-[#0EA5E9] dark:bg-[#2EA3F2]"></span>
@@ -290,13 +282,13 @@
               Student-led AWS Cloud &amp; AI community at the Faculty of Computer Technology (FoCT), Assam down town University — bridging classroom theory with hands-on AWS labs, certifications, and deployed projects.
             </p>
 
-            <!-- Dual CTAs -->
+            <!-- Dual CTAs (2D Tactile Primary + Glass Secondary) -->
             <div class="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3">
-              <a href="#resources" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#0EA5E9] hover:bg-[#0284C7] dark:bg-[#2EA3F2] dark:hover:bg-[#38BDF8] text-white dark:text-[#0B1120] font-semibold text-sm shadow-sm transition-all">
+              <a href="#resources" class="btn-2d inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#0EA5E9] hover:bg-[#0284C7] dark:bg-[#2EA3F2] dark:hover:bg-[#38BDF8] text-white dark:text-[#0B1120] font-semibold text-sm">
                 <span>Start Building</span>
                 <span aria-hidden="true">→</span>
               </a>
-              <a href="https://www.meetup.com/aws-sbg-at-assam-down-town-university" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] hover:border-[#2EA3F2] text-[var(--text-primary)] font-semibold text-sm transition-all">
+              <a href="https://www.meetup.com/aws-sbg-at-assam-down-town-university" target="_blank" rel="noopener noreferrer" class="glass-pill glass-sheen inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-[var(--border-subtle)] hover:border-[#2EA3F2] text-[var(--text-primary)] font-semibold text-sm transition-all">
                 <span>Join Meetup</span>
                 <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
               </a>
@@ -311,41 +303,43 @@
             </div>
           </div>
 
-          <!-- Right: Co-Branded Chapter Showcase Frame (Real Exported Web Cover Asset) -->
+          <!-- Right: 2D Layered Offset Glass Chapter Frame -->
           <div class="lg:col-span-6">
-            <div class="rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] shadow-lg overflow-hidden">
-              <!-- Terminal Window Chrome -->
-              <div class="px-4 sm:px-5 py-3 border-b border-[var(--border-subtle)] bg-[var(--bg-tint)] flex items-center justify-between gap-2">
-                <div class="flex items-center gap-2 min-w-0">
-                  <span class="w-2.5 h-2.5 rounded-full bg-[#2EA3F2]"></span>
-                  <span class="font-mono text-xs font-semibold text-[var(--text-primary)] truncate">aws-sbg-adtu.chapter</span>
-                </div>
-                <span class="font-mono text-[10px] px-2 py-0.5 rounded-md bg-[#0F172A] text-[#2EA3F2] flex-shrink-0">ap-south-1 · ACTIVE</span>
-              </div>
-
-              <!-- 1200x675 Exported Web Cover Photo (Natural 16:9 Ratio, Zero Crop) -->
-              <div class="bg-white border-b border-[var(--border-subtle)] aspect-[16/9]">
-                <img
-                  src="brand-asset-x-post-20261126T130020.png"
-                  alt="AWS Student Builder Group at Assam down town University — Learn. Build. Connect."
-                  class="w-full h-full object-contain block"
-                />
-              </div>
-
-              <!-- Telemetry Footer Bar -->
-              <div class="p-4 sm:p-5 bg-[var(--surface)] flex flex-wrap items-center justify-between gap-3">
-                <div class="flex items-center gap-3 min-w-0">
-                  <div class="adtu-logo-container flex-shrink-0">
-                    <img src="images.png" alt="Assam down town University" class="h-6 w-auto object-contain" />
+            <div class="card-2d-stack">
+              <div class="relative z-10 rounded-2xl glass-panel glass-sheen overflow-hidden">
+                <!-- Terminal Window Chrome -->
+                <div class="px-4 sm:px-5 py-3 border-b border-[var(--border-subtle)] flex items-center justify-between gap-2">
+                  <div class="flex items-center gap-2 min-w-0">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#2EA3F2]"></span>
+                    <span class="font-mono text-xs font-semibold text-[var(--text-primary)] truncate">aws-sbg-adtu.chapter</span>
                   </div>
-                  <div class="min-w-0">
-                    <div class="font-display font-bold text-xs sm:text-sm text-[var(--text-primary)] truncate">FoCT · B Block, Panikhaiti</div>
-                    <div class="font-mono text-[10px] text-[var(--text-muted)] truncate">Official Student Chapter · Guwahati</div>
-                  </div>
+                  <span class="font-mono text-[10px] px-2 py-0.5 rounded-md bg-[#0F172A] text-[#38BDF8] border border-[#2EA3F2]/30 flex-shrink-0">ap-south-1 · ACTIVE</span>
                 </div>
-                <a href="#architecture" class="font-mono text-xs font-semibold text-[#0EA5E9] dark:text-[#2EA3F2] hover:underline whitespace-nowrap">
-                  Explore Cloud Stack ↓
-                </a>
+
+                <!-- 1200x675 Exported Web Cover Photo (Natural 16:9 Ratio, Zero Crop) -->
+                <div class="bg-white border-b border-[var(--border-subtle)] aspect-[16/9]">
+                  <img
+                    src="brand-asset-x-post-20261126T130020.png"
+                    alt="AWS Student Builder Group at Assam down town University — Learn. Build. Connect."
+                    class="w-full h-full object-contain block"
+                  />
+                </div>
+
+                <!-- Frosted Telemetry Footer Bar -->
+                <div class="p-4 sm:p-5 flex flex-wrap items-center justify-between gap-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <div class="adtu-logo-container flex-shrink-0">
+                      <img src="images.png" alt="Assam down town University" class="h-6 w-auto object-contain" />
+                    </div>
+                    <div class="min-w-0">
+                      <div class="font-display font-bold text-xs sm:text-sm text-[var(--text-primary)] truncate">FoCT · B Block, Panikhaiti</div>
+                      <div class="font-mono text-[10px] text-[var(--text-muted)] truncate">Official Student Chapter · Guwahati</div>
+                    </div>
+                  </div>
+                  <a href="#architecture" class="font-mono text-xs font-semibold text-[#0EA5E9] dark:text-[#2EA3F2] hover:underline whitespace-nowrap">
+                    Explore Cloud Stack ↓
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -370,8 +364,7 @@
           </p>
         </div>
 
-        <div class="arch-canvas arch-canvas-grid p-5 sm:p-8 shadow-sm reveal-item">
-          <!-- Interactive Node & Wire Flow Diagram (Desktop Horizontal + Animated SVG Data Packets) -->
+        <div class="arch-canvas arch-canvas-grid p-5 sm:p-8 reveal-item">
           <div class="relative">
             <!-- Animated SVG Connector & Glowing Data-Packet Layer (Desktop lg+) -->
             <svg class="hidden lg:block absolute inset-x-0 top-1/2 -translate-y-1/2 w-full h-24 pointer-events-none" viewBox="0 0 1000 96" preserveAspectRatio="none" aria-hidden="true">
@@ -381,16 +374,11 @@
                   <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
                 </filter>
               </defs>
-              <!-- Connector 1: Builder ID -> API Gateway -->
               <path class="arch-flow-connector arch-line-active" data-from="builder-id" data-to="api-gateway" d="M 110 48 L 295 48" stroke="#2EA3F2" stroke-width="2.5" fill="none" />
-              <!-- Connector 2: API Gateway -> Lambda -->
               <path class="arch-flow-connector arch-line-active" data-from="api-gateway" data-to="lambda" d="M 310 48 L 495 48" stroke="var(--border-subtle)" stroke-width="2" fill="none" />
-              <!-- Connector 3: Lambda -> Bedrock -->
               <path class="arch-flow-connector arch-line-active" data-from="lambda" data-to="bedrock" d="M 510 48 L 695 48" stroke="var(--border-subtle)" stroke-width="2" fill="none" />
-              <!-- Connector 4: Bedrock -> DynamoDB & S3 -->
               <path class="arch-flow-connector arch-line-active" data-from="bedrock" data-to="storage" d="M 710 48 L 895 48" stroke="var(--border-subtle)" stroke-width="2" fill="none" />
 
-              <!-- Glowing Blue Data Packets Pulsing Smoothly Along Connectors -->
               <circle r="4.5" fill="#38BDF8" filter="url(#packetGlow)">
                 <animateMotion dur="1.8s" repeatCount="indefinite" path="M 110 48 L 295 48" />
               </circle>
@@ -407,8 +395,7 @@
 
             <!-- 5 Accessible Interactive Node Cards -->
             <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4" role="group" aria-label="AWS Builder Pipeline Nodes">
-              <!-- Node 1: Builder ID / IAM -->
-              <button type="button" data-node-id="builder-id" aria-pressed="true" class="arch-flow-node is-active rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] p-4 text-left shadow-sm">
+              <button type="button" data-node-id="builder-id" aria-pressed="true" class="arch-flow-node is-active rounded-2xl border border-[var(--border-subtle)] p-4 text-left">
                 <div class="flex items-center justify-between gap-2 mb-2.5">
                   <span class="w-9 h-9 rounded-xl bg-[#2EA3F2]/15 text-[#0EA5E9] dark:text-[#2EA3F2] flex items-center justify-center">
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -419,8 +406,7 @@
                 <div class="font-mono text-[11px] text-[var(--text-muted)] mt-0.5">Identity &amp; Guardrails</div>
               </button>
 
-              <!-- Node 2: API Gateway -->
-              <button type="button" data-node-id="api-gateway" aria-pressed="false" class="arch-flow-node rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] p-4 text-left shadow-sm">
+              <button type="button" data-node-id="api-gateway" aria-pressed="false" class="arch-flow-node rounded-2xl border border-[var(--border-subtle)] p-4 text-left">
                 <div class="flex items-center justify-between gap-2 mb-2.5">
                   <span class="w-9 h-9 rounded-xl bg-[#2EA3F2]/15 text-[#0EA5E9] dark:text-[#2EA3F2] flex items-center justify-center">
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><polyline points="14 6 20 12 14 18"/><circle cx="4" cy="12" r="2"/></svg>
@@ -431,8 +417,7 @@
                 <div class="font-mono text-[11px] text-[var(--text-muted)] mt-0.5">HTTP Edge Routing</div>
               </button>
 
-              <!-- Node 3: AWS Lambda -->
-              <button type="button" data-node-id="lambda" aria-pressed="false" class="arch-flow-node rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] p-4 text-left shadow-sm">
+              <button type="button" data-node-id="lambda" aria-pressed="false" class="arch-flow-node rounded-2xl border border-[var(--border-subtle)] p-4 text-left">
                 <div class="flex items-center justify-between gap-2 mb-2.5">
                   <span class="w-9 h-9 rounded-xl bg-[#2EA3F2]/15 text-[#0EA5E9] dark:text-[#2EA3F2] flex items-center justify-center">
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20L12 4l6 16"/><path d="M9.5 13h5"/></svg>
@@ -443,8 +428,7 @@
                 <div class="font-mono text-[11px] text-[var(--text-muted)] mt-0.5">Serverless &amp; FastAPI</div>
               </button>
 
-              <!-- Node 4: Amazon Bedrock -->
-              <button type="button" data-node-id="bedrock" aria-pressed="false" class="arch-flow-node rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] p-4 text-left shadow-sm">
+              <button type="button" data-node-id="bedrock" aria-pressed="false" class="arch-flow-node rounded-2xl border border-[var(--border-subtle)] p-4 text-left">
                 <div class="flex items-center justify-between gap-2 mb-2.5">
                   <span class="w-9 h-9 rounded-xl bg-[#2EA3F2]/15 text-[#0EA5E9] dark:text-[#2EA3F2] flex items-center justify-center">
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -455,8 +439,7 @@
                 <div class="font-mono text-[11px] text-[var(--text-muted)] mt-0.5">GenAI &amp; RAG Models</div>
               </button>
 
-              <!-- Node 5: DynamoDB & S3 -->
-              <button type="button" data-node-id="storage" aria-pressed="false" class="arch-flow-node sm:col-span-2 lg:col-span-1 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] p-4 text-left shadow-sm">
+              <button type="button" data-node-id="storage" aria-pressed="false" class="arch-flow-node sm:col-span-2 lg:col-span-1 rounded-2xl border border-[var(--border-subtle)] p-4 text-left">
                 <div class="flex items-center justify-between gap-2 mb-2.5">
                   <span class="w-9 h-9 rounded-xl bg-[#2EA3F2]/15 text-[#0EA5E9] dark:text-[#2EA3F2] flex items-center justify-center">
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/></svg>
@@ -467,10 +450,18 @@
                 <div class="font-mono text-[11px] text-[var(--text-muted)] mt-0.5">NoSQL &amp; Object Storage</div>
               </button>
             </div>
+
+            <!-- Mobile / Tablet Flow Indicator Strip (Visible below lg) -->
+            <div class="lg:hidden mt-3 flex items-center justify-center gap-2 font-mono text-[10px] text-[#0EA5E9] dark:text-[#2EA3F2]">
+              <span class="relative flex h-4 w-1.5 items-center justify-center overflow-hidden rounded-full bg-[#2EA3F2]/20">
+                <span class="arch-mobile-packet w-1.5 h-1.5 rounded-full bg-[#2EA3F2]"></span>
+              </span>
+              <span>Live Data Flow · Tap any service card above</span>
+            </div>
           </div>
 
-          <!-- Live Architecture Explainer Panel -->
-          <div class="mt-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] p-5 sm:p-6" aria-live="polite">
+          <!-- Frosted-Glass Architecture Explainer Panel -->
+          <div class="mt-6 rounded-2xl glass-panel p-5 sm:p-6" aria-live="polite">
             <div class="flex flex-wrap items-center justify-between gap-2">
               <span id="arch-exp-step" class="font-mono text-[11px] font-semibold text-[#0EA5E9] dark:text-[#2EA3F2]">NODE 01 // IDENTITY &amp; ACCESS</span>
               <span id="arch-exp-badge" class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-[var(--surface)] border border-[var(--border-subtle)] text-[var(--text-muted)]">Security Foundation</span>
@@ -485,7 +476,7 @@
                   Every AdtU student starts cleanly with a zero-cost AWS Builder ID, MFA protection, IAM developer roles, and $1 budget guardrails before provisioning cloud compute.
                 </p>
               </div>
-              <div class="lg:col-span-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] p-4">
+              <div class="lg:col-span-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] p-4">
                 <div class="font-mono text-[10px] font-bold uppercase tracking-wider text-[#0EA5E9] dark:text-[#2EA3F2]">AdtU Workshop Usage</div>
                 <p id="arch-exp-usage" class="mt-1.5 text-xs text-[var(--text-muted)] leading-relaxed">
                   Workshop 01: Cloud account hygiene, AWS CLI config &amp; AWS Builder Center onboarding.
@@ -531,15 +522,15 @@
 
           <div class="lg:col-span-5 space-y-4">
             <div class="grid grid-cols-3 gap-3">
-              <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] p-4 text-center">
+              <div class="builder-card rounded-xl p-4 text-center">
                 <div class="font-display font-bold text-xl sm:text-2xl text-[#0EA5E9] dark:text-[#2EA3F2]">600+</div>
                 <div class="mt-1 font-mono text-[10px] sm:text-[11px] text-[var(--text-muted)] leading-snug">Global AWS SBG Network</div>
               </div>
-              <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] p-4 text-center">
+              <div class="builder-card rounded-xl p-4 text-center">
                 <div class="font-display font-bold text-xl sm:text-2xl text-[#0EA5E9] dark:text-[#2EA3F2]">₹0</div>
                 <div class="mt-1 font-mono text-[10px] sm:text-[11px] text-[var(--text-muted)] leading-snug">Free Membership for AdtU</div>
               </div>
-              <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] p-4 text-center">
+              <div class="builder-card rounded-xl p-4 text-center">
                 <div class="font-display font-bold text-xl sm:text-2xl text-[#0EA5E9] dark:text-[#2EA3F2]">C10</div>
                 <div class="mt-1 font-mono text-[10px] sm:text-[11px] text-[var(--text-muted)] leading-snug">Founding AdtU Cohort</div>
               </div>
@@ -570,7 +561,7 @@
 
         <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
           <!-- 01 / LEARN -->
-          <article class="builder-card pillar-card rounded-2xl p-6 sm:p-7 reveal-item" data-delay="1">
+          <article class="builder-card pillar-card glass-sheen rounded-2xl p-6 sm:p-7 reveal-item" data-delay="1">
             <div class="flex items-center justify-between gap-3 mb-5">
               <span class="font-mono text-xs font-bold tracking-wider text-[#0EA5E9] dark:text-[#2EA3F2]">01 / LEARN</span>
               <div class="w-10 h-10 rounded-xl bg-[#2EA3F2]/[0.12] border border-[#2EA3F2]/25 flex items-center justify-center text-[#0EA5E9] dark:text-[#2EA3F2]">
@@ -589,7 +580,7 @@
           </article>
 
           <!-- 02 / BUILD -->
-          <article class="builder-card pillar-card rounded-2xl p-6 sm:p-7 reveal-item" data-delay="2">
+          <article class="builder-card pillar-card glass-sheen rounded-2xl p-6 sm:p-7 reveal-item" data-delay="2">
             <div class="flex items-center justify-between gap-3 mb-5">
               <span class="font-mono text-xs font-bold tracking-wider text-[#0EA5E9] dark:text-[#2EA3F2]">02 / BUILD</span>
               <div class="w-10 h-10 rounded-xl bg-[#2EA3F2]/[0.12] border border-[#2EA3F2]/25 flex items-center justify-center text-[#0EA5E9] dark:text-[#2EA3F2]">
@@ -608,7 +599,7 @@
           </article>
 
           <!-- 03 / SHIP -->
-          <article class="builder-card pillar-card rounded-2xl p-6 sm:p-7 reveal-item" data-delay="3">
+          <article class="builder-card pillar-card glass-sheen rounded-2xl p-6 sm:p-7 reveal-item" data-delay="3">
             <div class="flex items-center justify-between gap-3 mb-5">
               <span class="font-mono text-xs font-bold tracking-wider text-[#0EA5E9] dark:text-[#2EA3F2]">03 / SHIP</span>
               <div class="w-10 h-10 rounded-xl bg-[#2EA3F2]/[0.12] border border-[#2EA3F2]/25 flex items-center justify-center text-[#0EA5E9] dark:text-[#2EA3F2]">
@@ -627,7 +618,7 @@
           </article>
 
           <!-- 04 / CONNECT -->
-          <article class="builder-card pillar-card rounded-2xl p-6 sm:p-7 reveal-item" data-delay="4">
+          <article class="builder-card pillar-card glass-sheen rounded-2xl p-6 sm:p-7 reveal-item" data-delay="4">
             <div class="flex items-center justify-between gap-3 mb-5">
               <span class="font-mono text-xs font-bold tracking-wider text-[#0EA5E9] dark:text-[#2EA3F2]">04 / CONNECT</span>
               <div class="w-10 h-10 rounded-xl bg-[#2EA3F2]/[0.12] border border-[#2EA3F2]/25 flex items-center justify-center text-[#0EA5E9] dark:text-[#2EA3F2]">
@@ -671,9 +662,9 @@
 
         <div id="events-grid" class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           <!-- Event 1 -->
-          <article data-categories="all workshops hands-on-labs ai-cloud" data-event-id="kickoff-ai-api" tabindex="0" role="button" aria-label="Open details for AWS Cloud Kickoff & Deploying Your First AI API" class="event-card builder-card rounded-2xl overflow-hidden flex flex-col justify-between cursor-pointer reveal-item">
+          <article data-categories="all workshops hands-on-labs ai-cloud" data-event-id="kickoff-ai-api" tabindex="0" role="button" aria-label="Open details for AWS Cloud Kickoff & Deploying Your First AI API" class="event-card builder-card glass-sheen rounded-2xl overflow-hidden flex flex-col justify-between cursor-pointer reveal-item">
             <div>
-              <div class="event-banner-frame aspect-[788/400]">
+              <div class="event-banner-frame event-banner-light aspect-[788/400]">
                 <img src="brand-asset-banner-small-20261126T123412.png" alt="AWS SBG AdtU Event 01 Header" loading="lazy" />
               </div>
               <div class="p-5">
@@ -702,7 +693,7 @@
           </article>
 
           <!-- Event 2 -->
-          <article data-categories="all workshops hands-on-labs" data-event-id="docker-fastapi-lab" tabindex="0" role="button" aria-label="Open details for Serverless & Containers Lab" class="event-card builder-card rounded-2xl overflow-hidden flex flex-col justify-between cursor-pointer reveal-item">
+          <article data-categories="all workshops hands-on-labs" data-event-id="docker-fastapi-lab" tabindex="0" role="button" aria-label="Open details for Serverless & Containers Lab" class="event-card builder-card glass-sheen rounded-2xl overflow-hidden flex flex-col justify-between cursor-pointer reveal-item">
             <div>
               <div class="event-banner-frame aspect-[788/400] bg-gradient-to-br from-[#0F172A] to-[#152238] flex items-center justify-center">
                 <div class="text-center px-4">
@@ -731,11 +722,11 @@
           </article>
 
           <!-- Event 3 -->
-          <article data-categories="all ai-cloud community" data-event-id="clf-c02-study-jam" tabindex="0" role="button" aria-label="Open details for AWS Cloud Practitioner Study Jam" class="event-card builder-card rounded-2xl overflow-hidden flex flex-col justify-between cursor-pointer reveal-item">
+          <article data-categories="all ai-cloud community" data-event-id="clf-c02-study-jam" tabindex="0" role="button" aria-label="Open details for AWS Cloud Practitioner Study Jam" class="event-card builder-card glass-sheen rounded-2xl overflow-hidden flex flex-col justify-between cursor-pointer reveal-item">
             <div>
               <div class="event-banner-frame aspect-[788/400] bg-gradient-to-br from-[#0284C7] to-[#0EA5E9] flex items-center justify-center">
                 <div class="text-center px-4">
-                  <span class="font-mono text-[10px] tracking-[0.2em] text-white/85 uppercase block">CERTIFICATION TRACK</span>
+                  <span class="font-mono text-[10px] tracking-[0.2em] text-white/90 uppercase block">CERTIFICATION TRACK</span>
                   <span class="font-display font-bold text-lg text-white mt-1 block">AWS CLF-C02 Study Jam</span>
                 </div>
               </div>
@@ -760,7 +751,7 @@
           </article>
 
           <!-- Event 4 -->
-          <article data-categories="all workshops ai-cloud" data-event-id="northeast-genai-sprint" tabindex="0" role="button" aria-label="Open details for Northeast Student GenAI & RAG Builders Sprint" class="event-card builder-card rounded-2xl overflow-hidden flex flex-col justify-between cursor-pointer reveal-item">
+          <article data-categories="all workshops ai-cloud" data-event-id="northeast-genai-sprint" tabindex="0" role="button" aria-label="Open details for Northeast Student GenAI & RAG Builders Sprint" class="event-card builder-card glass-sheen rounded-2xl overflow-hidden flex flex-col justify-between cursor-pointer reveal-item">
             <div>
               <div class="event-banner-frame aspect-[788/400] bg-gradient-to-br from-[#0F172A] to-[#1E293B] flex items-center justify-center">
                 <div class="text-center px-4">
@@ -789,9 +780,9 @@
           </article>
 
           <!-- Event 5 -->
-          <article data-categories="all community" data-event-id="aws-community-day" tabindex="0" role="button" aria-label="Open details for AdtU AWS Community Day" class="event-card builder-card rounded-2xl overflow-hidden flex flex-col justify-between cursor-pointer reveal-item">
+          <article data-categories="all community" data-event-id="aws-community-day" tabindex="0" role="button" aria-label="Open details for AdtU AWS Community Day" class="event-card builder-card glass-sheen rounded-2xl overflow-hidden flex flex-col justify-between cursor-pointer reveal-item">
             <div>
-              <div class="event-banner-frame aspect-[16/9]">
+              <div class="event-banner-frame event-banner-light aspect-[788/400]">
                 <img src="brand-asset-meetup-group-cover-photo-46ffc0c7-20261126T123212.png" alt="AdtU AWS Community Day Header" loading="lazy" />
               </div>
               <div class="p-5">
@@ -815,7 +806,7 @@
           </article>
 
           <!-- Event 6 -->
-          <article data-categories="all workshops hands-on-labs" data-event-id="cloud-security-workshop" tabindex="0" role="button" aria-label="Open details for Cloud Security & IAM Deep Dive Lab" class="event-card builder-card rounded-2xl overflow-hidden flex flex-col justify-between cursor-pointer reveal-item">
+          <article data-categories="all workshops hands-on-labs" data-event-id="cloud-security-workshop" tabindex="0" role="button" aria-label="Open details for Cloud Security & IAM Deep Dive Lab" class="event-card builder-card glass-sheen rounded-2xl overflow-hidden flex flex-col justify-between cursor-pointer reveal-item">
             <div>
               <div class="event-banner-frame aspect-[788/400] bg-gradient-to-br from-[#0F172A] to-[#0B1120] flex items-center justify-center">
                 <div class="text-center px-4">
@@ -853,8 +844,8 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 reveal-item">
           <div>
-            <!-- Cohort Selector Pill -->
-            <div class="inline-flex flex-wrap items-center gap-1.5 p-1 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-tint)]">
+            <!-- Cohort Selector Pill (iOS Segmented Glass Pill) -->
+            <div class="inline-flex flex-wrap items-center gap-1.5 p-1 rounded-full border border-[var(--border-subtle)] glass-pill">
               <button type="button" data-cohort="current" aria-pressed="true" class="cohort-switch-btn px-3.5 py-1.5 rounded-full font-mono text-xs font-semibold bg-[#0EA5E9] dark:bg-[#2EA3F2] text-white dark:text-[#0B1120] transition-colors">
                 2026–27 CURRENT
               </button>
@@ -871,23 +862,20 @@
           </p>
         </div>
 
-        <!-- Custom Branded Core Team Grid -->
-        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- View A: 2026-27 Current Core Team Grid -->
+        <div id="team-grid-current" class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           <!-- Member 1: Sourav Chakraborty -->
-          <article class="builder-card rounded-2xl overflow-hidden flex flex-col justify-between reveal-item">
+          <article class="builder-card glass-sheen rounded-2xl overflow-hidden flex flex-col justify-between reveal-item">
             <div>
-              <!-- Branded Portrait Stage: Blue Arc Backdrop + Chip Watermark + Frosted Nameplate -->
               <div class="team-portrait-stage flex items-center justify-center">
                 <div class="team-blue-arc" aria-hidden="true"></div>
-                <!-- AWS SBG Chip Icon Watermark (Top-Right) -->
                 <div class="absolute top-3 right-3 w-7 h-7 rounded-lg bg-[#0F172A] border border-[#1E293B] flex items-center justify-center shadow-sm">
                   <img src="brand-asset-profile-picture-6548650b-20261126T124037.png" alt="" class="w-4 h-4 object-contain" />
                 </div>
-                <!-- Avatar / Headshot Drop-in (Replace div below with <img src="assets/team/sourav.jpg" alt="Sourav Chakraborty" class="relative z-10 w-24 h-24 rounded-full object-cover border-2 border-white dark:border-[#0B1120] shadow-md" />) -->
+                <!-- Headshot Drop-in: Replace div below with <img src="assets/team/sourav.jpg" alt="Sourav Chakraborty" class="relative z-10 w-24 h-24 -mt-5 rounded-full object-cover border-2 border-white dark:border-[#0B1120] shadow-lg" /> -->
                 <div class="relative z-10 w-24 h-24 -mt-5 rounded-full bg-[#0F172A] text-[#2EA3F2] border-2 border-[#2EA3F2]/60 shadow-lg flex items-center justify-center font-display font-bold text-2xl tracking-tight">
                   SC
                 </div>
-                <!-- Frosted-Glass Bottom Nameplate -->
                 <div class="team-nameplate absolute bottom-0 inset-x-0 px-4 py-2.5 z-20">
                   <h3 class="font-display font-bold text-base text-[var(--text-primary)] leading-tight truncate">Sourav Chakraborty</h3>
                   <div class="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#0EA5E9] dark:text-[#2EA3F2] truncate">
@@ -910,7 +898,7 @@
           </article>
 
           <!-- Member 2: Akash Kalita -->
-          <article class="builder-card rounded-2xl overflow-hidden flex flex-col justify-between reveal-item">
+          <article class="builder-card glass-sheen rounded-2xl overflow-hidden flex flex-col justify-between reveal-item">
             <div>
               <div class="team-portrait-stage flex items-center justify-center">
                 <div class="team-blue-arc" aria-hidden="true"></div>
@@ -943,7 +931,7 @@
           </article>
 
           <!-- Member 3: Khomdram Sanahal -->
-          <article class="builder-card rounded-2xl overflow-hidden flex flex-col justify-between reveal-item">
+          <article class="builder-card glass-sheen rounded-2xl overflow-hidden flex flex-col justify-between reveal-item">
             <div>
               <div class="team-portrait-stage flex items-center justify-center">
                 <div class="team-blue-arc" aria-hidden="true"></div>
@@ -976,7 +964,7 @@
           </article>
 
           <!-- Member 4: Join Core Team / Volunteer Card -->
-          <article class="rounded-2xl p-6 border-2 border-dashed border-[#2EA3F2]/60 bg-[#2EA3F2]/[0.04] dark:bg-[#2EA3F2]/[0.06] flex flex-col justify-between reveal-item">
+          <article class="rounded-2xl p-6 border-2 border-dashed border-[#2EA3F2]/60 glass-surface flex flex-col justify-between reveal-item">
             <div>
               <div class="w-16 h-16 rounded-2xl border border-dashed border-[#2EA3F2]/60 bg-[var(--surface)] flex items-center justify-center text-[#0EA5E9] dark:text-[#2EA3F2]">
                 <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -989,14 +977,53 @@
                 </p>
               </div>
             </div>
-            <a href="https://forms.gle/LmLxEuQhc5n7yeqk7" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl bg-[#0EA5E9] hover:bg-[#0284C7] dark:bg-[#2EA3F2] dark:hover:bg-[#38BDF8] text-white dark:text-[#0B1120] font-semibold text-xs transition-colors">
+            <a href="https://forms.gle/LmLxEuQhc5n7yeqk7" target="_blank" rel="noopener noreferrer" class="btn-2d mt-5 inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl bg-[#0EA5E9] hover:bg-[#0284C7] dark:bg-[#2EA3F2] dark:hover:bg-[#38BDF8] text-white dark:text-[#0B1120] font-semibold text-xs">
               Apply to Join Team →
             </a>
           </article>
         </div>
 
-        <!-- Dedicated Faculty Advisor Spotlight Card (Ready for Final Name / Photo / Email) -->
-        <div class="mt-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] p-6 sm:p-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 reveal-item">
+        <!-- View B: Open Core & Extended Team Seats (Toggled by Cohort Switcher) -->
+        <div id="team-grid-open" class="hidden mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <article class="builder-card rounded-2xl p-6 flex flex-col justify-between reveal-item">
+            <div>
+              <span class="font-mono text-[10px] font-bold px-2.5 py-1 rounded-full bg-[#2EA3F2]/15 text-[#0EA5E9] dark:text-[#2EA3F2]">CORE SEAT · OPEN</span>
+              <h3 class="mt-3 font-display font-bold text-lg text-[var(--text-primary)]">Director of Marketing</h3>
+              <p class="mt-2 text-xs text-[var(--text-muted)] leading-relaxed">Lead visual identity, LinkedIn storytelling, event posters, and campus outreach across AdtU departments.</p>
+            </div>
+            <a href="https://forms.gle/LmLxEuQhc5n7yeqk7" target="_blank" rel="noopener noreferrer" class="mt-5 font-mono text-xs font-semibold text-[#0EA5E9] dark:text-[#2EA3F2] hover:underline">Apply for Role →</a>
+          </article>
+
+          <article class="builder-card rounded-2xl p-6 flex flex-col justify-between reveal-item">
+            <div>
+              <span class="font-mono text-[10px] font-bold px-2.5 py-1 rounded-full bg-[#2EA3F2]/15 text-[#0EA5E9] dark:text-[#2EA3F2]">CORE SEAT · OPEN</span>
+              <h3 class="mt-3 font-display font-bold text-lg text-[var(--text-primary)]">Community Lead</h3>
+              <p class="mt-2 text-xs text-[var(--text-muted)] leading-relaxed">Onboard first-time student builders, coordinate CLF-C02 study circles, and foster inclusive peer support.</p>
+            </div>
+            <a href="https://forms.gle/LmLxEuQhc5n7yeqk7" target="_blank" rel="noopener noreferrer" class="mt-5 font-mono text-xs font-semibold text-[#0EA5E9] dark:text-[#2EA3F2] hover:underline">Apply for Role →</a>
+          </article>
+
+          <article class="builder-card rounded-2xl p-6 flex flex-col justify-between reveal-item">
+            <div>
+              <span class="font-mono text-[10px] font-bold px-2.5 py-1 rounded-full bg-[#2EA3F2]/15 text-[#0EA5E9] dark:text-[#2EA3F2]">CORE SEAT · OPEN</span>
+              <h3 class="mt-3 font-display font-bold text-lg text-[var(--text-primary)]">Operations Lead</h3>
+              <p class="mt-2 text-xs text-[var(--text-muted)] leading-relaxed">Manage check-ins, Meetup RSVPs, lab readiness, attendance badges, and campus event logistics.</p>
+            </div>
+            <a href="https://forms.gle/LmLxEuQhc5n7yeqk7" target="_blank" rel="noopener noreferrer" class="mt-5 font-mono text-xs font-semibold text-[#0EA5E9] dark:text-[#2EA3F2] hover:underline">Apply for Role →</a>
+          </article>
+
+          <article class="builder-card rounded-2xl p-6 flex flex-col justify-between reveal-item">
+            <div>
+              <span class="font-mono text-[10px] font-bold px-2.5 py-1 rounded-full bg-[var(--bg-tint)] border border-[var(--border-subtle)] text-[var(--text-muted)]">EXTENDED TEAM</span>
+              <h3 class="mt-3 font-display font-bold text-lg text-[var(--text-primary)]">Volunteers &amp; Mentors</h3>
+              <p class="mt-2 text-xs text-[var(--text-muted)] leading-relaxed">Support hands-on lab debugging, photography, media kits, and workshop facilitation.</p>
+            </div>
+            <a href="https://forms.gle/LmLxEuQhc5n7yeqk7" target="_blank" rel="noopener noreferrer" class="mt-5 font-mono text-xs font-semibold text-[#0EA5E9] dark:text-[#2EA3F2] hover:underline">Apply as Volunteer →</a>
+          </article>
+        </div>
+
+        <!-- Dedicated Faculty Advisor Spotlight Card -->
+        <div class="mt-8 rounded-2xl glass-panel p-6 sm:p-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 reveal-item">
           <div class="flex items-start sm:items-center gap-4">
             <!-- Faculty Headshot Drop-in: Replace div with <img src="assets/team/faculty-advisor.jpg" ... /> -->
             <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-[#0F172A] text-[#2EA3F2] border border-[#2EA3F2]/35 flex items-center justify-center">
@@ -1019,8 +1046,8 @@
           </span>
         </div>
 
-        <!-- Message from the Lead (Editorial Pull-Quote Card) -->
-        <blockquote class="mt-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] p-6 sm:p-8 lg:p-10 relative overflow-hidden reveal-item">
+        <!-- Message from the Lead (Glass Editorial Quote Card) -->
+        <blockquote class="mt-8 rounded-2xl glass-panel p-6 sm:p-8 lg:p-10 relative overflow-hidden reveal-item">
           <div class="pointer-events-none absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#0EA5E9] to-[#2EA3F2]" aria-hidden="true"></div>
           <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#0EA5E9] dark:text-[#2EA3F2]">// MESSAGE FROM THE LEAD</span>
           <p class="mt-4 font-display text-lg sm:text-2xl font-medium text-[var(--text-primary)] leading-snug max-w-4xl">
@@ -1066,35 +1093,35 @@
               Situated on a 42-acre campus overlooking the Brahmaputra River in Panikhaiti, Guwahati, Assam down town University provides the academic labs, innovation ecosystem, and multidisciplinary community powering our student cloud builders.
             </p>
             <div class="mt-6 flex flex-wrap gap-3">
-              <a href="https://adtu.in/faculties/computer-technology" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] hover:border-[#2EA3F2] text-xs font-semibold text-[var(--text-primary)] transition-colors">
+              <a href="https://adtu.in/faculties/computer-technology" target="_blank" rel="noopener noreferrer" class="glass-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] hover:border-[#2EA3F2] text-xs font-semibold text-[var(--text-primary)] transition-colors">
                 Visit FoCT Portal (adtu.in) ↗
               </a>
             </div>
           </div>
 
           <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 reveal-item">
-            <div class="builder-card rounded-2xl p-5">
+            <div class="builder-card glass-sheen rounded-2xl p-5">
               <span class="font-mono text-[11px] font-bold text-[#0EA5E9] dark:text-[#2EA3F2]">ACCREDITATION</span>
               <h3 class="mt-1.5 font-display font-bold text-xl text-[var(--text-primary)]">NAAC Grade A+</h3>
               <p class="mt-1.5 text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
                 Northeast India's first private university accredited with NAAC Grade A+, recognizing academic and infrastructure excellence.
               </p>
             </div>
-            <div class="builder-card rounded-2xl p-5">
+            <div class="builder-card glass-sheen rounded-2xl p-5">
               <span class="font-mono text-[11px] font-bold text-[#0EA5E9] dark:text-[#2EA3F2]">ESTABLISHED &amp; LOCATION</span>
               <h3 class="mt-1.5 font-display font-bold text-xl text-[var(--text-primary)]">Est. 2010 · Guwahati</h3>
               <p class="mt-1.5 text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
                 Sankar Madhab Path, Gandhi Nagar, Panikhaiti, Guwahati, Assam – 781026.
               </p>
             </div>
-            <div class="builder-card rounded-2xl p-5">
+            <div class="builder-card glass-sheen rounded-2xl p-5">
               <span class="font-mono text-[11px] font-bold text-[#0EA5E9] dark:text-[#2EA3F2]">RECOGNITION &amp; INNOVATION</span>
               <h3 class="mt-1.5 font-display font-bold text-xl text-[var(--text-primary)]">UGC &amp; AICTE · IIC-MoE</h3>
               <p class="mt-1.5 text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
                 UGC &amp; AICTE approved and recognized by the Institution's Innovation Council (IIC) under the Ministry of Education, Govt. of India.
               </p>
             </div>
-            <div class="builder-card rounded-2xl p-5">
+            <div class="builder-card glass-sheen rounded-2xl p-5">
               <span class="font-mono text-[11px] font-bold text-[#0EA5E9] dark:text-[#2EA3F2]">HOST FACULTY</span>
               <h3 class="mt-1.5 font-display font-bold text-xl text-[var(--text-primary)]">Faculty of Computer Technology</h3>
               <p class="mt-1.5 text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
@@ -1107,7 +1134,7 @@
     </section>
 
     <!-- =======================================================================
-         9. INTERACTIVE ONBOARDING CHECKLIST, PUBLICATIONS & BRAND CALLOUT (#resources)
+         9. INTERACTIVE ONBOARDING CHECKLIST, PUBLICATIONS & MEDIA KIT (#resources)
          ======================================================================= -->
     <section id="resources" class="py-16 sm:py-24 bg-[var(--bg-page)] border-b border-[var(--border-subtle)]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1119,7 +1146,7 @@
 
         <div class="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
           <!-- Left: Interactive 4-Step Checklist -->
-          <div class="lg:col-span-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] p-6 sm:p-7 reveal-item">
+          <div class="lg:col-span-6 rounded-2xl glass-panel p-6 sm:p-7 reveal-item">
             <div class="flex items-center justify-between gap-3">
               <div>
                 <h3 class="font-display font-bold text-xl text-[var(--text-primary)]">Student Builder Onboarding Checklist</h3>
@@ -1182,7 +1209,7 @@
               <span class="font-mono text-[11px] text-[var(--text-muted)]">AdtU Notes</span>
             </div>
 
-            <article data-article-id="aws-builder-center-guide" tabindex="0" role="button" class="article-card builder-card rounded-2xl p-6 cursor-pointer">
+            <article data-article-id="aws-builder-center-guide" tabindex="0" role="button" class="article-card builder-card glass-sheen rounded-2xl p-6 cursor-pointer">
               <div class="flex items-center justify-between gap-2 mb-3">
                 <span class="font-mono text-[11px] font-semibold px-2.5 py-0.5 rounded bg-[#2EA3F2]/[0.12] text-[#0EA5E9] dark:text-[#2EA3F2]">ONBOARDING GUIDE</span>
                 <span class="font-mono text-[11px] text-[var(--text-muted)]">5 min read</span>
@@ -1195,7 +1222,7 @@
               </div>
             </article>
 
-            <article data-article-id="fastapi-cloud-checklist" tabindex="0" role="button" class="article-card builder-card rounded-2xl p-6 cursor-pointer">
+            <article data-article-id="fastapi-cloud-checklist" tabindex="0" role="button" class="article-card builder-card glass-sheen rounded-2xl p-6 cursor-pointer">
               <div class="flex items-center justify-between gap-2 mb-3">
                 <span class="font-mono text-[11px] font-semibold px-2.5 py-0.5 rounded bg-[#2EA3F2]/[0.12] text-[#0EA5E9] dark:text-[#2EA3F2]">BACKEND &amp; DEPLOYMENT</span>
                 <span class="font-mono text-[11px] text-[var(--text-muted)]">7 min read</span>
@@ -1208,17 +1235,17 @@
               </div>
             </article>
 
-            <!-- Exported Square & Vertical Brand Cards Showcase (1080x1080 + 300x600) -->
-            <div class="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] p-4 sm:p-5">
+            <!-- Exported Square & Vertical Brand Cards Showcase (1080x1080 + 300x600 exact ratios) -->
+            <div class="rounded-2xl glass-panel p-4 sm:p-5">
               <div class="flex items-center justify-between mb-3">
                 <span class="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#0EA5E9] dark:text-[#2EA3F2]">Official Chapter Media Kit</span>
                 <span class="font-mono text-[10px] text-[var(--text-muted)]">Shareable Assets</span>
               </div>
-              <div class="grid grid-cols-12 gap-3 items-center">
-                <div class="col-span-7 rounded-xl overflow-hidden border border-[var(--border-subtle)] bg-white aspect-square">
+              <div class="flex flex-wrap sm:flex-nowrap items-center justify-center gap-4">
+                <div class="w-full max-w-[240px] rounded-xl overflow-hidden border border-[var(--border-subtle)] bg-white aspect-square shadow-sm">
                   <img src="brand-asset-instagram-post-20261126T123622.png" alt="AWS SBG AdtU Square Community Post" class="w-full h-full object-contain block" loading="lazy" />
                 </div>
-                <div class="col-span-5 rounded-xl overflow-hidden border border-[var(--border-subtle)] bg-white aspect-[1/2] max-h-[260px] mx-auto">
+                <div class="w-[125px] sm:w-[130px] flex-shrink-0 rounded-xl overflow-hidden border border-[var(--border-subtle)] bg-white aspect-[1/2] shadow-sm">
                   <img src="brand-asset-narrow-banner-ef637fe8-20261126T122859.png" alt="AWS SBG AdtU Vertical Community Card" class="w-full h-full object-contain block" loading="lazy" />
                 </div>
               </div>
@@ -1246,7 +1273,7 @@
 
         <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           <!-- LinkedIn -->
-          <a href="https://www.linkedin.com/company/aws-sbg-adtu" target="_blank" rel="noopener noreferrer" class="builder-card group rounded-2xl p-6 flex flex-col justify-between reveal-item">
+          <a href="https://www.linkedin.com/company/aws-sbg-adtu" target="_blank" rel="noopener noreferrer" class="builder-card glass-sheen group rounded-2xl p-6 flex flex-col justify-between reveal-item">
             <div>
               <div class="flex items-center justify-between mb-4">
                 <span class="w-11 h-11 rounded-xl bg-[#0F172A] text-[#2EA3F2] border border-[#1E293B] flex items-center justify-center">
@@ -1261,7 +1288,7 @@
           </a>
 
           <!-- Meetup -->
-          <a href="https://www.meetup.com/aws-sbg-at-assam-down-town-university" target="_blank" rel="noopener noreferrer" class="builder-card group rounded-2xl p-6 flex flex-col justify-between reveal-item">
+          <a href="https://www.meetup.com/aws-sbg-at-assam-down-town-university" target="_blank" rel="noopener noreferrer" class="builder-card glass-sheen group rounded-2xl p-6 flex flex-col justify-between reveal-item">
             <div>
               <div class="flex items-center justify-between mb-4">
                 <span class="w-11 h-11 rounded-xl bg-[#0EA5E9] dark:bg-[#2EA3F2] text-white dark:text-[#0B1120] flex items-center justify-center">
@@ -1276,7 +1303,7 @@
           </a>
 
           <!-- Core Team Form -->
-          <a href="https://forms.gle/LmLxEuQhc5n7yeqk7" target="_blank" rel="noopener noreferrer" class="builder-card group rounded-2xl p-6 flex flex-col justify-between reveal-item">
+          <a href="https://forms.gle/LmLxEuQhc5n7yeqk7" target="_blank" rel="noopener noreferrer" class="builder-card glass-sheen group rounded-2xl p-6 flex flex-col justify-between reveal-item">
             <div>
               <div class="flex items-center justify-between mb-4">
                 <span class="w-11 h-11 rounded-xl bg-[#2EA3F2]/[0.12] text-[#0EA5E9] dark:text-[#2EA3F2] border border-[#2EA3F2]/30 flex items-center justify-center">
@@ -1291,7 +1318,7 @@
           </a>
 
           <!-- Dark High-Contrast CTA Card -->
-          <a href="#events" class="group rounded-2xl p-6 bg-[#0F172A] dark:bg-[#060B15] border border-[#1E293B] hover:border-[#2EA3F2] flex flex-col justify-between transition-all hover:-translate-y-1 shadow-md reveal-item">
+          <a href="#events" class="glass-sheen group rounded-2xl p-6 bg-[#0F172A] dark:bg-[#060B15] border border-[#1E293B] hover:border-[#2EA3F2] flex flex-col justify-between transition-all hover:-translate-y-1 shadow-md reveal-item">
             <div>
               <div class="flex items-center justify-between mb-4">
                 <img src="brand-asset-profile-picture-6548650b-20261126T124037.png" alt="AWS SBG Chip" class="w-11 h-11 rounded-xl object-contain" />
@@ -1380,68 +1407,71 @@
 
   <!-- =========================================================================
        MODALS: EVENT DETAIL, BUILDER PUBLICATION READER, QUICK START
+       (Outer frame handles rounded clipping; inner .modal-scroll-area scrolls cleanly)
        ========================================================================= -->
   <!-- Modal 1: Event Detail -->
-  <div id="event-modal" role="dialog" aria-modal="true" aria-labelledby="event-modal-title" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-    <div class="relative w-full max-w-xl max-h-[88vh] overflow-y-auto rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] shadow-2xl overflow-hidden">
-      <div class="bg-white border-b border-[var(--border-subtle)] p-2">
-        <img id="event-modal-banner" src="brand-asset-banner-small-20261126T123412.png" alt="Event header" class="w-full h-36 object-contain block" />
-      </div>
-      <div class="p-6 sm:p-7 relative">
-        <button type="button" data-close-modal="event-modal" aria-label="Close event details" class="absolute top-4 right-4 w-9 h-9 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#2EA3F2] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">✕</button>
-        <div class="pr-10">
+  <div id="event-modal" role="dialog" aria-modal="true" aria-labelledby="event-modal-title" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+    <div class="modal-panel relative w-full max-w-xl rounded-2xl border border-[var(--border-subtle)] overflow-hidden">
+      <button type="button" data-close-modal="event-modal" aria-label="Close event details" class="absolute top-3 right-3 z-20 w-9 h-9 rounded-full border border-[var(--border-subtle)] bg-white/85 dark:bg-[#0B1120]/85 backdrop-blur-md hover:border-[#2EA3F2] flex items-center justify-center text-[#0F172A] dark:text-white shadow-sm transition-colors">✕</button>
+      <div class="modal-scroll-area max-h-[86vh] overflow-y-auto">
+        <div class="bg-white border-b border-[var(--border-subtle)] p-2">
+          <img id="event-modal-banner" src="brand-asset-banner-small-20261126T123412.png" alt="Event header" class="w-full h-36 object-contain block" />
+        </div>
+        <div class="p-6 sm:p-7">
           <span id="event-modal-badge" class="inline-block font-mono text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#2EA3F2]/15 text-[#0EA5E9] dark:text-[#2EA3F2]"></span>
           <h3 id="event-modal-title" class="mt-3 font-display font-bold text-2xl text-[var(--text-primary)] leading-tight"></h3>
           <p id="event-modal-meta" class="mt-2 font-mono text-xs text-[var(--text-muted)]"></p>
-        </div>
-        <p id="event-modal-desc" class="mt-4 text-sm text-[var(--text-muted)] leading-relaxed"></p>
-        <div class="mt-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] p-4">
-          <h4 class="font-mono text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">Session Agenda</h4>
-          <ul id="event-modal-agenda" class="mt-2.5 space-y-2 text-xs sm:text-sm text-[var(--text-muted)] list-disc list-inside"></ul>
-        </div>
-        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] p-3.5">
-            <div class="font-mono text-[10px] font-bold uppercase tracking-wider text-[#0EA5E9] dark:text-[#2EA3F2]">Prerequisites</div>
-            <p id="event-modal-prereq" class="mt-1 text-xs text-[var(--text-muted)] leading-relaxed"></p>
+          <p id="event-modal-desc" class="mt-4 text-sm text-[var(--text-muted)] leading-relaxed"></p>
+          <div class="mt-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] p-4">
+            <h4 class="font-mono text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">Session Agenda</h4>
+            <ul id="event-modal-agenda" class="mt-2.5 space-y-2 text-xs sm:text-sm text-[var(--text-muted)] list-disc list-inside"></ul>
           </div>
-          <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] p-3.5">
-            <div class="font-mono text-[10px] font-bold uppercase tracking-wider text-[#0EA5E9] dark:text-[#2EA3F2]">Host / Format</div>
-            <p id="event-modal-host" class="mt-1 text-xs text-[var(--text-muted)] leading-relaxed"></p>
+          <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] p-3.5">
+              <div class="font-mono text-[10px] font-bold uppercase tracking-wider text-[#0EA5E9] dark:text-[#2EA3F2]">Prerequisites</div>
+              <p id="event-modal-prereq" class="mt-1 text-xs text-[var(--text-muted)] leading-relaxed"></p>
+            </div>
+            <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] p-3.5">
+              <div class="font-mono text-[10px] font-bold uppercase tracking-wider text-[#0EA5E9] dark:text-[#2EA3F2]">Host / Format</div>
+              <p id="event-modal-host" class="mt-1 text-xs text-[var(--text-muted)] leading-relaxed"></p>
+            </div>
           </div>
-        </div>
-        <div class="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-2.5">
-          <button type="button" data-close-modal="event-modal" class="px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] text-xs font-semibold text-[var(--text-primary)] hover:border-[#2EA3F2] transition-colors">← Back to Events</button>
-          <a href="https://www.meetup.com/aws-sbg-at-assam-down-town-university" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#0EA5E9] hover:bg-[#0284C7] dark:bg-[#2EA3F2] dark:hover:bg-[#38BDF8] text-white dark:text-[#0B1120] text-xs font-semibold transition-colors">RSVP on Meetup →</a>
+          <div class="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-2.5">
+            <button type="button" data-close-modal="event-modal" class="px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] text-xs font-semibold text-[var(--text-primary)] hover:border-[#2EA3F2] transition-colors">← Back to Events</button>
+            <a href="https://www.meetup.com/aws-sbg-at-assam-down-town-university" target="_blank" rel="noopener noreferrer" class="btn-2d inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#0EA5E9] hover:bg-[#0284C7] dark:bg-[#2EA3F2] dark:hover:bg-[#38BDF8] text-white dark:text-[#0B1120] text-xs font-semibold">RSVP on Meetup →</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Modal 2: Article Reader -->
-  <div id="article-modal" role="dialog" aria-modal="true" aria-labelledby="article-modal-title" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-    <div class="relative w-full max-w-xl max-h-[88vh] overflow-y-auto rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] shadow-2xl p-6 sm:p-7">
-      <button type="button" data-close-modal="article-modal" aria-label="Close publication summary" class="absolute top-4 right-4 w-9 h-9 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#2EA3F2] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">✕</button>
-      <div class="pr-10">
-        <span id="article-modal-tag" class="font-mono text-[11px] font-semibold text-[#0EA5E9] dark:text-[#2EA3F2]"></span>
-        <h3 id="article-modal-title" class="mt-2 font-display font-bold text-2xl text-[var(--text-primary)] leading-tight"></h3>
-      </div>
-      <div id="article-modal-body" class="mt-4 space-y-3 text-sm text-[var(--text-muted)] leading-relaxed"></div>
-      <div class="mt-6 pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between gap-3">
-        <a href="https://community.aws" target="_blank" rel="noopener noreferrer" class="font-mono text-xs font-semibold text-[#0EA5E9] dark:text-[#2EA3F2] hover:underline">Explore AWS Builder Center ↗</a>
-        <button type="button" data-close-modal="article-modal" class="px-4 py-2 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] text-xs font-semibold text-[var(--text-primary)] hover:border-[#2EA3F2] transition-colors">Done Reading</button>
+  <div id="article-modal" role="dialog" aria-modal="true" aria-labelledby="article-modal-title" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+    <div class="modal-panel relative w-full max-w-xl rounded-2xl border border-[var(--border-subtle)] overflow-hidden">
+      <button type="button" data-close-modal="article-modal" aria-label="Close publication summary" class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#2EA3F2] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">✕</button>
+      <div class="modal-scroll-area max-h-[86vh] overflow-y-auto p-6 sm:p-7">
+        <div class="pr-10">
+          <span id="article-modal-tag" class="font-mono text-[11px] font-semibold text-[#0EA5E9] dark:text-[#2EA3F2]"></span>
+          <h3 id="article-modal-title" class="mt-2 font-display font-bold text-2xl text-[var(--text-primary)] leading-tight"></h3>
+        </div>
+        <div id="article-modal-body" class="mt-4 space-y-3 text-sm text-[var(--text-muted)] leading-relaxed"></div>
+        <div class="mt-6 pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between gap-3">
+          <a href="https://community.aws" target="_blank" rel="noopener noreferrer" class="font-mono text-xs font-semibold text-[#0EA5E9] dark:text-[#2EA3F2] hover:underline">Explore AWS Builder Center ↗</a>
+          <button type="button" data-close-modal="article-modal" class="px-4 py-2 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] text-xs font-semibold text-[var(--text-primary)] hover:border-[#2EA3F2] transition-colors">Done Reading</button>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Modal 3: Quick Start -->
-  <div id="quickstart-modal" role="dialog" aria-modal="true" aria-labelledby="quickstart-modal-title" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-    <div class="relative w-full max-w-md rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] shadow-2xl p-6">
-      <button type="button" data-close-modal="quickstart-modal" aria-label="Close Quick Start menu" class="absolute top-4 right-4 w-9 h-9 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#2EA3F2] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">✕</button>
+  <div id="quickstart-modal" role="dialog" aria-modal="true" aria-labelledby="quickstart-modal-title" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+    <div class="modal-panel relative w-full max-w-md max-h-[86vh] overflow-y-auto rounded-2xl border border-[var(--border-subtle)] p-6">
+      <button type="button" data-close-modal="quickstart-modal" aria-label="Close Quick Start menu" class="absolute top-4 right-4 w-9 h-9 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#2EA3F2] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">✕</button>
       <span class="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#0EA5E9] dark:text-[#2EA3F2]">// 30-SECOND QUICK START</span>
       <h3 id="quickstart-modal-title" class="mt-1.5 font-display font-bold text-xl text-[var(--text-primary)]">Join AWS SBG at AdtU</h3>
       <p class="mt-1.5 text-xs text-[var(--text-muted)]">Pick your fastest entry point into our Cohort 10 campus community:</p>
       <div class="mt-5 space-y-2.5">
-        <a href="https://www.meetup.com/aws-sbg-at-assam-down-town-university" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 rounded-xl bg-[#0EA5E9] hover:bg-[#0284C7] dark:bg-[#2EA3F2] dark:hover:bg-[#38BDF8] text-white dark:text-[#0B1120] transition-colors">
+        <a href="https://www.meetup.com/aws-sbg-at-assam-down-town-university" target="_blank" rel="noopener noreferrer" class="btn-2d flex items-center justify-between p-3.5 rounded-xl bg-[#0EA5E9] hover:bg-[#0284C7] dark:bg-[#2EA3F2] dark:hover:bg-[#38BDF8] text-white dark:text-[#0B1120]">
           <div><div class="font-display font-bold text-sm">1. Join Official Meetup Chapter</div><div class="text-[11px] opacity-90">Required for workshop RSVPs &amp; updates</div></div>
           <span class="font-mono text-sm">↗</span>
         </a>
@@ -1462,7 +1492,7 @@
   </div>
 
   <!-- Inline Toast -->
-  <div id="toast" role="status" aria-live="polite" class="pointer-events-none opacity-0 translate-y-2 fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-[90] rounded-xl bg-[#0F172A] text-white border border-[#2EA3F2]/40 px-4 py-2.5 shadow-xl font-mono text-xs flex items-center gap-2">
+  <div id="toast" role="status" aria-live="polite" class="pointer-events-none opacity-0 translate-y-2 fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-[90] rounded-2xl bg-[#0F172A]/90 text-white border border-white/15 px-4 py-2.5 shadow-xl font-mono text-xs flex items-center gap-2">
     <span class="w-2 h-2 rounded-full bg-[#2EA3F2]"></span>
     <span id="toast-message">Copied to clipboard</span>
   </div>

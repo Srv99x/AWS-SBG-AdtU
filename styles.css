@@ -18,10 +18,20 @@
   --accent-tint: rgba(46, 163, 242, 0.10);
   --dark-surface: #0F172A;
   --dot-color: rgba(15, 23, 42, 0.08);
-  --nav-glass: rgba(255, 255, 255, 0.84);
-  --glow-1: rgba(46, 163, 242, 0.15);
-  --glow-2: rgba(14, 165, 233, 0.06);
-  --frosted-plate: rgba(255, 255, 255, 0.88);
+  --nav-glass: rgba(255, 255, 255, 0.72);
+  --glow-1: rgba(46, 163, 242, 0.16);
+  --glow-2: rgba(14, 165, 233, 0.07);
+  --frosted-plate: rgba(255, 255, 255, 0.78);
+
+  /* iOS Glassmorphism & 2D Tactile Depth Tokens */
+  --glass-bg: rgba(255, 255, 255, 0.68);
+  --glass-bg-strong: rgba(255, 255, 255, 0.84);
+  --glass-border: rgba(255, 255, 255, 0.75);
+  --glass-outline: rgba(15, 23, 42, 0.09);
+  --glass-specular: rgba(255, 255, 255, 0.92);
+  --glass-shadow: 0 12px 34px -14px rgba(15, 23, 42, 0.12), 0 2px 6px -1px rgba(15, 23, 42, 0.05);
+  --depth-2d-border: rgba(14, 165, 233, 0.25);
+  --depth-2d-shadow: 0 4px 0 rgba(14, 165, 233, 0.14);
 }
 
 /* ---------- Design Tokens (Dark Mode) ---------- */
@@ -36,13 +46,23 @@
   --accent: #2EA3F2;
   --accent-hover: #38BDF8;
   --accent-bright: #2EA3F2;
-  --accent-tint: rgba(46, 163, 242, 0.15);
+  --accent-tint: rgba(46, 163, 242, 0.16);
   --dark-surface: #060B15;
   --dot-color: rgba(148, 163, 184, 0.12);
-  --nav-glass: rgba(11, 17, 32, 0.86);
-  --glow-1: rgba(46, 163, 242, 0.18);
-  --glow-2: rgba(14, 165, 233, 0.08);
-  --frosted-plate: rgba(11, 17, 32, 0.84);
+  --nav-glass: rgba(11, 17, 32, 0.72);
+  --glow-1: rgba(46, 163, 242, 0.20);
+  --glow-2: rgba(14, 165, 233, 0.09);
+  --frosted-plate: rgba(11, 17, 32, 0.76);
+
+  /* iOS Glassmorphism & 2D Tactile Depth Tokens (Dark) */
+  --glass-bg: rgba(21, 34, 56, 0.66);
+  --glass-bg-strong: rgba(17, 24, 39, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-outline: rgba(46, 163, 242, 0.18);
+  --glass-specular: rgba(255, 255, 255, 0.14);
+  --glass-shadow: 0 18px 42px -14px rgba(0, 0, 0, 0.55), 0 4px 12px -2px rgba(0, 0, 0, 0.35);
+  --depth-2d-border: rgba(46, 163, 242, 0.32);
+  --depth-2d-shadow: 0 4px 0 rgba(46, 163, 242, 0.18);
 }
 
 /* ---------- Base ---------- */
@@ -82,30 +102,143 @@ h1, h2, h3, h4, .font-display {
     radial-gradient(ellipse 45% 45% at 22% 72%, var(--glow-2) 0%, transparent 62%);
 }
 
-/* ---------- Glassmorphic Nav ---------- */
+/* ---------- iOS-Style Frosted Glassmorphic Surfaces ---------- */
 .nav-glass {
   background-color: var(--nav-glass);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(195%);
+  -webkit-backdrop-filter: blur(24px) saturate(195%);
+  box-shadow: inset 0 -1px 0 var(--glass-outline), 0 4px 20px -10px rgba(15, 23, 42, 0.08);
 }
 
-/* ---------- Builder Card ---------- */
-.builder-card {
-  background-color: var(--surface);
+.glass-surface {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(22px) saturate(185%);
+  -webkit-backdrop-filter: blur(22px) saturate(185%);
   border: 1px solid var(--border-subtle);
+  box-shadow: inset 0 1px 0 var(--glass-specular), var(--glass-shadow);
+}
+
+.glass-panel {
+  background-color: var(--glass-bg-strong);
+  backdrop-filter: blur(24px) saturate(195%);
+  -webkit-backdrop-filter: blur(24px) saturate(195%);
+  border: 1px solid var(--border-subtle);
+  box-shadow: inset 0 1px 0 var(--glass-specular), var(--glass-shadow);
+}
+
+.glass-pill {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: inset 0 1px 0 var(--glass-specular), 0 4px 14px -6px rgba(15, 23, 42, 0.12);
+}
+
+/* ---------- 2D Tactile Card & Button Depth ---------- */
+.builder-card {
+  position: relative;
+  background-color: var(--glass-bg-strong);
+  backdrop-filter: blur(16px) saturate(175%);
+  -webkit-backdrop-filter: blur(16px) saturate(175%);
+  border: 1px solid var(--border-subtle);
+  box-shadow: inset 0 1px 0 var(--glass-specular), 0 2px 10px -4px rgba(15, 23, 42, 0.06);
   transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
-              border-color 0.24s ease,
+              border-color 0.22s ease,
               box-shadow 0.24s ease;
 }
 
 .builder-card:hover {
   border-color: var(--accent-bright);
-  box-shadow: 0 14px 36px -16px rgba(14, 165, 233, 0.22);
-  transform: translateY(-3px);
+  box-shadow:
+    inset 0 1px 0 var(--glass-specular),
+    var(--depth-2d-shadow),
+    0 16px 38px -16px rgba(14, 165, 233, 0.24);
+  transform: translateY(-4px);
 }
 
 .dark .builder-card:hover {
-  box-shadow: 0 16px 40px -16px rgba(46, 163, 242, 0.24);
+  box-shadow:
+    inset 0 1px 0 var(--glass-specular),
+    var(--depth-2d-shadow),
+    0 18px 42px -16px rgba(46, 163, 242, 0.26);
+}
+
+/* 2D Layered Offset Frame & Tactile Press Button */
+.btn-2d {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 3px 0 rgba(2, 132, 199, 0.28);
+  transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.16s ease, background-color 0.18s ease;
+}
+
+.btn-2d:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 5px 0 rgba(2, 132, 199, 0.30);
+}
+
+.btn-2d:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.20), 0 1px 0 rgba(2, 132, 199, 0.25);
+}
+
+.card-2d-stack {
+  position: relative;
+}
+
+.card-2d-stack::before {
+  content: '';
+  position: absolute;
+  inset: 6px -6px -6px 6px;
+  border-radius: 1.15rem;
+  border: 1.5px solid var(--depth-2d-border);
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(46, 163, 242, 0.04) 0px,
+    rgba(46, 163, 242, 0.04) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+  pointer-events: none;
+  z-index: 0;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-2d-stack:hover::before {
+  transform: translate(2px, 2px);
+}
+
+/* Diagonal Glass Sheen Sweep */
+.glass-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-sheen::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -75%;
+  width: 55%;
+  height: 300%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 100%
+  );
+  transform: rotate(22deg);
+  transition: left 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.dark .glass-sheen::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(56, 189, 248, 0.12) 50%,
+    transparent 100%
+  );
+}
+
+.glass-sheen:hover::after {
+  left: 140%;
 }
 
 /* ---------- Focus Ring ---------- */
@@ -117,7 +250,7 @@ h1, h2, h3, h4, .font-display {
 /* ---------- Cinematic Preloader ---------- */
 #preloader {
   background:
-    radial-gradient(circle at 50% 42%, rgba(46, 163, 242, 0.16) 0%, rgba(14, 165, 233, 0.04) 40%, transparent 72%),
+    radial-gradient(circle at 50% 42%, rgba(46, 163, 242, 0.18) 0%, rgba(14, 165, 233, 0.05) 42%, transparent 72%),
     #0B1120;
   transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
               visibility 0.45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -140,7 +273,7 @@ h1, h2, h3, h4, .font-display {
   animation: strokeDraw 0.95s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
-/* ---------- Architecture Flow Dash ---------- */
+/* ---------- Architecture Flow Dash & Mobile Pulse ---------- */
 @keyframes flowDash {
   to { stroke-dashoffset: -24; }
 }
@@ -150,7 +283,17 @@ h1, h2, h3, h4, .font-display {
   animation: flowDash 0.9s linear infinite;
 }
 
-/* ---------- Floating Parallax Icons ---------- */
+@keyframes mobileDotFlow {
+  0% { transform: translateY(-4px); opacity: 0.25; }
+  50% { opacity: 1; }
+  100% { transform: translateY(14px); opacity: 0.25; }
+}
+
+.arch-mobile-packet {
+  animation: mobileDotFlow 1.4s ease-in-out infinite;
+}
+
+/* ---------- Floating 2D Parallax Icons ---------- */
 @keyframes floatA {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   25% { transform: translateY(-14px) rotate(3deg); }
@@ -177,7 +320,15 @@ h1, h2, h3, h4, .font-display {
 
 .hero-float-wrap {
   will-change: transform;
-  transition: transform 0.2s ease-out;
+  transition: transform 0.18s ease-out;
+}
+
+.hero-float-chip {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid var(--depth-2d-border);
+  box-shadow: inset 0 1px 0 var(--glass-specular), 0 4px 0 rgba(46, 163, 242, 0.14);
 }
 
 /* ---------- Scroll Reveal ---------- */
@@ -198,26 +349,33 @@ h1, h2, h3, h4, .font-display {
 .reveal-item[data-delay="3"] { transition-delay: 0.24s; }
 .reveal-item[data-delay="4"] { transition-delay: 0.32s; }
 
-/* ---------- Pillar Card 3D Tilt ---------- */
+/* ---------- Pillar Card 3D/2D Tilt (Zero Mousemove Lag) ---------- */
 .pillar-card {
   transform-style: preserve-3d;
-  perspective: 800px;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-              border-color 0.24s ease,
-              box-shadow 0.24s ease;
+  perspective: 850px;
 }
 
-.pillar-card:hover {
-  border-color: var(--accent-bright);
-  box-shadow: 0 20px 40px -20px rgba(14, 165, 233, 0.24);
+.pillar-card.is-tilting {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.dark .pillar-card:hover {
-  box-shadow: 0 20px 44px -20px rgba(46, 163, 242, 0.26);
+/* ---------- Modals & Toast Spring Pop ---------- */
+@keyframes modalPop {
+  from { opacity: 0; transform: translateY(10px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* ---------- Toast ---------- */
+.modal-panel {
+  background-color: var(--glass-bg-strong);
+  backdrop-filter: blur(26px) saturate(200%);
+  -webkit-backdrop-filter: blur(26px) saturate(200%);
+  box-shadow: inset 0 1px 0 var(--glass-specular), 0 28px 60px -18px rgba(0, 0, 0, 0.38);
+  animation: modalPop 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 #toast {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
@@ -255,12 +413,12 @@ h1, h2, h3, h4, .font-display {
   padding: 0.25rem 0.625rem;
   background: #FFFFFF;
   border: 1px solid var(--border-subtle);
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 2px 0 rgba(15, 23, 42, 0.06);
 }
 
 .dark .adtu-logo-container {
   background: #FFFFFF;
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.22);
 }
 
 /* ---------- Architecture Canvas ---------- */
@@ -268,7 +426,10 @@ h1, h2, h3, h4, .font-display {
   position: relative;
   border-radius: 1.25rem;
   border: 1px solid var(--border-subtle);
-  background-color: var(--surface);
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(18px) saturate(170%);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  box-shadow: inset 0 1px 0 var(--glass-specular), var(--glass-shadow);
   overflow: hidden;
 }
 
@@ -279,30 +440,41 @@ h1, h2, h3, h4, .font-display {
 
 .arch-flow-node {
   position: relative;
-  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
-              border-color 0.22s ease,
-              box-shadow 0.22s ease,
-              background-color 0.22s ease;
+  background-color: var(--glass-bg-strong);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: inset 0 1px 0 var(--glass-specular), 0 3px 0 rgba(15, 23, 42, 0.05);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.2s ease,
+              box-shadow 0.2s ease,
+              background-color 0.2s ease;
 }
 
 .arch-flow-node:hover {
   border-color: var(--accent-bright);
   transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 var(--glass-specular), 0 5px 0 rgba(46, 163, 242, 0.16);
 }
 
 .arch-flow-node.is-active {
   border-color: var(--accent-bright);
   background-color: var(--accent-tint);
-  box-shadow: 0 0 0 3px rgba(46, 163, 242, 0.16), 0 12px 28px -12px rgba(46, 163, 242, 0.3);
+  box-shadow:
+    inset 0 1px 0 var(--glass-specular),
+    0 4px 0 rgba(46, 163, 242, 0.26),
+    0 0 0 3px rgba(46, 163, 242, 0.16);
 }
 
-/* ---------- Event Banner Header (Uncropped) ---------- */
+/* ---------- Event Banner Headers (Clean Light vs Gradient Variants) ---------- */
 .event-banner-frame {
   position: relative;
   width: 100%;
-  background-color: #FFFFFF;
   border-bottom: 1px solid var(--border-subtle);
   overflow: hidden;
+}
+
+.event-banner-light {
+  background-color: #FFFFFF;
 }
 
 .event-banner-frame img {
@@ -312,10 +484,10 @@ h1, h2, h3, h4, .font-display {
   object-fit: contain;
 }
 
-/* ---------- Team Card Portrait & Frosted Nameplate ---------- */
+/* ---------- Team Card Portrait & iOS Frosted Nameplate ---------- */
 .team-portrait-stage {
   position: relative;
-  height: 185px;
+  height: 192px;
   overflow: hidden;
   background: linear-gradient(160deg, var(--bg-tint) 0%, var(--surface) 100%);
   border-bottom: 1px solid var(--border-subtle);
@@ -326,36 +498,45 @@ h1, h2, h3, h4, .font-display {
   bottom: -44px;
   left: 50%;
   transform: translateX(-50%);
-  width: 210px;
-  height: 210px;
+  width: 214px;
+  height: 214px;
   border-radius: 9999px;
-  background: radial-gradient(circle at 50% 35%, rgba(46, 163, 242, 0.26) 0%, rgba(14, 165, 233, 0.14) 55%, transparent 74%);
-  border: 14px solid rgba(46, 163, 242, 0.22);
+  background: radial-gradient(circle at 50% 35%, rgba(46, 163, 242, 0.28) 0%, rgba(14, 165, 233, 0.14) 55%, transparent 74%);
+  border: 14px solid rgba(46, 163, 242, 0.24);
   pointer-events: none;
 }
 
 .dark .team-blue-arc {
-  background: radial-gradient(circle at 50% 35%, rgba(46, 163, 242, 0.28) 0%, rgba(14, 165, 233, 0.12) 55%, transparent 74%);
-  border-color: rgba(46, 163, 242, 0.25);
+  background: radial-gradient(circle at 50% 35%, rgba(46, 163, 242, 0.30) 0%, rgba(14, 165, 233, 0.12) 55%, transparent 74%);
+  border-color: rgba(46, 163, 242, 0.26);
 }
 
 .team-nameplate {
   background-color: var(--frosted-plate);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid var(--border-subtle);
+  backdrop-filter: blur(18px) saturate(190%);
+  -webkit-backdrop-filter: blur(18px) saturate(190%);
+  border-top: 1px solid var(--glass-specular);
+  box-shadow: 0 -4px 16px -8px rgba(15, 23, 42, 0.12);
 }
 
 /* ---------- Checklist Completed State ---------- */
 .checklist-box:checked + div .checklist-label {
   text-decoration: line-through;
-  opacity: 0.7;
+  opacity: 0.65;
 }
 
-/* ---------- Mobile Bottom Dock ---------- */
+/* ---------- Mobile Bottom Dock (iPhone Frosted Pill Bar) ---------- */
 .mobile-dock {
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: var(--nav-glass);
+  backdrop-filter: blur(26px) saturate(210%);
+  -webkit-backdrop-filter: blur(26px) saturate(210%);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 var(--glass-specular), 0 14px 36px -10px rgba(15, 23, 42, 0.22);
+}
+
+.dark .mobile-dock {
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 18px 42px -10px rgba(0, 0, 0, 0.65);
 }
 
 /* ---------- Selection ---------- */
@@ -385,10 +566,16 @@ h1, h2, h3, h4, .font-display {
 /* ---------- Reduced Motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .arch-line-active,
+  .arch-mobile-packet,
   .float-icon-a, .float-icon-b, .float-icon-c,
   .float-icon-d, .float-icon-e,
-  .preloader-stroke-draw {
+  .preloader-stroke-draw,
+  .modal-panel {
     animation: none !important;
+  }
+
+  .glass-sheen::after {
+    display: none;
   }
 
   .reveal-item {
