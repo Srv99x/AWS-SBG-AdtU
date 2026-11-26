@@ -1,0 +1,421 @@
+/* ============================================================================
+   AWS SBG AdtU — Production Stylesheet
+   Learn. Build. Connect.
+   ============================================================================ */
+
+/* ---------- Design Tokens (Light Mode Default) ---------- */
+:root {
+  --bg-page: #FFFFFF;
+  --bg-tint: #F8FAFC;
+  --surface: #FFFFFF;
+  --surface-elevated: #FFFFFF;
+  --border-subtle: #E2E8F0;
+  --text-primary: #0F172A;
+  --text-muted: #475569;
+  --accent: #0EA5E9;
+  --accent-hover: #0284C7;
+  --accent-bright: #2EA3F2;
+  --accent-tint: rgba(46, 163, 242, 0.10);
+  --dark-surface: #0F172A;
+  --dot-color: rgba(15, 23, 42, 0.08);
+  --nav-glass: rgba(255, 255, 255, 0.84);
+  --glow-1: rgba(46, 163, 242, 0.15);
+  --glow-2: rgba(14, 165, 233, 0.06);
+  --frosted-plate: rgba(255, 255, 255, 0.88);
+}
+
+/* ---------- Design Tokens (Dark Mode) ---------- */
+.dark {
+  --bg-page: #0B1120;
+  --bg-tint: #111827;
+  --surface: #152238;
+  --surface-elevated: #1B2D4A;
+  --border-subtle: #1E293B;
+  --text-primary: #F1F5F9;
+  --text-muted: #94A3B8;
+  --accent: #2EA3F2;
+  --accent-hover: #38BDF8;
+  --accent-bright: #2EA3F2;
+  --accent-tint: rgba(46, 163, 242, 0.15);
+  --dark-surface: #060B15;
+  --dot-color: rgba(148, 163, 184, 0.12);
+  --nav-glass: rgba(11, 17, 32, 0.86);
+  --glow-1: rgba(46, 163, 242, 0.18);
+  --glow-2: rgba(14, 165, 233, 0.08);
+  --frosted-plate: rgba(11, 17, 32, 0.84);
+}
+
+/* ---------- Base ---------- */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ---------- Dot Grid ---------- */
+.bg-dot-grid {
+  background-image: radial-gradient(var(--dot-color) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+/* ---------- Hero Ambient Glow ---------- */
+.hero-glow {
+  background:
+    radial-gradient(ellipse 60% 55% at 72% 20%, var(--glow-1) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 45% at 22% 72%, var(--glow-2) 0%, transparent 62%);
+}
+
+/* ---------- Glassmorphic Nav ---------- */
+.nav-glass {
+  background-color: var(--nav-glass);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+
+/* ---------- Builder Card ---------- */
+.builder-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border-subtle);
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.24s ease,
+              box-shadow 0.24s ease;
+}
+
+.builder-card:hover {
+  border-color: var(--accent-bright);
+  box-shadow: 0 14px 36px -16px rgba(14, 165, 233, 0.22);
+  transform: translateY(-3px);
+}
+
+.dark .builder-card:hover {
+  box-shadow: 0 16px 40px -16px rgba(46, 163, 242, 0.24);
+}
+
+/* ---------- Focus Ring ---------- */
+:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 2px;
+}
+
+/* ---------- Cinematic Preloader ---------- */
+#preloader {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(46, 163, 242, 0.16) 0%, rgba(14, 165, 233, 0.04) 40%, transparent 72%),
+    #0B1120;
+  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              visibility 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#preloader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ---------- SVG Stroke Draw Animation ---------- */
+@keyframes strokeDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+.preloader-stroke-draw {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: strokeDraw 0.95s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* ---------- Architecture Flow Dash ---------- */
+@keyframes flowDash {
+  to { stroke-dashoffset: -24; }
+}
+
+.arch-line-active {
+  stroke-dasharray: 6 6;
+  animation: flowDash 0.9s linear infinite;
+}
+
+/* ---------- Floating Parallax Icons ---------- */
+@keyframes floatA {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-14px) rotate(3deg); }
+  50% { transform: translateY(-6px) rotate(-2deg); }
+  75% { transform: translateY(-18px) rotate(1deg); }
+}
+
+@keyframes floatB {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(-3deg); }
+  66% { transform: translateY(-20px) rotate(2deg); }
+}
+
+@keyframes floatC {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+.float-icon-a { animation: floatA 8s ease-in-out infinite; }
+.float-icon-b { animation: floatB 10s ease-in-out infinite; }
+.float-icon-c { animation: floatC 6s ease-in-out infinite; }
+.float-icon-d { animation: floatA 12s ease-in-out infinite; animation-delay: -3s; }
+.float-icon-e { animation: floatB 9s ease-in-out infinite; animation-delay: -5s; }
+
+.hero-float-wrap {
+  will-change: transform;
+  transition: transform 0.2s ease-out;
+}
+
+/* ---------- Scroll Reveal ---------- */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-item[data-delay="1"] { transition-delay: 0.08s; }
+.reveal-item[data-delay="2"] { transition-delay: 0.16s; }
+.reveal-item[data-delay="3"] { transition-delay: 0.24s; }
+.reveal-item[data-delay="4"] { transition-delay: 0.32s; }
+
+/* ---------- Pillar Card 3D Tilt ---------- */
+.pillar-card {
+  transform-style: preserve-3d;
+  perspective: 800px;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.24s ease,
+              box-shadow 0.24s ease;
+}
+
+.pillar-card:hover {
+  border-color: var(--accent-bright);
+  box-shadow: 0 20px 40px -20px rgba(14, 165, 233, 0.24);
+}
+
+.dark .pillar-card:hover {
+  box-shadow: 0 20px 44px -20px rgba(46, 163, 242, 0.26);
+}
+
+/* ---------- Toast ---------- */
+#toast {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* ---------- Hero Gradient & Underline ---------- */
+.gradient-text {
+  background: linear-gradient(135deg, #0EA5E9 0%, #2EA3F2 50%, #38BDF8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-accent-word {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-accent-word::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0EA5E9, #2EA3F2, #38BDF8);
+  opacity: 0.45;
+}
+
+/* ---------- AdtU Logo Clean Container (Light & Dark Mode) ---------- */
+.adtu-logo-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  padding: 0.25rem 0.625rem;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.dark .adtu-logo-container {
+  background: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Architecture Canvas ---------- */
+.arch-canvas {
+  position: relative;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border-subtle);
+  background-color: var(--surface);
+  overflow: hidden;
+}
+
+.arch-canvas-grid {
+  background-image: radial-gradient(var(--dot-color) 1.1px, transparent 1.1px);
+  background-size: 20px 20px;
+}
+
+.arch-flow-node {
+  position: relative;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.22s ease,
+              box-shadow 0.22s ease,
+              background-color 0.22s ease;
+}
+
+.arch-flow-node:hover {
+  border-color: var(--accent-bright);
+  transform: translateY(-2px);
+}
+
+.arch-flow-node.is-active {
+  border-color: var(--accent-bright);
+  background-color: var(--accent-tint);
+  box-shadow: 0 0 0 3px rgba(46, 163, 242, 0.16), 0 12px 28px -12px rgba(46, 163, 242, 0.3);
+}
+
+/* ---------- Event Banner Header (Uncropped) ---------- */
+.event-banner-frame {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+.event-banner-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ---------- Team Card Portrait & Frosted Nameplate ---------- */
+.team-portrait-stage {
+  position: relative;
+  height: 185px;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--bg-tint) 0%, var(--surface) 100%);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.team-blue-arc {
+  position: absolute;
+  bottom: -44px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 210px;
+  height: 210px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 50% 35%, rgba(46, 163, 242, 0.26) 0%, rgba(14, 165, 233, 0.14) 55%, transparent 74%);
+  border: 14px solid rgba(46, 163, 242, 0.22);
+  pointer-events: none;
+}
+
+.dark .team-blue-arc {
+  background: radial-gradient(circle at 50% 35%, rgba(46, 163, 242, 0.28) 0%, rgba(14, 165, 233, 0.12) 55%, transparent 74%);
+  border-color: rgba(46, 163, 242, 0.25);
+}
+
+.team-nameplate {
+  background-color: var(--frosted-plate);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* ---------- Checklist Completed State ---------- */
+.checklist-box:checked + div .checklist-label {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* ---------- Mobile Bottom Dock ---------- */
+.mobile-dock {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+
+/* ---------- Selection ---------- */
+::selection {
+  background: rgba(46, 163, 242, 0.25);
+  color: var(--text-primary);
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .arch-line-active,
+  .float-icon-a, .float-icon-b, .float-icon-c,
+  .float-icon-d, .float-icon-e,
+  .preloader-stroke-draw {
+    animation: none !important;
+  }
+
+  .reveal-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .pillar-card {
+    transition: border-color 0.24s ease, box-shadow 0.24s ease;
+  }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  .nav-glass, .mobile-dock, #preloader, #toast,
+  .float-icon-a, .float-icon-b, .float-icon-c,
+  .float-icon-d, .float-icon-e {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+}

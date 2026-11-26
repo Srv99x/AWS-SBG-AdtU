@@ -1,0 +1,2718 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AWS Student Builder Group · Assam down town University (AdtU)</title>
+  <meta
+    name="description"
+    content="Student-led AWS Cloud & AI community at the Faculty of Computer Technology (FoCT), Assam down town University, Guwahati — Learn. Build. Connect."
+  />
+
+  <!-- =========================================================================
+       ASSET DROP-IN #1: FAVICON & OPEN GRAPH META TAGS
+       Once you move your 12 exported AWS Brand Assets Builder PNGs into an
+       `assets/` folder beside this index.html, uncomment the lines below:
+       - assets/favicon.png    (400x400 LinkedIn Profile Icon PNG)
+       - assets/og-image.png   (1200x675 Web Cover Photo / X Post Landscape PNG)
+       ========================================================================= -->
+  <!-- <link rel="icon" type="image/png" href="assets/favicon.png" /> -->
+  <!-- <link rel="apple-touch-icon" href="assets/favicon.png" /> -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AWS Student Builder Group · Assam down town University" />
+  <meta property="og:description" content="Learn. Build. Connect. Student-led AWS Cloud & AI community at FoCT, Assam down town University, Guwahati." />
+  <!-- <meta property="og:image" content="assets/og-image.png" /> -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- <meta name="twitter:image" content="assets/og-image.png" /> -->
+
+  <!-- Google Fonts: Space Grotesk (Display), Plus Jakarta Sans (Body), JetBrains Mono (Tech Labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Early Theme Initialization (prevents Light/Dark flash on page load) -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('aws-sbg-adtu-theme');
+        if (saved === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {
+        // Fallback safely to Light Mode if storage is restricted
+      }
+    })();
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            awsBlue: {
+              DEFAULT: '#0284C7',
+              hover: '#0369A1',
+              bright: '#29A9F8',
+              soft: '#E0F2FE',
+            },
+            awsSlate: {
+              950: '#080E1A',
+              900: '#0D1526',
+              850: '#111C30',
+              800: '#1E293B',
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Custom Design Tokens, Architectural Dot Grid & Micro-Animations -->
+  <style>
+    :root {
+      --bg-page: #FFFFFF;
+      --bg-tint: #F8FAFC;
+      --surface: #FFFFFF;
+      --surface-elevated: #FFFFFF;
+      --border-subtle: #E2E8F0;
+      --text-primary: #0F172A;
+      --text-muted: #475569;
+      --accent: #0284C7;
+      --accent-hover: #0369A1;
+      --accent-bright: #29A9F8;
+      --accent-tint: rgba(41, 169, 248, 0.10);
+      --dark-surface: #0F172A;
+      --dot-color: rgba(15, 23, 42, 0.085);
+      --nav-glass: rgba(255, 255, 255, 0.86);
+    }
+
+    .dark {
+      --bg-page: #080E1A;
+      --bg-tint: #0D1526;
+      --surface: #111C30;
+      --surface-elevated: #152238;
+      --border-subtle: #1E293B;
+      --text-primary: #F8FAFC;
+      --text-muted: #94A3B8;
+      --accent: #29A9F8;
+      --accent-hover: #38BDF8;
+      --accent-bright: #29A9F8;
+      --accent-tint: rgba(41, 169, 248, 0.14);
+      --dark-surface: #040811;
+      --dot-color: rgba(148, 163, 184, 0.14);
+      --nav-glass: rgba(8, 14, 26, 0.86);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Subtle Architectural Dot Grid */
+    .bg-dot-grid {
+      background-image: radial-gradient(var(--dot-color) 1.25px, transparent 1.25px);
+      background-size: 24px 24px;
+    }
+
+    /* Soft AWS Builder Blue Radial Glow (Non-purple, crisp technical light) */
+    .hero-glow {
+      background: radial-gradient(
+        circle at 70% 25%,
+        rgba(41, 169, 248, 0.16) 0%,
+        rgba(2, 132, 199, 0.05) 36%,
+        transparent 68%
+      );
+    }
+
+    .dark .hero-glow {
+      background: radial-gradient(
+        circle at 70% 25%,
+        rgba(41, 169, 248, 0.18) 0%,
+        rgba(2, 132, 199, 0.07) 38%,
+        transparent 70%
+      );
+    }
+
+    /* Glassmorphic Surfaces */
+    .nav-glass {
+      background-color: var(--nav-glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    /* Crisp Swiss Grid Card Hover */
+    .builder-card {
+      background-color: var(--surface);
+      border: 1px solid var(--border-subtle);
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .builder-card:hover {
+      border-color: var(--accent-bright);
+      box-shadow: 0 12px 30px -14px rgba(2, 132, 199, 0.22);
+      transform: translateY(-2px);
+    }
+
+    .dark .builder-card:hover {
+      box-shadow: 0 14px 34px -14px rgba(41, 169, 248, 0.24);
+    }
+
+    /* Accessible Focus Ring */
+    :focus-visible {
+      outline: 2px solid var(--accent-bright);
+      outline-offset: 2px;
+    }
+
+    /* Preloader Transition */
+    #preloader {
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    #preloader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Architecture Node Flow Animated Dash */
+    @keyframes flowDash {
+      to {
+        stroke-dashoffset: -24;
+      }
+    }
+
+    .arch-line-active {
+      stroke-dasharray: 6 6;
+      animation: flowDash 0.9s linear infinite;
+    }
+
+    /* Subtle Reveal Animation */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reveal-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Toast Notification */
+    #toast {
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .arch-line-active {
+        animation: none;
+      }
+      .reveal-item {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen antialiased selection:bg-[#29A9F8]/25 selection:text-[#0F172A] dark:selection:text-white">
+  <!-- Skip to Main Content for Keyboard Navigation -->
+  <a
+    href="#main-content"
+    class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[120] focus:rounded-lg focus:bg-[#0284C7] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+  >
+    Skip to main content
+  </a>
+
+  <!-- =========================================================================
+       1. FAST, SKIPPABLE PRELOADER (1.2s MAX)
+       ========================================================================= -->
+  <div
+    id="preloader"
+    role="status"
+    aria-label="Loading AWS Student Builder Group at Assam down town University"
+    class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[var(--bg-page)] px-6 text-center cursor-pointer"
+  >
+    <div class="flex flex-col items-center max-w-md w-full">
+      <!-- Official Geometric AWS Pixel-Chip Icon (3x3 outer pins framing a square) -->
+      <div class="mb-6 p-3.5 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] shadow-sm">
+        <svg class="w-12 h-12" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Top 3 pins -->
+          <rect x="16" y="4" width="6" height="12" fill="#29A9F8" />
+          <rect x="29" y="4" width="6" height="12" fill="#29A9F8" />
+          <rect x="42" y="4" width="6" height="12" fill="#29A9F8" />
+          <!-- Bottom 3 pins -->
+          <rect x="16" y="48" width="6" height="12" fill="#29A9F8" />
+          <rect x="29" y="48" width="6" height="12" fill="#29A9F8" />
+          <rect x="42" y="48" width="6" height="12" fill="#29A9F8" />
+          <!-- Left 3 pins -->
+          <rect x="4" y="16" width="12" height="6" fill="#29A9F8" />
+          <rect x="4" y="29" width="12" height="6" fill="#29A9F8" />
+          <rect x="4" y="42" width="12" height="6" fill="#29A9F8" />
+          <!-- Right 3 pins -->
+          <rect x="48" y="16" width="12" height="6" fill="#29A9F8" />
+          <rect x="48" y="29" width="12" height="6" fill="#29A9F8" />
+          <rect x="48" y="42" width="12" height="6" fill="#29A9F8" />
+          <!-- Inner hollow chip frame -->
+          <path d="M16 16H48V48H16V16ZM23 23V41H41V23H23Z" fill="#29A9F8" />
+        </svg>
+      </div>
+
+      <!-- Scramble Reveal Title -->
+      <p
+        id="preloader-title"
+        class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[var(--text-primary)] uppercase min-h-[2.5rem] flex items-center justify-center"
+      >
+        AWS STUDENT BUILDER GROUP · ASSAM DOWN TOWN UNIVERSITY
+      </p>
+
+      <!-- Slim Blue Progress Bar -->
+      <div class="w-56 sm:w-64 h-1.5 rounded-full bg-[var(--border-subtle)] overflow-hidden mt-3">
+        <div
+          id="preloader-bar"
+          class="h-full w-0 bg-gradient-to-r from-[#0284C7] to-[#29A9F8] rounded-full transition-all duration-100 ease-linear"
+        ></div>
+      </div>
+
+      <!-- Developer Status Line -->
+      <div class="mt-3 flex items-center gap-2 font-mono text-[11px] text-[var(--text-muted)]">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#29A9F8] animate-pulse"></span>
+        <span id="preloader-status">Initializing ap-south-1...</span>
+      </div>
+
+      <button
+        id="skip-preloader"
+        type="button"
+        class="mt-6 font-mono text-[11px] text-[var(--text-muted)] hover:text-[#0284C7] dark:hover:text-[#29A9F8] underline underline-offset-4 transition-colors"
+      >
+        Click anywhere to skip
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       2. STICKY GLASSMORPHIC TOP NAVBAR
+       ========================================================================= -->
+  <header class="sticky top-0 z-40 border-b border-[var(--border-subtle)] nav-glass">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+      <!-- Left: Brandmark -->
+      <a href="#home" class="flex items-center gap-2.5 group min-w-0">
+        <!-- ===================================================================
+             ASSET DROP-IN #2: NAVBAR LOGO / ICON
+             Option A: Keep the crisp inline SVG pixel-chip below (works in both
+             Light & Dark Mode automatically).
+             Option B: Swap in your exported 400x400 icon (`assets/favicon.png`)
+             or 2000x660 horizontal logo (`assets/logo.png`) like this:
+             <img src="assets/favicon.png" alt="AWS SBG AdtU Icon" class="w-9 h-9 rounded-lg object-contain" />
+             =================================================================== -->
+        <span
+          class="flex-shrink-0 w-9 h-9 rounded-lg bg-[#0F172A] dark:bg-[#111C30] border border-[#1E293B] flex items-center justify-center transition-transform group-hover:scale-105"
+        >
+          <svg class="w-6 h-6" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="16" y="4" width="6" height="12" fill="#29A9F8" />
+            <rect x="29" y="4" width="6" height="12" fill="#29A9F8" />
+            <rect x="42" y="4" width="6" height="12" fill="#29A9F8" />
+            <rect x="16" y="48" width="6" height="12" fill="#29A9F8" />
+            <rect x="29" y="48" width="6" height="12" fill="#29A9F8" />
+            <rect x="42" y="48" width="6" height="12" fill="#29A9F8" />
+            <rect x="4" y="16" width="12" height="6" fill="#29A9F8" />
+            <rect x="4" y="29" width="12" height="6" fill="#29A9F8" />
+            <rect x="4" y="42" width="12" height="6" fill="#29A9F8" />
+            <rect x="48" y="16" width="12" height="6" fill="#29A9F8" />
+            <rect x="48" y="29" width="12" height="6" fill="#29A9F8" />
+            <rect x="48" y="42" width="12" height="6" fill="#29A9F8" />
+            <path d="M16 16H48V48H16V16ZM23 23V41H41V23H23Z" fill="#29A9F8" />
+          </svg>
+        </span>
+        <div class="min-w-0 leading-tight">
+          <div class="font-display font-bold text-sm sm:text-[15px] tracking-tight text-[var(--text-primary)] truncate">
+            AWS Student Builder Group
+          </div>
+          <div class="font-mono text-[10px] sm:text-[11px] text-[#0284C7] dark:text-[#29A9F8] truncate">
+            Assam down town University
+          </div>
+        </div>
+      </a>
+
+      <!-- Center: Desktop Navigation Links -->
+      <nav aria-label="Primary Navigation" class="hidden lg:flex items-center gap-1">
+        <a href="#about" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">About</a>
+        <a href="#pillars" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">Pillars</a>
+        <a href="#events" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">Events</a>
+        <a href="#team" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">Team</a>
+        <a href="#campus" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">Campus</a>
+        <a href="#resources" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tint)] transition-colors">Resources</a>
+      </nav>
+
+      <!-- Right: Theme Toggle, Quick Start Modal, Join Meetup CTA -->
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <!-- Light/Dark Mode Toggle -->
+        <button
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle dark mode"
+          title="Switch Light / Dark Mode"
+          class="w-10 h-10 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] text-[var(--text-primary)] hover:border-[#29A9F8] flex items-center justify-center transition-colors"
+        >
+          <!-- Moon Icon (Shown in Light Mode) -->
+          <svg id="icon-moon" class="w-4 h-4 block dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+          <!-- Sun Icon (Shown in Dark Mode) -->
+          <svg id="icon-sun" class="w-4 h-4 hidden dark:block text-[#29A9F8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+        </button>
+
+        <!-- Quick Start Modal Trigger -->
+        <button
+          id="open-quickstart-btn"
+          type="button"
+          class="hidden sm:inline-flex items-center gap-1.5 h-10 px-3.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] text-xs font-semibold text-[var(--text-primary)] hover:border-[#29A9F8] transition-colors"
+        >
+          <svg class="w-3.5 h-3.5 text-[#0284C7] dark:text-[#29A9F8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+          </svg>
+          <span>Quick Start</span>
+        </button>
+
+        <!-- Join Meetup Primary Pill CTA -->
+        <a
+          href="https://www.meetup.com/aws-sbg-at-assam-down-town-university"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 h-10 px-4 rounded-full bg-[#0284C7] hover:bg-[#0369A1] dark:bg-[#29A9F8] dark:hover:bg-[#38BDF8] text-white dark:text-[#080E1A] text-xs sm:text-sm font-semibold shadow-sm transition-colors"
+        >
+          <span>Join Meetup</span>
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MOBILE FLOATING BOTTOM DOCK (VISIBLE BELOW 768px)
+       ========================================================================= -->
+  <nav
+    aria-label="Mobile Quick Navigation"
+    class="md:hidden fixed bottom-3 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-1.5rem)] max-w-md rounded-2xl border border-[var(--border-subtle)] nav-glass shadow-xl px-1.5 py-1.5"
+  >
+    <div class="grid grid-cols-5 gap-1 text-center">
+      <a href="#home" data-dock-target="home" class="dock-item flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-medium text-[#0284C7] dark:text-[#29A9F8] bg-[#29A9F8]/10 transition-colors">
+        <svg class="w-4 h-4 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="#events" data-dock-target="events" class="dock-item flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
+        <svg class="w-4 h-4 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span>Events</span>
+      </a>
+      <a href="#pillars" data-dock-target="pillars" class="dock-item flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
+        <svg class="w-4 h-4 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <span>Pillars</span>
+      </a>
+      <a href="#team" data-dock-target="team" class="dock-item flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
+        <svg class="w-4 h-4 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Team</span>
+      </a>
+      <a href="#join" data-dock-target="join" class="dock-item flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
+        <svg class="w-4 h-4 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span>Join</span>
+      </a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <!-- =======================================================================
+         3. HERO SECTION (ASYMMETRIC SPLIT DESKTOP / CENTERED STACK MOBILE)
+         ======================================================================= -->
+    <section id="home" class="relative overflow-hidden bg-dot-grid border-b border-[var(--border-subtle)]">
+      <div class="hero-glow absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <!-- Left Column: Editorial Hero Copy -->
+          <div class="lg:col-span-6 text-center lg:text-left">
+            <!-- Live Status Pill -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#29A9F8]/35 bg-[var(--surface)] shadow-xs mb-6">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#29A9F8] opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#0284C7] dark:bg-[#29A9F8]"></span>
+              </span>
+              <span class="font-mono text-[11px] sm:text-xs font-semibold tracking-wider text-[#0284C7] dark:text-[#29A9F8] uppercase">
+                COHORT 10 · 2026–27 · GUWAHATI, ASSAM
+              </span>
+            </div>
+
+            <!-- Main H1 -->
+            <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-[3.5rem] leading-[1.06] tracking-tight text-[var(--text-primary)]">
+              Learn. <span class="text-[#0284C7] dark:text-[#29A9F8]">Build.</span> Connect.
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="mt-4 font-display font-semibold text-lg sm:text-xl text-[var(--text-primary)] leading-snug">
+              Where AdtU student builders ship real cloud &amp; AI systems.
+            </p>
+
+            <!-- Description -->
+            <p class="mt-4 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Student-led AWS Cloud &amp; AI community at the Faculty of Computer Technology (FoCT), Assam down town University — bridging classroom theory with hands-on AWS labs, certifications, and deployed projects.
+            </p>
+
+            <!-- Dual CTAs -->
+            <div class="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3">
+              <a
+                href="https://www.meetup.com/aws-sbg-at-assam-down-town-university"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#0284C7] hover:bg-[#0369A1] dark:bg-[#29A9F8] dark:hover:bg-[#38BDF8] text-white dark:text-[#080E1A] font-semibold text-sm shadow-sm transition-all"
+              >
+                <span>Join on Meetup</span>
+                <span aria-hidden="true">→</span>
+              </a>
+              <a
+                href="#events"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] hover:border-[#29A9F8] text-[var(--text-primary)] font-semibold text-sm transition-all"
+              >
+                <span>Explore Roadmap</span>
+              </a>
+            </div>
+
+            <!-- Subtle Metadata Footer Strip -->
+            <div class="mt-8 pt-6 border-t border-[var(--border-subtle)] flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-xs font-mono text-[var(--text-muted)]">
+              <span class="inline-flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-sm bg-[#29A9F8]"></span>
+                FoCT · B Block, AdtU
+              </span>
+              <span class="inline-flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-sm bg-[#29A9F8]"></span>
+                ₹0 Free Student Access
+              </span>
+              <span class="inline-flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-sm bg-[#29A9F8]"></span>
+                AWS Builder Center Track
+              </span>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Builder Architecture Visualizer -->
+          <div class="lg:col-span-6">
+            <div class="rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] shadow-lg overflow-hidden">
+              <!-- Terminal / Architecture Window Header -->
+              <div class="px-4 sm:px-5 py-3.5 border-b border-[var(--border-subtle)] bg-[var(--bg-tint)] flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="w-2.5 h-2.5 rounded-full bg-[#29A9F8]"></span>
+                  <span class="font-mono text-xs font-semibold text-[var(--text-primary)] truncate">
+                    builder-pipeline.adtu.aws
+                  </span>
+                </div>
+                <span class="font-mono text-[10px] px-2 py-0.5 rounded-md bg-[#0F172A] text-[#29A9F8] flex-shrink-0">
+                  INTERACTIVE SPEC
+                </span>
+              </div>
+
+              <!-- Clickable 4-Stage Node Flow -->
+              <div class="p-4 sm:p-6">
+                <p class="font-mono text-[11px] text-[var(--text-muted)] uppercase tracking-wider mb-3">
+                  Select a cloud stage to inspect the AdtU builder stack
+                </p>
+
+                <!-- SVG Flow Connector (Desktop / Tablet visual pipe) -->
+                <div class="relative">
+                  <svg
+                    class="hidden sm:block absolute top-7 left-0 w-full h-4 pointer-events-none"
+                    viewBox="0 0 480 16"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                  >
+                    <!-- Base muted line -->
+                    <line x1="48" y1="8" x2="432" y2="8" stroke="currentColor" class="text-[var(--border-subtle)]" stroke-width="2" />
+                    <!-- Dynamic highlighted progress path -->
+                    <line
+                      id="arch-svg-progress"
+                      x1="48"
+                      y1="8"
+                      x2="48"
+                      y2="8"
+                      stroke="#29A9F8"
+                      stroke-width="2.5"
+                      class="arch-line-active transition-all duration-300"
+                    />
+                  </svg>
+
+                  <!-- 4 Clickable Nodes -->
+                  <div class="relative z-10 grid grid-cols-2 sm:grid-cols-4 gap-2.5" role="tablist" aria-label="Builder Architecture Stages">
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected="true"
+                      data-arch-stage="0"
+                      class="arch-node group flex flex-col items-start sm:items-center text-left sm:text-center p-3 rounded-xl border border-[#0284C7] dark:border-[#29A9F8] bg-[#29A9F8]/10 transition-all cursor-pointer"
+                    >
+                      <span class="font-mono text-[10px] font-bold text-[#0284C7] dark:text-[#29A9F8]">01</span>
+                      <span class="font-display font-bold text-xs sm:text-sm text-[var(--text-primary)] mt-0.5">Identity</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected="false"
+                      data-arch-stage="1"
+                      class="arch-node group flex flex-col items-start sm:items-center text-left sm:text-center p-3 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#29A9F8] transition-all cursor-pointer"
+                    >
+                      <span class="font-mono text-[10px] font-bold text-[var(--text-muted)]">02</span>
+                      <span class="font-display font-bold text-xs sm:text-sm text-[var(--text-primary)] mt-0.5">Compute</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected="false"
+                      data-arch-stage="2"
+                      class="arch-node group flex flex-col items-start sm:items-center text-left sm:text-center p-3 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#29A9F8] transition-all cursor-pointer"
+                    >
+                      <span class="font-mono text-[10px] font-bold text-[var(--text-muted)]">03</span>
+                      <span class="font-display font-bold text-xs sm:text-sm text-[var(--text-primary)] mt-0.5">AI &amp; Data</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected="false"
+                      data-arch-stage="3"
+                      class="arch-node group flex flex-col items-start sm:items-center text-left sm:text-center p-3 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#29A9F8] transition-all cursor-pointer"
+                    >
+                      <span class="font-mono text-[10px] font-bold text-[var(--text-muted)]">04</span>
+                      <span class="font-display font-bold text-xs sm:text-sm text-[var(--text-primary)] mt-0.5">Ship</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Live Spec Output Panel -->
+                <div
+                  id="arch-spec-panel"
+                  role="tabpanel"
+                  aria-live="polite"
+                  class="mt-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] p-4 sm:p-5"
+                >
+                  <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                    <span id="arch-stage-code" class="font-mono text-[11px] font-semibold text-[#0284C7] dark:text-[#29A9F8]">
+                      STAGE 01 // ACCESS &amp; CLOUD FOUNDATIONS
+                    </span>
+                    <span id="arch-stage-track" class="font-mono text-[10px] px-2 py-0.5 rounded bg-[var(--surface)] border border-[var(--border-subtle)] text-[var(--text-muted)]">
+                      Beginner Friendly
+                    </span>
+                  </div>
+
+                  <h2 id="arch-stage-title" class="font-display font-bold text-lg text-[var(--text-primary)]">
+                    AWS Builder ID &amp; Cloud Security Hygiene
+                  </h2>
+
+                  <p id="arch-stage-desc" class="mt-2 text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+                    Start clean before spinning up a single server. Configure your AWS Builder ID, lock down IAM least-privilege roles, set billing alarms, and master AWS CLI basics.
+                  </p>
+
+                  <!-- Service Pills -->
+                  <div id="arch-stage-tags" class="mt-4 flex flex-wrap gap-2">
+                    <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--surface)] border border-[var(--border-subtle)] text-[var(--text-primary)]">AWS Builder ID</span>
+                    <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--surface)] border border-[var(--border-subtle)] text-[var(--text-primary)]">IAM Roles &amp; MFA</span>
+                    <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--surface)] border border-[var(--border-subtle)] text-[var(--text-primary)]">AWS CLI</span>
+                    <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--surface)] border border-[var(--border-subtle)] text-[var(--text-primary)]">Zero-Cost Guardrails</span>
+                  </div>
+
+                  <!-- Next Stage Stepper -->
+                  <div class="mt-5 pt-3.5 border-t border-[var(--border-subtle)] flex items-center justify-between gap-3">
+                    <span id="arch-stage-outcome" class="font-mono text-[11px] text-[var(--text-muted)]">
+                      Outcome: Ready for Workshop 01
+                    </span>
+                    <button
+                      id="arch-next-btn"
+                      type="button"
+                      class="font-mono text-xs font-semibold text-[#0284C7] dark:text-[#29A9F8] hover:underline whitespace-nowrap"
+                    >
+                      Next Stage →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             ASSET DROP-IN #3: OPTIONAL OFFICIAL AWS HERO BANNER STRIP
+             If you'd like to showcase your exported 1584x396 LinkedIn Cover or
+             1500x500 X Cover (`assets/hero-banner.png`) cleanly below the hero,
+             uncomment the block below:
+             =================================================================== -->
+        <!--
+        <div class="mt-10 rounded-2xl overflow-hidden border border-[var(--border-subtle)] shadow-sm">
+          <img
+            src="assets/hero-banner.png"
+            alt="AWS Student Builder Group at Assam down town University — Learn. Build. Connect."
+            class="w-full h-auto block"
+          />
+        </div>
+        -->
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         ABOUT STRIP (#about)
+         ======================================================================= -->
+    <section id="about" class="py-14 sm:py-16 bg-[var(--bg-tint)] border-b border-[var(--border-subtle)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center reveal-item">
+          <div class="lg:col-span-7">
+            <span class="font-mono text-xs font-semibold tracking-wider uppercase text-[#0284C7] dark:text-[#29A9F8]">
+              // ABOUT THE CHAPTER
+            </span>
+            <h2 class="mt-2 font-display font-bold text-2xl sm:text-3xl tracking-tight text-[var(--text-primary)]">
+              Practical Cloud &amp; AI Engineering, Led by Students for Students.
+            </h2>
+            <p class="mt-3 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+              AWS Student Builder Group at Assam down town University (Cohort 10) is an independent, student-led technical community hosted under the Faculty of Computer Technology (FoCT). Instead of slide-only seminars, we gather with laptops open to build cloud APIs, containerize Python backends, explore generative AI architectures, and prepare together for AWS certifications.
+            </p>
+          </div>
+
+          <div class="lg:col-span-5 grid grid-cols-3 gap-3">
+            <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] p-4 text-center">
+              <div class="font-display font-bold text-xl sm:text-2xl text-[#0284C7] dark:text-[#29A9F8]">600+</div>
+              <div class="mt-1 font-mono text-[10px] sm:text-[11px] text-[var(--text-muted)] leading-snug">
+                Global AWS SBG Network
+              </div>
+            </div>
+            <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] p-4 text-center">
+              <div class="font-display font-bold text-xl sm:text-2xl text-[#0284C7] dark:text-[#29A9F8]">₹0</div>
+              <div class="mt-1 font-mono text-[10px] sm:text-[11px] text-[var(--text-muted)] leading-snug">
+                Free Membership for AdtU
+              </div>
+            </div>
+            <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] p-4 text-center">
+              <div class="font-display font-bold text-xl sm:text-2xl text-[#0284C7] dark:text-[#29A9F8]">C10</div>
+              <div class="mt-1 font-mono text-[10px] sm:text-[11px] text-[var(--text-muted)] leading-snug">
+                Founding AdtU Cohort
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         4. FOUR CORE PILLARS ("Building is Better Together")
+         ======================================================================= -->
+    <section id="pillars" class="py-16 sm:py-24 bg-[var(--bg-page)] border-b border-[var(--border-subtle)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl reveal-item">
+          <span class="font-mono text-xs font-semibold tracking-wider uppercase text-[#0284C7] dark:text-[#29A9F8]">
+            // FOUR CORE PILLARS
+          </span>
+          <h2 class="mt-2 font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text-primary)]">
+            Building is Better Together.
+          </h2>
+          <p class="mt-3 text-sm sm:text-base text-[var(--text-muted)]">
+            Every workshop, study jam, and mini-sprint at AWS SBG AdtU is structured around four builder milestones.
+          </p>
+        </div>
+
+        <!-- 2x2 Swiss Grid -->
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
+          <!-- Pillar 01 -->
+          <article class="builder-card rounded-2xl p-6 sm:p-7 reveal-item">
+            <div class="flex items-center justify-between gap-3 mb-5">
+              <span class="font-mono text-xs font-bold tracking-wider text-[#0284C7] dark:text-[#29A9F8]">
+                01 / LEARN
+              </span>
+              <div class="w-10 h-10 rounded-xl bg-[#29A9F8]/12 border border-[#29A9F8]/25 flex items-center justify-center text-[#0284C7] dark:text-[#29A9F8]">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                </svg>
+              </div>
+            </div>
+            <h3 class="font-display font-bold text-xl text-[var(--text-primary)]">
+              AWS &amp; Cloud Foundations
+            </h3>
+            <p class="mt-2.5 text-sm text-[var(--text-muted)] leading-relaxed">
+              Hands-on architecture workshops, core cloud primitives, and CLF-C02 certification study sprints designed to take you from zero cloud experience to confident architect.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--bg-tint)] border border-[var(--border-subtle)] text-[var(--text-muted)]">EC2 &amp; S3</span>
+              <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--bg-tint)] border border-[var(--border-subtle)] text-[var(--text-muted)]">IAM Security</span>
+              <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--bg-tint)] border border-[var(--border-subtle)] text-[var(--text-muted)]">CLF-C02 Prep</span>
+            </div>
+          </article>
+
+          <!-- Pillar 02 -->
+          <article class="builder-card rounded-2xl p-6 sm:p-7 reveal-item">
+            <div class="flex items-center justify-between gap-3 mb-5">
+              <span class="font-mono text-xs font-bold tracking-wider text-[#0284C7] dark:text-[#29A9F8]">
+                02 / BUILD
+              </span>
+              <div class="w-10 h-10 rounded-xl bg-[#29A9F8]/12 border border-[#29A9F8]/25 flex items-center justify-center text-[#0284C7] dark:text-[#29A9F8]">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                </svg>
+              </div>
+            </div>
+            <h3 class="font-display font-bold text-xl text-[var(--text-primary)]">
+              AI &amp; Real Software
+            </h3>
+            <p class="mt-2.5 text-sm text-[var(--text-muted)] leading-relaxed">
+              Turn classroom CSE and AI/DS concepts into live cloud APIs, RAG assistants, and full-stack prototypes solving real campus and Northeast India challenges.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--bg-tint)] border border-[var(--border-subtle)] text-[var(--text-muted)]">Python · FastAPI</span>
+              <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--bg-tint)] border border-[var(--border-subtle)] text-[var(--text-muted)]">GenAI &amp; RAG</span>
+              <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--bg-tint)] border border-[var(--border-subtle)] text-[var(--text-muted)]">Bedrock</span>
+            </div>
+          </article>
+
+          <!-- Pillar 03 -->
+          <article class="builder-card rounded-2xl p-6 sm:p-7 reveal-item">
+            <div class="flex items-center justify-between gap-3 mb-5">
+              <span class="font-mono text-xs font-bold tracking-wider text-[#0284C7] dark:text-[#29A9F8]">
+                03 / SHIP
+              </span>
+              <div class="w-10 h-10 rounded-xl bg-[#29A9F8]/12 border border-[#29A9F8]/25 flex items-center justify-center text-[#0284C7] dark:text-[#29A9F8]">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 2L11 13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+              </div>
+            </div>
+            <h3 class="font-display font-bold text-xl text-[var(--text-primary)]">
+              Cloud Deployments
+            </h3>
+            <p class="mt-2.5 text-sm text-[var(--text-muted)] leading-relaxed">
+              Move past <code class="font-mono text-xs text-[#0284C7] dark:text-[#29A9F8]">localhost</code>. Practice containerization with Docker, serverless backends, automated CI/CD pipelines, and live public deployments.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--bg-tint)] border border-[var(--border-subtle)] text-[var(--text-muted)]">Docker</span>
+              <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--bg-tint)] border border-[var(--border-subtle)] text-[var(--text-muted)]">AWS Lambda</span>
+              <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--bg-tint)] border border-[var(--border-subtle)] text-[var(--text-muted)]">CI/CD</span>
+            </div>
+          </article>
+
+          <!-- Pillar 04 -->
+          <article class="builder-card rounded-2xl p-6 sm:p-7 reveal-item">
+            <div class="flex items-center justify-between gap-3 mb-5">
+              <span class="font-mono text-xs font-bold tracking-wider text-[#0284C7] dark:text-[#29A9F8]">
+                04 / CONNECT
+              </span>
+              <div class="w-10 h-10 rounded-xl bg-[#29A9F8]/12 border border-[#29A9F8]/25 flex items-center justify-center text-[#0284C7] dark:text-[#29A9F8]">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="18" cy="5" r="3" />
+                  <circle cx="6" cy="12" r="3" />
+                  <circle cx="18" cy="19" r="3" />
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                </svg>
+              </div>
+            </div>
+            <h3 class="font-display font-bold text-xl text-[var(--text-primary)]">
+              Builder Network
+            </h3>
+            <p class="mt-2.5 text-sm text-[var(--text-muted)] leading-relaxed">
+              Peer code reviews, campus hackathons, cross-semester study groups, and direct connection to the global network of 600+ AWS Student Builder Groups worldwide.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--bg-tint)] border border-[var(--border-subtle)] text-[var(--text-muted)]">Code Reviews</span>
+              <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--bg-tint)] border border-[var(--border-subtle)] text-[var(--text-muted)]">Hackathons</span>
+              <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--bg-tint)] border border-[var(--border-subtle)] text-[var(--text-muted)]">Global Community</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         5. INTERACTIVE EVENTS & LAUNCH ROADMAP (#events)
+         ======================================================================= -->
+    <section id="events" class="py-16 sm:py-24 bg-[var(--bg-tint)] border-b border-[var(--border-subtle)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 reveal-item">
+          <div class="max-w-2xl">
+            <span class="font-mono text-xs font-semibold tracking-wider uppercase text-[#0284C7] dark:text-[#29A9F8]">
+              // COHORT 10 LAUNCH ROADMAP
+            </span>
+            <h2 class="mt-2 font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text-primary)]">
+              Events &amp; Hands-On Labs
+            </h2>
+            <p class="mt-3 text-sm sm:text-base text-[var(--text-muted)]">
+              Transparent schedule for our founding season at AdtU. All sessions are announced and tracked via our official Meetup page.
+            </p>
+          </div>
+
+          <!-- Filter Pills -->
+          <div class="flex flex-wrap gap-2" role="group" aria-label="Filter events by category">
+            <button
+              type="button"
+              data-filter="all"
+              aria-pressed="true"
+              class="event-filter-btn px-4 py-2 rounded-full font-mono text-xs font-semibold bg-[#0284C7] dark:bg-[#29A9F8] text-white dark:text-[#080E1A] transition-colors"
+            >
+              All
+            </button>
+            <button
+              type="button"
+              data-filter="upcoming"
+              aria-pressed="false"
+              class="event-filter-btn px-4 py-2 rounded-full font-mono text-xs font-semibold border border-[var(--border-subtle)] bg-[var(--surface)] text-[var(--text-muted)] hover:border-[#29A9F8] hover:text-[var(--text-primary)] transition-colors"
+            >
+              Upcoming
+            </button>
+            <button
+              type="button"
+              data-filter="workshops"
+              aria-pressed="false"
+              class="event-filter-btn px-4 py-2 rounded-full font-mono text-xs font-semibold border border-[var(--border-subtle)] bg-[var(--surface)] text-[var(--text-muted)] hover:border-[#29A9F8] hover:text-[var(--text-primary)] transition-colors"
+            >
+              Workshops
+            </button>
+            <button
+              type="button"
+              data-filter="study-jams"
+              aria-pressed="false"
+              class="event-filter-btn px-4 py-2 rounded-full font-mono text-xs font-semibold border border-[var(--border-subtle)] bg-[var(--surface)] text-[var(--text-muted)] hover:border-[#29A9F8] hover:text-[var(--text-primary)] transition-colors"
+            >
+              Study Jams
+            </button>
+          </div>
+        </div>
+
+        <!-- Event Cards Grid (Hydrated / Interactive via JS) -->
+        <div id="events-grid" class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
+          <!-- Cards rendered cleanly in HTML for SEO & instant load, wired to modal via data-event-id -->
+
+          <!-- Event 1 -->
+          <article
+            data-categories="all upcoming workshops"
+            data-event-id="kickoff-ai-api"
+            tabindex="0"
+            role="button"
+            aria-label="Open details for AWS Cloud Kickoff & Deploying Your First AI API"
+            class="event-card builder-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer reveal-item"
+          >
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#29A9F8]/15 text-[#0284C7] dark:text-[#29A9F8] border border-[#29A9F8]/30">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#29A9F8]"></span>
+                  Launching Soon (Post-Exams)
+                </span>
+                <span class="font-mono text-[11px] text-[var(--text-muted)] uppercase">Event 01 · Workshop</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-[var(--text-primary)]">
+                AWS Cloud Kickoff &amp; Deploying Your First AI API
+              </h3>
+              <p class="mt-2.5 text-sm text-[var(--text-muted)] leading-relaxed">
+                Official Cohort 10 kickoff covering AWS Builder Center onboarding, cloud fundamentals, and deploying a live Python/FastAPI AI endpoint.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-[var(--border-subtle)] flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-1.5 font-mono text-xs text-[var(--text-muted)]">
+                <svg class="w-3.5 h-3.5 text-[#0284C7] dark:text-[#29A9F8] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>FoCT B Block · AdtU &amp; Hybrid</span>
+              </div>
+              <span class="font-mono text-xs font-semibold text-[#0284C7] dark:text-[#29A9F8]">
+                Agenda &amp; RSVP →
+              </span>
+            </div>
+          </article>
+
+          <!-- Event 2 -->
+          <article
+            data-categories="all workshops"
+            data-event-id="docker-fastapi-lab"
+            tabindex="0"
+            role="button"
+            aria-label="Open details for Serverless & Containers Lab: Docker + FastAPI on AWS"
+            class="event-card builder-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer reveal-item"
+          >
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[var(--bg-tint)] text-[var(--text-muted)] border border-[var(--border-subtle)]">
+                  Planned · Q1 2027
+                </span>
+                <span class="font-mono text-[11px] text-[var(--text-muted)] uppercase">Event 02 · Workshop</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-[var(--text-primary)]">
+                Serverless &amp; Containers Lab: Docker + FastAPI on AWS
+              </h3>
+              <p class="mt-2.5 text-sm text-[var(--text-muted)] leading-relaxed">
+                Hands-on guided lab containerizing a backend service with Docker and exploring serverless deployment patterns on AWS.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-[var(--border-subtle)] flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-1.5 font-mono text-xs text-[var(--text-muted)]">
+                <svg class="w-3.5 h-3.5 text-[#0284C7] dark:text-[#29A9F8] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>CS Lab · FoCT B Block</span>
+              </div>
+              <span class="font-mono text-xs font-semibold text-[#0284C7] dark:text-[#29A9F8]">
+                Agenda &amp; RSVP →
+              </span>
+            </div>
+          </article>
+
+          <!-- Event 3 -->
+          <article
+            data-categories="all study-jams"
+            data-event-id="clf-c02-study-jam"
+            tabindex="0"
+            role="button"
+            aria-label="Open details for AWS Cloud Practitioner (CLF-C02) 3-Week Study Jam"
+            class="event-card builder-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer reveal-item"
+          >
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[var(--bg-tint)] text-[var(--text-muted)] border border-[var(--border-subtle)]">
+                  Planned · Q1 2027
+                </span>
+                <span class="font-mono text-[11px] text-[var(--text-muted)] uppercase">Event 03 · Study Jam</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-[var(--text-primary)]">
+                AWS Cloud Practitioner (CLF-C02) 3-Week Study Jam
+              </h3>
+              <p class="mt-2.5 text-sm text-[var(--text-muted)] leading-relaxed">
+                Structured peer study sprint covering cloud concepts, security, IAM, pricing models, and timed mock exam drills.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-[var(--border-subtle)] flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-1.5 font-mono text-xs text-[var(--text-muted)]">
+                <svg class="w-3.5 h-3.5 text-[#0284C7] dark:text-[#29A9F8] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Hybrid · Meetup + Campus</span>
+              </div>
+              <span class="font-mono text-xs font-semibold text-[#0284C7] dark:text-[#29A9F8]">
+                Agenda &amp; RSVP →
+              </span>
+            </div>
+          </article>
+
+          <!-- Event 4 -->
+          <article
+            data-categories="all workshops"
+            data-event-id="northeast-genai-sprint"
+            tabindex="0"
+            role="button"
+            aria-label="Open details for Northeast Student GenAI & RAG Builders Sprint"
+            class="event-card builder-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer reveal-item"
+          >
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[var(--bg-tint)] text-[var(--text-muted)] border border-[var(--border-subtle)]">
+                  Planned · Q2 2027
+                </span>
+                <span class="font-mono text-[11px] text-[var(--text-muted)] uppercase">Event 04 · Build Sprint</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-[var(--text-primary)]">
+                Northeast Student GenAI &amp; RAG Builders Sprint
+              </h3>
+              <p class="mt-2.5 text-sm text-[var(--text-muted)] leading-relaxed">
+                Team-based mini-buildathon shipping practical campus and regional AI tools powered by modern cloud APIs and retrieval pipelines.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-[var(--border-subtle)] flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-1.5 font-mono text-xs text-[var(--text-muted)]">
+                <svg class="w-3.5 h-3.5 text-[#0284C7] dark:text-[#29A9F8] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>AdtU Campus · Guwahati</span>
+              </div>
+              <span class="font-mono text-xs font-semibold text-[#0284C7] dark:text-[#29A9F8]">
+                Agenda &amp; RSVP →
+              </span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         6. OUR TEAM & FACULTY ADVISOR (#team)
+         ======================================================================= -->
+    <section id="team" class="py-16 sm:py-24 bg-[var(--bg-page)] border-b border-[var(--border-subtle)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 reveal-item">
+          <div>
+            <span class="inline-flex items-center gap-2 font-mono text-xs font-semibold px-3 py-1 rounded-full bg-[#29A9F8]/12 text-[#0284C7] dark:text-[#29A9F8] border border-[#29A9F8]/25">
+              2026–27 · Cohort 10 (Founding Team)
+            </span>
+            <h2 class="mt-3 font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text-primary)]">
+              Core Leadership &amp; Mentors
+            </h2>
+          </div>
+          <p class="text-sm text-[var(--text-muted)] max-w-md">
+            Student engineers building the cloud community at FoCT, Assam down town University.
+          </p>
+        </div>
+
+        <!-- Team Cards Grid -->
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Member 1: Sourav Chakraborty -->
+          <article class="builder-card relative rounded-2xl p-6 overflow-hidden flex flex-col justify-between reveal-item">
+            <!-- Geometric Blue Arc Accent -->
+            <div class="pointer-events-none absolute -top-10 -right-10 w-32 h-32 rounded-full border-[14px] border-[#29A9F8]/10" aria-hidden="true"></div>
+            <!-- Top-right Pixel-Chip Badge -->
+            <div class="absolute top-4 right-4 w-7 h-7 rounded-lg bg-[#0F172A] flex items-center justify-center">
+              <svg class="w-4 h-4" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <rect x="16" y="4" width="6" height="12" fill="#29A9F8"/><rect x="29" y="4" width="6" height="12" fill="#29A9F8"/><rect x="42" y="4" width="6" height="12" fill="#29A9F8"/>
+                <rect x="16" y="48" width="6" height="12" fill="#29A9F8"/><rect x="29" y="48" width="6" height="12" fill="#29A9F8"/><rect x="42" y="48" width="6" height="12" fill="#29A9F8"/>
+                <rect x="4" y="16" width="12" height="6" fill="#29A9F8"/><rect x="4" y="29" width="12" height="6" fill="#29A9F8"/><rect x="4" y="42" width="12" height="6" fill="#29A9F8"/>
+                <rect x="48" y="16" width="12" height="6" fill="#29A9F8"/><rect x="48" y="29" width="12" height="6" fill="#29A9F8"/><rect x="48" y="42" width="12" height="6" fill="#29A9F8"/>
+                <path d="M16 16H48V48H16V16ZM23 23V41H41V23H23Z" fill="#29A9F8"/>
+              </svg>
+            </div>
+
+            <div>
+              <!-- ASSET DROP-IN: Replace this monogram div with <img src="assets/team/sourav.jpg" alt="Sourav Chakraborty" class="w-16 h-16 rounded-2xl object-cover border border-[#29A9F8]/40" /> -->
+              <div class="w-16 h-16 rounded-2xl bg-[#0F172A] text-[#29A9F8] border border-[#29A9F8]/40 flex items-center justify-center font-display font-bold text-xl tracking-tight">
+                SC
+              </div>
+
+              <div class="mt-4">
+                <span class="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#0284C7] dark:text-[#29A9F8]">
+                  Founder &amp; Group Leader (SBGL)
+                </span>
+                <h3 class="mt-1 font-display font-bold text-lg text-[var(--text-primary)]">
+                  Sourav Chakraborty
+                </h3>
+                <p class="mt-1.5 text-xs text-[var(--text-muted)] leading-relaxed">
+                  B.Tech CSE (Data Science &amp; AI – IBM), FoCT. Chapter strategy, AWS liaison, and AI backend workshops.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-[var(--border-subtle)] flex items-center gap-2">
+              <!-- Update href with your personal LinkedIn URL when ready -->
+              <a
+                href="https://www.linkedin.com/company/aws-sbg-adtu"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--bg-tint)] border border-[var(--border-subtle)] hover:border-[#29A9F8] font-mono text-[11px] font-medium text-[var(--text-primary)] transition-colors"
+              >
+                <span>LinkedIn</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a
+                href="https://souravchakraborty.me"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--bg-tint)] border border-[var(--border-subtle)] hover:border-[#29A9F8] font-mono text-[11px] font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+              >
+                <span>Portfolio</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Member 2: Akash Kalita -->
+          <article class="builder-card relative rounded-2xl p-6 overflow-hidden flex flex-col justify-between reveal-item">
+            <div class="pointer-events-none absolute -top-10 -right-10 w-32 h-32 rounded-full border-[14px] border-[#29A9F8]/10" aria-hidden="true"></div>
+            <div class="absolute top-4 right-4 w-7 h-7 rounded-lg bg-[#0F172A] flex items-center justify-center">
+              <svg class="w-4 h-4" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <rect x="16" y="4" width="6" height="12" fill="#29A9F8"/><rect x="29" y="4" width="6" height="12" fill="#29A9F8"/><rect x="42" y="4" width="6" height="12" fill="#29A9F8"/>
+                <rect x="16" y="48" width="6" height="12" fill="#29A9F8"/><rect x="29" y="48" width="6" height="12" fill="#29A9F8"/><rect x="42" y="48" width="6" height="12" fill="#29A9F8"/>
+                <rect x="4" y="16" width="12" height="6" fill="#29A9F8"/><rect x="4" y="29" width="12" height="6" fill="#29A9F8"/><rect x="4" y="42" width="12" height="6" fill="#29A9F8"/>
+                <rect x="48" y="16" width="12" height="6" fill="#29A9F8"/><rect x="48" y="29" width="12" height="6" fill="#29A9F8"/><rect x="48" y="42" width="12" height="6" fill="#29A9F8"/>
+                <path d="M16 16H48V48H16V16ZM23 23V41H41V23H23Z" fill="#29A9F8"/>
+              </svg>
+            </div>
+
+            <div>
+              <!-- ASSET DROP-IN: Replace with <img src="assets/team/akash.jpg" alt="Akash Kalita" class="w-16 h-16 rounded-2xl object-cover border border-[#29A9F8]/40" /> -->
+              <div class="w-16 h-16 rounded-2xl bg-[#29A9F8]/12 text-[#0284C7] dark:text-[#29A9F8] border border-[#29A9F8]/30 flex items-center justify-center font-display font-bold text-xl tracking-tight">
+                AK
+              </div>
+
+              <div class="mt-4">
+                <span class="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#0284C7] dark:text-[#29A9F8]">
+                  Technical Lead · Core Team
+                </span>
+                <h3 class="mt-1 font-display font-bold text-lg text-[var(--text-primary)]">
+                  Akash Kalita
+                </h3>
+                <p class="mt-1.5 text-xs text-[var(--text-muted)] leading-relaxed">
+                  Designs hands-on AWS lab architectures, live technical demos, starter GitHub repositories, and peer mentoring.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between">
+              <span class="font-mono text-[11px] text-[var(--text-muted)]">Labs &amp; Architecture</span>
+              <span class="w-2 h-2 rounded-full bg-[#29A9F8]"></span>
+            </div>
+          </article>
+
+          <!-- Member 3: Khomdram Sanahal -->
+          <article class="builder-card relative rounded-2xl p-6 overflow-hidden flex flex-col justify-between reveal-item">
+            <div class="pointer-events-none absolute -top-10 -right-10 w-32 h-32 rounded-full border-[14px] border-[#29A9F8]/10" aria-hidden="true"></div>
+            <div class="absolute top-4 right-4 w-7 h-7 rounded-lg bg-[#0F172A] flex items-center justify-center">
+              <svg class="w-4 h-4" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <rect x="16" y="4" width="6" height="12" fill="#29A9F8"/><rect x="29" y="4" width="6" height="12" fill="#29A9F8"/><rect x="42" y="4" width="6" height="12" fill="#29A9F8"/>
+                <rect x="16" y="48" width="6" height="12" fill="#29A9F8"/><rect x="29" y="48" width="6" height="12" fill="#29A9F8"/><rect x="42" y="48" width="6" height="12" fill="#29A9F8"/>
+                <rect x="4" y="16" width="12" height="6" fill="#29A9F8"/><rect x="4" y="29" width="12" height="6" fill="#29A9F8"/><rect x="4" y="42" width="12" height="6" fill="#29A9F8"/>
+                <rect x="48" y="16" width="12" height="6" fill="#29A9F8"/><rect x="48" y="29" width="12" height="6" fill="#29A9F8"/><rect x="48" y="42" width="12" height="6" fill="#29A9F8"/>
+                <path d="M16 16H48V48H16V16ZM23 23V41H41V23H23Z" fill="#29A9F8"/>
+              </svg>
+            </div>
+
+            <div>
+              <!-- ASSET DROP-IN: Replace with <img src="assets/team/sanahal.jpg" alt="Khomdram Sanahal" class="w-16 h-16 rounded-2xl object-cover border border-[#29A9F8]/40" /> -->
+              <div class="w-16 h-16 rounded-2xl bg-[#29A9F8]/12 text-[#0284C7] dark:text-[#29A9F8] border border-[#29A9F8]/30 flex items-center justify-center font-display font-bold text-xl tracking-tight">
+                KS
+              </div>
+
+              <div class="mt-4">
+                <span class="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#0284C7] dark:text-[#29A9F8]">
+                  Director of Events · Core Team
+                </span>
+                <h3 class="mt-1 font-display font-bold text-lg text-[var(--text-primary)]">
+                  Khomdram Sanahal
+                </h3>
+                <p class="mt-1.5 text-xs text-[var(--text-muted)] leading-relaxed">
+                  Leads the Cohort 10 event calendar, campus venue &amp; AV coordination, session run-of-show, and guest speaker outreach.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between">
+              <span class="font-mono text-[11px] text-[var(--text-muted)]">Events &amp; Logistics</span>
+              <span class="w-2 h-2 rounded-full bg-[#29A9F8]"></span>
+            </div>
+          </article>
+
+          <!-- Member 4: Open Core & Extended Team Invitation Card -->
+          <article class="rounded-2xl p-6 border-2 border-dashed border-[#29A9F8]/60 bg-[#29A9F8]/[0.04] dark:bg-[#29A9F8]/[0.06] flex flex-col justify-between reveal-item">
+            <div>
+              <div class="w-16 h-16 rounded-2xl border border-dashed border-[#29A9F8]/60 bg-[var(--surface)] flex items-center justify-center text-[#0284C7] dark:text-[#29A9F8]">
+                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </div>
+
+              <div class="mt-4">
+                <span class="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#0284C7] dark:text-[#29A9F8]">
+                  Recruiting · AdtU Students
+                </span>
+                <h3 class="mt-1 font-display font-bold text-lg text-[var(--text-primary)]">
+                  Open Core &amp; Extended Team Seats
+                </h3>
+                <p class="mt-1.5 text-xs text-[var(--text-muted)] leading-relaxed">
+                  Open tracks: <strong class="text-[var(--text-primary)]">Director of Marketing</strong>, <strong class="text-[var(--text-primary)]">Community Lead</strong>, <strong class="text-[var(--text-primary)]">Operations Lead</strong>, plus Extended Volunteers.
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="https://forms.gle/LmLxEuQhc5n7yeqk7"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-5 inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl bg-[#0284C7] hover:bg-[#0369A1] dark:bg-[#29A9F8] dark:hover:bg-[#38BDF8] text-white dark:text-[#080E1A] font-semibold text-xs transition-colors"
+            >
+              <span>Apply to Join Team</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        </div>
+
+        <!-- Dedicated Faculty Advisor Horizontal Spotlight -->
+        <!-- ===================================================================
+             FACULTY ADVISOR DROP-IN COMMENT:
+             Once official Faculty Advisor documentation is finalized on the AWS
+             platform, update the heading, designation, and optional headshot
+             <img> below with the confirmed faculty member's official details.
+             =================================================================== -->
+        <div class="mt-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] p-6 sm:p-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 reveal-item">
+          <div class="flex items-start sm:items-center gap-4">
+            <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-[#0F172A] text-[#29A9F8] border border-[#29A9F8]/35 flex items-center justify-center">
+              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c3 3 9 3 12 0v-5" />
+              </svg>
+            </div>
+            <div>
+              <span class="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#0284C7] dark:text-[#29A9F8]">
+                Official Faculty Mentorship · FoCT
+              </span>
+              <h3 class="mt-1 font-display font-bold text-lg sm:text-xl text-[var(--text-primary)]">
+                Faculty Advisor · Faculty of Computer Technology (FoCT), Assam down town University
+              </h3>
+              <p class="mt-1 text-xs sm:text-sm text-[var(--text-muted)] max-w-2xl">
+                Guiding academic integration, campus lab access, and institutional recognition for AWS SBG AdtU under the Faculty of Computer Technology (B Block).
+              </p>
+            </div>
+          </div>
+          <span class="flex-shrink-0 font-mono text-[11px] px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--surface)] text-[var(--text-muted)]">
+            FoCT · AdtU Endorsed
+          </span>
+        </div>
+
+        <!-- Editorial Quote Card: Message from the Lead -->
+        <blockquote class="mt-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] p-6 sm:p-8 lg:p-10 relative overflow-hidden reveal-item">
+          <div class="pointer-events-none absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#0284C7] to-[#29A9F8]" aria-hidden="true"></div>
+          <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#0284C7] dark:text-[#29A9F8]">
+            // MESSAGE FROM THE LEAD
+          </span>
+          <p class="mt-4 font-display text-lg sm:text-2xl font-medium text-[var(--text-primary)] leading-snug max-w-4xl">
+            “Students in Guwahati and across Northeast India have the same curiosity and drive as engineers anywhere in the world — what makes the difference is an environment where we open our terminals, break things safely, and ship real systems together. We started AWS SBG at AdtU so every student can go from classroom syntax to deployed cloud and AI engineering.”
+          </p>
+          <footer class="mt-6 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-[#0F172A] text-[#29A9F8] font-display font-bold text-sm flex items-center justify-center">
+              SC
+            </div>
+            <div>
+              <div class="font-display font-bold text-sm text-[var(--text-primary)]">Sourav Chakraborty</div>
+              <div class="font-mono text-[11px] text-[var(--text-muted)]">
+                Founder &amp; AWS Student Builder Group Leader · AdtU (Cohort 10)
+              </div>
+            </div>
+          </footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         7. HOST INSTITUTION SPOTLIGHT (#campus)
+         ======================================================================= -->
+    <section id="campus" class="py-16 sm:py-24 bg-[var(--bg-tint)] border-b border-[var(--border-subtle)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          <!-- Left: University Editorial Intro -->
+          <div class="lg:col-span-5 reveal-item">
+            <span class="font-mono text-xs font-semibold tracking-wider uppercase text-[#0284C7] dark:text-[#29A9F8]">
+              // HOST INSTITUTION
+            </span>
+            <h2 class="mt-2 font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text-primary)]">
+              Assam down town University
+            </h2>
+            <p class="mt-2 font-mono text-xs text-[#0284C7] dark:text-[#29A9F8]">
+              Faculty of Computer Technology (FoCT) · B Block
+            </p>
+            <p class="mt-4 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+              Situated on a 42-acre campus overlooking the Brahmaputra River in Panikhaiti, Guwahati, Assam down town University provides the academic labs, innovation ecosystem, and multidisciplinary community powering our student cloud builders.
+            </p>
+
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a
+                href="https://adtu.in/faculties/computer-technology"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] hover:border-[#29A9F8] text-xs font-semibold text-[var(--text-primary)] transition-colors"
+              >
+                <span>Visit FoCT Portal (adtu.in)</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: 4 Verified Institutional Fact Cards -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 reveal-item">
+            <div class="builder-card rounded-2xl p-5">
+              <span class="font-mono text-[11px] font-bold text-[#0284C7] dark:text-[#29A9F8]">ACCREDITATION</span>
+              <h3 class="mt-1.5 font-display font-bold text-xl text-[var(--text-primary)]">NAAC Grade A+</h3>
+              <p class="mt-1.5 text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+                Northeast India's first private university accredited with NAAC Grade A+, recognizing academic and infrastructure excellence.
+              </p>
+            </div>
+
+            <div class="builder-card rounded-2xl p-5">
+              <span class="font-mono text-[11px] font-bold text-[#0284C7] dark:text-[#29A9F8]">CAMPUS LOCATION</span>
+              <h3 class="mt-1.5 font-display font-bold text-xl text-[var(--text-primary)]">Est. 2010 · Guwahati</h3>
+              <p class="mt-1.5 text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+                Sankar Madhab Path, Gandhi Nagar, Panikhaiti, Guwahati, Assam – 781026.
+              </p>
+            </div>
+
+            <div class="builder-card rounded-2xl p-5">
+              <span class="font-mono text-[11px] font-bold text-[#0284C7] dark:text-[#29A9F8]">RECOGNITION &amp; INNOVATION</span>
+              <h3 class="mt-1.5 font-display font-bold text-xl text-[var(--text-primary)]">UGC &amp; AICTE Approved</h3>
+              <p class="mt-1.5 text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+                Recognized by the Institution's Innovation Council (IIC) under the Ministry of Education, Government of India.
+              </p>
+            </div>
+
+            <div class="builder-card rounded-2xl p-5">
+              <span class="font-mono text-[11px] font-bold text-[#0284C7] dark:text-[#29A9F8]">ENGINEERING TRACKS</span>
+              <h3 class="mt-1.5 font-display font-bold text-xl text-[var(--text-primary)]">FoCT · B Block</h3>
+              <p class="mt-1.5 text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+                Home to B.Tech CSE (Data Science &amp; AI with IBM), CSBS with TCS, Cyber Security, AI &amp; ML, and Computer Applications.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         8. INTERACTIVE ONBOARDING CHECKLIST & BUILDER RESOURCES (#resources)
+         ======================================================================= -->
+    <section id="resources" class="py-16 sm:py-24 bg-[var(--bg-page)] border-b border-[var(--border-subtle)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl reveal-item">
+          <span class="font-mono text-xs font-semibold tracking-wider uppercase text-[#0284C7] dark:text-[#29A9F8]">
+            // STUDENT BUILDER RESOURCES
+          </span>
+          <h2 class="mt-2 font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text-primary)]">
+            Start Building in 4 Steps
+          </h2>
+          <p class="mt-3 text-sm sm:text-base text-[var(--text-muted)]">
+            Track your onboarding progress locally in your browser and read our starter guides before Workshop 01.
+          </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+          <!-- Left: Interactive 4-Step Checklist (localStorage persisted) -->
+          <div class="lg:col-span-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] p-6 sm:p-7 reveal-item">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <h3 class="font-display font-bold text-xl text-[var(--text-primary)]">
+                  AdtU Builder Onboarding Checklist
+                </h3>
+                <p class="text-xs text-[var(--text-muted)] mt-0.5">
+                  Progress is saved automatically on this device.
+                </p>
+              </div>
+              <span
+                id="checklist-counter"
+                class="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#29A9F8]/12 text-[#0284C7] dark:text-[#29A9F8] flex-shrink-0"
+              >
+                0 / 4
+              </span>
+            </div>
+
+            <!-- Live Progress Bar -->
+            <div class="mt-4 w-full h-2 rounded-full bg-[var(--bg-tint)] border border-[var(--border-subtle)] overflow-hidden">
+              <div
+                id="checklist-progress-bar"
+                class="h-full w-0 bg-gradient-to-r from-[#0284C7] to-[#29A9F8] transition-all duration-300"
+              ></div>
+            </div>
+
+            <!-- 4 Interactive Steps -->
+            <div class="mt-5 space-y-3" id="onboarding-checklist">
+              <!-- Step 1 -->
+              <label class="flex items-start gap-3.5 p-3.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#29A9F8] cursor-pointer transition-colors">
+                <input
+                  type="checkbox"
+                  data-step="step-1"
+                  class="checklist-box mt-0.5 w-4 h-4 rounded accent-[#0284C7] cursor-pointer flex-shrink-0"
+                />
+                <div class="min-w-0 flex-1">
+                  <div class="text-sm font-semibold text-[var(--text-primary)]">
+                    1. Create your free AWS Builder ID
+                  </div>
+                  <p class="text-xs text-[var(--text-muted)] mt-0.5">
+                    Sign up on AWS Builder Center to unlock student community tools and cloud learning tracks.
+                  </p>
+                  <a
+                    href="https://community.aws"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-block mt-1.5 font-mono text-[11px] font-semibold text-[#0284C7] dark:text-[#29A9F8] hover:underline"
+                  >
+                    Open AWS Builder Center ↗
+                  </a>
+                </div>
+              </label>
+
+              <!-- Step 2 -->
+              <label class="flex items-start gap-3.5 p-3.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#29A9F8] cursor-pointer transition-colors">
+                <input
+                  type="checkbox"
+                  data-step="step-2"
+                  class="checklist-box mt-0.5 w-4 h-4 rounded accent-[#0284C7] cursor-pointer flex-shrink-0"
+                />
+                <div class="min-w-0 flex-1">
+                  <div class="text-sm font-semibold text-[var(--text-primary)]">
+                    2. Join the official AdtU Meetup Chapter
+                  </div>
+                  <p class="text-xs text-[var(--text-muted)] mt-0.5">
+                    Meetup is our official RSVP gateway for campus labs, seat reservations, and announcements.
+                  </p>
+                  <a
+                    href="https://www.meetup.com/aws-sbg-at-assam-down-town-university"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-block mt-1.5 font-mono text-[11px] font-semibold text-[#0284C7] dark:text-[#29A9F8] hover:underline"
+                  >
+                    meetup.com/aws-sbg-at-assam-down-town-university ↗
+                  </a>
+                </div>
+              </label>
+
+              <!-- Step 3 -->
+              <label class="flex items-start gap-3.5 p-3.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#29A9F8] cursor-pointer transition-colors">
+                <input
+                  type="checkbox"
+                  data-step="step-3"
+                  class="checklist-box mt-0.5 w-4 h-4 rounded accent-[#0284C7] cursor-pointer flex-shrink-0"
+                />
+                <div class="min-w-0 flex-1">
+                  <div class="text-sm font-semibold text-[var(--text-primary)]">
+                    3. Follow AWS SBG AdtU on LinkedIn
+                  </div>
+                  <p class="text-xs text-[var(--text-muted)] mt-0.5">
+                    Stay updated on workshop dates, Core Team calls, project showcases, and study sprints.
+                  </p>
+                  <a
+                    href="https://www.linkedin.com/company/aws-sbg-adtu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-block mt-1.5 font-mono text-[11px] font-semibold text-[#0284C7] dark:text-[#29A9F8] hover:underline"
+                  >
+                    linkedin.com/company/aws-sbg-adtu ↗
+                  </a>
+                </div>
+              </label>
+
+              <!-- Step 4 -->
+              <label class="flex items-start gap-3.5 p-3.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#29A9F8] cursor-pointer transition-colors">
+                <input
+                  type="checkbox"
+                  data-step="step-4"
+                  class="checklist-box mt-0.5 w-4 h-4 rounded accent-[#0284C7] cursor-pointer flex-shrink-0"
+                />
+                <div class="min-w-0 flex-1">
+                  <div class="text-sm font-semibold text-[var(--text-primary)]">
+                    4. RSVP for Event 01 &amp; bring your laptop
+                  </div>
+                  <p class="text-xs text-[var(--text-muted)] mt-0.5">
+                    Show up ready to write code, test APIs, and deploy live with fellow AdtU builders.
+                  </p>
+                </div>
+              </label>
+            </div>
+
+            <!-- Completion Banner & Reset -->
+            <div class="mt-4 flex items-center justify-between gap-3">
+              <p id="checklist-status-msg" class="font-mono text-[11px] text-[var(--text-muted)]">
+                Complete all 4 steps to get lab-ready.
+              </p>
+              <button
+                id="reset-checklist-btn"
+                type="button"
+                class="font-mono text-[11px] text-[var(--text-muted)] hover:text-[#0284C7] dark:hover:text-[#29A9F8] underline underline-offset-4"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: 2 Builder Publications / Tech Notes Cards -->
+          <div class="lg:col-span-6 space-y-5 reveal-item">
+            <div class="flex items-center justify-between">
+              <h3 class="font-display font-bold text-xl text-[var(--text-primary)]">
+                Builder Publications &amp; Tech Notes
+              </h3>
+              <span class="font-mono text-[11px] text-[var(--text-muted)]">AdtU Notes</span>
+            </div>
+
+            <!-- Article 1 -->
+            <article
+              data-article-id="aws-builder-center-guide"
+              tabindex="0"
+              role="button"
+              aria-label="Read Getting Started with AWS Builder Center & Cloud Foundations at AdtU"
+              class="article-card builder-card rounded-2xl p-6 cursor-pointer"
+            >
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="font-mono text-[11px] font-semibold px-2.5 py-0.5 rounded bg-[#29A9F8]/12 text-[#0284C7] dark:text-[#29A9F8]">
+                  ONBOARDING GUIDE
+                </span>
+                <span class="font-mono text-[11px] text-[var(--text-muted)]">5 min read</span>
+              </div>
+              <h4 class="font-display font-bold text-lg sm:text-xl text-[var(--text-primary)]">
+                Getting Started with AWS Builder Center &amp; Cloud Foundations at AdtU
+              </h4>
+              <p class="mt-2 text-sm text-[var(--text-muted)] leading-relaxed">
+                A concise handbook for 1st-to-4th year AdtU students covering AWS Builder ID setup, student verification tips, and how to use free sandbox labs without accidental cloud bills.
+              </p>
+              <div class="mt-4 pt-3.5 border-t border-[var(--border-subtle)] flex items-center justify-between">
+                <span class="font-mono text-xs text-[var(--text-muted)]">AWS SBG AdtU · Starter Series</span>
+                <span class="font-mono text-xs font-semibold text-[#0284C7] dark:text-[#29A9F8]">Read Summary →</span>
+              </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article
+              data-article-id="fastapi-cloud-checklist"
+              tabindex="0"
+              role="button"
+              aria-label="Read From Local FastAPI to Cloud: A Student Builder's Deployment Checklist"
+              class="article-card builder-card rounded-2xl p-6 cursor-pointer"
+            >
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="font-mono text-[11px] font-semibold px-2.5 py-0.5 rounded bg-[#29A9F8]/12 text-[#0284C7] dark:text-[#29A9F8]">
+                  BACKEND &amp; DEPLOYMENT
+                </span>
+                <span class="font-mono text-[11px] text-[var(--text-muted)]">7 min read</span>
+              </div>
+              <h4 class="font-display font-bold text-lg sm:text-xl text-[var(--text-primary)]">
+                From Local FastAPI to Cloud: A Student Builder's Deployment Checklist
+              </h4>
+              <p class="mt-2 text-sm text-[var(--text-muted)] leading-relaxed">
+                Environment secret hygiene (<code class="font-mono text-xs">.env</code>), CORS rules, clean Dockerfiles, health checks, and structuring async Python APIs before your first cloud push.
+              </p>
+              <div class="mt-4 pt-3.5 border-t border-[var(--border-subtle)] flex items-center justify-between">
+                <span class="font-mono text-xs text-[var(--text-muted)]">AWS SBG AdtU · Engineering Track</span>
+                <span class="font-mono text-xs font-semibold text-[#0284C7] dark:text-[#29A9F8]">Read Summary →</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         9. "READY TO BUILD WITH US?" CTA CARDS (#join)
+         ======================================================================= -->
+    <section id="join" class="py-16 sm:py-24 bg-[var(--bg-tint)] bg-dot-grid border-b border-[var(--border-subtle)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto reveal-item">
+          <span class="font-mono text-xs font-semibold tracking-wider uppercase text-[#0284C7] dark:text-[#29A9F8]">
+            // JOIN THE COMMUNITY
+          </span>
+          <h2 class="mt-2 font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text-primary)]">
+            Ready to Build With Us?
+          </h2>
+          <p class="mt-3 text-sm sm:text-base text-[var(--text-muted)]">
+            Whether you are writing your first Python script or shipping production AI backends, there is a seat for you at AWS SBG AdtU.
+          </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- CTA Card 1: Meetup -->
+          <a
+            href="https://www.meetup.com/aws-sbg-at-assam-down-town-university"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="builder-card group rounded-2xl p-6 flex flex-col justify-between reveal-item"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="w-11 h-11 rounded-xl bg-[#0284C7] dark:bg-[#29A9F8] text-white dark:text-[#080E1A] flex items-center justify-center">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
+                </span>
+                <span class="font-mono text-[10px] font-semibold px-2.5 py-1 rounded-full bg-[#29A9F8]/15 text-[#0284C7] dark:text-[#29A9F8]">
+                  PRIMARY RSVP
+                </span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-[var(--text-primary)]">
+                Official Meetup Chapter
+              </h3>
+              <p class="mt-2 text-sm text-[var(--text-muted)] leading-relaxed">
+                Reserve your spot for hands-on AWS workshops, CLF-C02 study jams, and hybrid campus sessions.
+              </p>
+            </div>
+            <div class="mt-6 font-mono text-xs font-semibold text-[#0284C7] dark:text-[#29A9F8] group-hover:translate-x-0.5 transition-transform">
+              Join on Meetup →
+            </div>
+          </a>
+
+          <!-- CTA Card 2: LinkedIn -->
+          <a
+            href="https://www.linkedin.com/company/aws-sbg-adtu"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="builder-card group rounded-2xl p-6 flex flex-col justify-between reveal-item"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="w-11 h-11 rounded-xl bg-[#0F172A] text-[#29A9F8] border border-[#1E293B] flex items-center justify-center">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect x="2" y="9" width="4" height="12" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                </span>
+                <span class="font-mono text-[10px] font-semibold px-2.5 py-1 rounded-full bg-[var(--bg-tint)] text-[var(--text-muted)] border border-[var(--border-subtle)]">
+                  UPDATES &amp; RECAPS
+                </span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-[var(--text-primary)]">
+                Official LinkedIn Page
+              </h3>
+              <p class="mt-2 text-sm text-[var(--text-muted)] leading-relaxed">
+                Follow session highlights, student project demos, cloud certification tips, and speaker spotlights.
+              </p>
+            </div>
+            <div class="mt-6 font-mono text-xs font-semibold text-[#0284C7] dark:text-[#29A9F8] group-hover:translate-x-0.5 transition-transform">
+              Follow on LinkedIn →
+            </div>
+          </a>
+
+          <!-- CTA Card 3: Core / Volunteer Application -->
+          <a
+            href="https://forms.gle/LmLxEuQhc5n7yeqk7"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="builder-card group rounded-2xl p-6 flex flex-col justify-between reveal-item"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="w-11 h-11 rounded-xl bg-[#29A9F8]/12 text-[#0284C7] dark:text-[#29A9F8] border border-[#29A9F8]/30 flex items-center justify-center">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="8.5" cy="7" r="4" />
+                    <line x1="20" y1="8" x2="20" y2="14" />
+                    <line x1="23" y1="11" x2="17" y2="11" />
+                  </svg>
+                </span>
+                <span class="font-mono text-[10px] font-semibold px-2.5 py-1 rounded-full bg-[var(--bg-tint)] text-[var(--text-muted)] border border-[var(--border-subtle)]">
+                  APPLICATIONS OPEN
+                </span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-[var(--text-primary)]">
+                Core &amp; Volunteer Team
+              </h3>
+              <p class="mt-2 text-sm text-[var(--text-muted)] leading-relaxed">
+                Help organize workshops, design official assets, mentor peers, and grow the AdtU cloud community.
+              </p>
+            </div>
+            <div class="mt-6 font-mono text-xs font-semibold text-[#0284C7] dark:text-[#29A9F8] group-hover:translate-x-0.5 transition-transform">
+              Submit Application Form →
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       COMPLIANT MULTI-COLUMN FOOTER (Extra mobile bottom padding for dock)
+       ========================================================================= -->
+  <footer class="bg-[var(--bg-page)] pt-14 pb-28 md:pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-10 border-b border-[var(--border-subtle)]">
+        <!-- Col 1: Brand -->
+        <div class="lg:col-span-4">
+          <div class="flex items-center gap-2.5">
+            <!-- ASSET DROP-IN #4: Swap for <img src="assets/logo.png" alt="AWS SBG AdtU" class="h-10 w-auto" /> if desired -->
+            <span class="w-9 h-9 rounded-lg bg-[#0F172A] border border-[#1E293B] flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <rect x="16" y="4" width="6" height="12" fill="#29A9F8"/><rect x="29" y="4" width="6" height="12" fill="#29A9F8"/><rect x="42" y="4" width="6" height="12" fill="#29A9F8"/>
+                <rect x="16" y="48" width="6" height="12" fill="#29A9F8"/><rect x="29" y="48" width="6" height="12" fill="#29A9F8"/><rect x="42" y="48" width="6" height="12" fill="#29A9F8"/>
+                <rect x="4" y="16" width="12" height="6" fill="#29A9F8"/><rect x="4" y="29" width="12" height="6" fill="#29A9F8"/><rect x="4" y="42" width="12" height="6" fill="#29A9F8"/>
+                <rect x="48" y="16" width="12" height="6" fill="#29A9F8"/><rect x="48" y="29" width="12" height="6" fill="#29A9F8"/><rect x="48" y="42" width="12" height="6" fill="#29A9F8"/>
+                <path d="M16 16H48V48H16V16ZM23 23V41H41V23H23Z" fill="#29A9F8"/>
+              </svg>
+            </span>
+            <div>
+              <div class="font-display font-bold text-sm text-[var(--text-primary)]">
+                AWS Student Builder Group
+              </div>
+              <div class="font-mono text-[11px] text-[#0284C7] dark:text-[#29A9F8]">
+                Assam down town University
+              </div>
+            </div>
+          </div>
+          <p class="mt-4 text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed max-w-sm">
+            Learn. Build. Connect. Empowering student builders in Guwahati with hands-on cloud computing, AI/ML workflows, and peer-led engineering culture.
+          </p>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="lg:col-span-2">
+          <h3 class="font-mono text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+            Navigation
+          </h3>
+          <ul class="mt-3.5 space-y-2.5 text-sm text-[var(--text-muted)]">
+            <li><a href="#about" class="hover:text-[#0284C7] dark:hover:text-[#29A9F8] transition-colors">About</a></li>
+            <li><a href="#pillars" class="hover:text-[#0284C7] dark:hover:text-[#29A9F8] transition-colors">Core Pillars</a></li>
+            <li><a href="#events" class="hover:text-[#0284C7] dark:hover:text-[#29A9F8] transition-colors">Events Roadmap</a></li>
+            <li><a href="#team" class="hover:text-[#0284C7] dark:hover:text-[#29A9F8] transition-colors">Core Team</a></li>
+            <li><a href="#campus" class="hover:text-[#0284C7] dark:hover:text-[#29A9F8] transition-colors">Host Campus</a></li>
+            <li><a href="#resources" class="hover:text-[#0284C7] dark:hover:text-[#29A9F8] transition-colors">Resources</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Community Channels -->
+        <div class="lg:col-span-3">
+          <h3 class="font-mono text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+            Community Channels
+          </h3>
+          <ul class="mt-3.5 space-y-2.5 text-sm text-[var(--text-muted)]">
+            <li>
+              <a href="https://www.meetup.com/aws-sbg-at-assam-down-town-university" target="_blank" rel="noopener noreferrer" class="hover:text-[#0284C7] dark:hover:text-[#29A9F8] transition-colors">
+                Meetup Chapter ↗
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/company/aws-sbg-adtu" target="_blank" rel="noopener noreferrer" class="hover:text-[#0284C7] dark:hover:text-[#29A9F8] transition-colors">
+                LinkedIn Page ↗
+              </a>
+            </li>
+            <li>
+              <a href="https://forms.gle/LmLxEuQhc5n7yeqk7" target="_blank" rel="noopener noreferrer" class="hover:text-[#0284C7] dark:hover:text-[#29A9F8] transition-colors">
+                Core Team Application ↗
+              </a>
+            </li>
+            <li>
+              <a href="https://community.aws" target="_blank" rel="noopener noreferrer" class="hover:text-[#0284C7] dark:hover:text-[#29A9F8] transition-colors">
+                AWS Builder Center ↗
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Campus Location & Contact -->
+        <div class="lg:col-span-3">
+          <h3 class="font-mono text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+            Campus &amp; Contact
+          </h3>
+          <p class="mt-3.5 text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+            Faculty of Computer Technology (B Block), Assam down town University, Sankar Madhab Path, Gandhi Nagar, Panikhaiti, Guwahati, Assam – 781026
+          </p>
+          <div class="mt-4 flex flex-wrap items-center gap-2">
+            <a
+              href="mailto:souravchakraborty.bcsm@adtu.in"
+              class="font-mono text-xs text-[#0284C7] dark:text-[#29A9F8] hover:underline break-all"
+            >
+              souravchakraborty.bcsm@adtu.in
+            </a>
+            <button
+              id="copy-email-btn"
+              type="button"
+              class="font-mono text-[10px] px-2 py-1 rounded-md border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#29A9F8] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+            >
+              Copy
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mandatory AWS Student-Led Community Disclaimer -->
+      <div class="mt-8 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] p-4 sm:p-5">
+        <p class="text-[11px] sm:text-xs text-[var(--text-muted)] leading-relaxed">
+          <strong class="font-mono text-[var(--text-primary)]">INDEPENDENT STUDENT COMMUNITY DISCLAIMER:</strong>
+          AWS Student Builder Group at Assam down town University (AWS SBG AdtU) is an independent, student-led campus community supported by the AWS Student Builder Groups programme. Views, events, and projects shared here are solely those of the student organizers and do not officially represent Amazon Web Services, Inc. (AWS) or its affiliates. AWS and related marks are trademarks of Amazon.com, Inc. or its affiliates.
+        </p>
+      </div>
+
+      <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs font-mono text-[var(--text-muted)]">
+        <span>© 2026–27 AWS Student Builder Group at Assam down town University</span>
+        <span>Built by AdtU Student Builders · Cohort 10</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MODAL 1: EVENT DETAIL MODAL
+       ========================================================================= -->
+  <div
+    id="event-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="event-modal-title"
+    class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs"
+  >
+    <div class="relative w-full max-w-xl max-h-[88vh] overflow-y-auto rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] shadow-2xl p-6 sm:p-7">
+      <button
+        type="button"
+        data-close-modal="event-modal"
+        aria-label="Close event details"
+        class="absolute top-4 right-4 w-9 h-9 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#29A9F8] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+      >
+        ✕
+      </button>
+
+      <div class="pr-10">
+        <span id="event-modal-badge" class="inline-block font-mono text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#29A9F8]/15 text-[#0284C7] dark:text-[#29A9F8]"></span>
+        <h3 id="event-modal-title" class="mt-3 font-display font-bold text-2xl text-[var(--text-primary)] leading-tight"></h3>
+        <p id="event-modal-meta" class="mt-2 font-mono text-xs text-[var(--text-muted)]"></p>
+      </div>
+
+      <p id="event-modal-desc" class="mt-4 text-sm text-[var(--text-muted)] leading-relaxed"></p>
+
+      <div class="mt-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] p-4">
+        <h4 class="font-mono text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+          Session Agenda
+        </h4>
+        <ul id="event-modal-agenda" class="mt-2.5 space-y-2 text-xs sm:text-sm text-[var(--text-muted)] list-disc list-inside"></ul>
+      </div>
+
+      <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] p-3.5">
+          <div class="font-mono text-[10px] font-bold uppercase tracking-wider text-[#0284C7] dark:text-[#29A9F8]">Prerequisites</div>
+          <p id="event-modal-prereq" class="mt-1 text-xs text-[var(--text-muted)] leading-relaxed"></p>
+        </div>
+        <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] p-3.5">
+          <div class="font-mono text-[10px] font-bold uppercase tracking-wider text-[#0284C7] dark:text-[#29A9F8]">Host / Format</div>
+          <p id="event-modal-host" class="mt-1 text-xs text-[var(--text-muted)] leading-relaxed"></p>
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-2.5">
+        <button
+          type="button"
+          data-close-modal="event-modal"
+          class="px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] text-xs font-semibold text-[var(--text-primary)] hover:border-[#29A9F8] transition-colors"
+        >
+          Close
+        </button>
+        <a
+          href="https://www.meetup.com/aws-sbg-at-assam-down-town-university"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#0284C7] hover:bg-[#0369A1] dark:bg-[#29A9F8] dark:hover:bg-[#38BDF8] text-white dark:text-[#080E1A] text-xs font-semibold transition-colors"
+        >
+          <span>RSVP on Meetup</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: BUILDER PUBLICATION READER MODAL
+       ========================================================================= -->
+  <div
+    id="article-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="article-modal-title"
+    class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs"
+  >
+    <div class="relative w-full max-w-xl max-h-[88vh] overflow-y-auto rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] shadow-2xl p-6 sm:p-7">
+      <button
+        type="button"
+        data-close-modal="article-modal"
+        aria-label="Close publication summary"
+        class="absolute top-4 right-4 w-9 h-9 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#29A9F8] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+      >
+        ✕
+      </button>
+
+      <div class="pr-10">
+        <span id="article-modal-tag" class="font-mono text-[11px] font-semibold text-[#0284C7] dark:text-[#29A9F8]"></span>
+        <h3 id="article-modal-title" class="mt-2 font-display font-bold text-2xl text-[var(--text-primary)] leading-tight"></h3>
+      </div>
+
+      <div id="article-modal-body" class="mt-4 space-y-3 text-sm text-[var(--text-muted)] leading-relaxed"></div>
+
+      <div class="mt-6 pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between gap-3">
+        <a
+          href="https://community.aws"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-mono text-xs font-semibold text-[#0284C7] dark:text-[#29A9F8] hover:underline"
+        >
+          Explore AWS Builder Center ↗
+        </a>
+        <button
+          type="button"
+          data-close-modal="article-modal"
+          class="px-4 py-2 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] text-xs font-semibold text-[var(--text-primary)] hover:border-[#29A9F8] transition-colors"
+        >
+          Done Reading
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 3: QUICK START MODAL
+       ========================================================================= -->
+  <div
+    id="quickstart-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="quickstart-modal-title"
+    class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs"
+  >
+    <div class="relative w-full max-w-md rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface)] shadow-2xl p-6">
+      <button
+        type="button"
+        data-close-modal="quickstart-modal"
+        aria-label="Close Quick Start menu"
+        class="absolute top-4 right-4 w-9 h-9 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#29A9F8] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+      >
+        ✕
+      </button>
+
+      <span class="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#0284C7] dark:text-[#29A9F8]">
+        // 30-SECOND QUICK START
+      </span>
+      <h3 id="quickstart-modal-title" class="mt-1.5 font-display font-bold text-xl text-[var(--text-primary)]">
+        Join AWS SBG at AdtU
+      </h3>
+      <p class="mt-1.5 text-xs text-[var(--text-muted)]">
+        Pick your fastest entry point into our Cohort 10 campus community:
+      </p>
+
+      <div class="mt-5 space-y-2.5">
+        <a
+          href="https://www.meetup.com/aws-sbg-at-assam-down-town-university"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-between p-3.5 rounded-xl bg-[#0284C7] hover:bg-[#0369A1] dark:bg-[#29A9F8] dark:hover:bg-[#38BDF8] text-white dark:text-[#080E1A] transition-colors"
+        >
+          <div>
+            <div class="font-display font-bold text-sm">1. Join Official Meetup Chapter</div>
+            <div class="text-[11px] opacity-90">Required for workshop RSVPs &amp; updates</div>
+          </div>
+          <span class="font-mono text-sm">↗</span>
+        </a>
+
+        <a
+          href="https://community.aws"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-between p-3.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#29A9F8] text-[var(--text-primary)] transition-colors"
+        >
+          <div>
+            <div class="font-display font-bold text-sm">2. Create Free AWS Builder ID</div>
+            <div class="text-[11px] text-[var(--text-muted)]">Access AWS Builder Center &amp; student resources</div>
+          </div>
+          <span class="font-mono text-sm text-[#0284C7] dark:text-[#29A9F8]">↗</span>
+        </a>
+
+        <a
+          href="https://forms.gle/LmLxEuQhc5n7yeqk7"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-between p-3.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#29A9F8] text-[var(--text-primary)] transition-colors"
+        >
+          <div>
+            <div class="font-display font-bold text-sm">3. Apply for Core / Extended Team</div>
+            <div class="text-[11px] text-[var(--text-muted)]">Marketing, Community, Operations &amp; Volunteers</div>
+          </div>
+          <span class="font-mono text-sm text-[#0284C7] dark:text-[#29A9F8]">↗</span>
+        </a>
+
+        <button
+          id="quickstart-jump-checklist"
+          type="button"
+          class="w-full flex items-center justify-between p-3.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-tint)] hover:border-[#29A9F8] text-left text-[var(--text-primary)] transition-colors"
+        >
+          <div>
+            <div class="font-display font-bold text-sm">4. Open Interactive Checklist</div>
+            <div class="text-[11px] text-[var(--text-muted)]">Track your 4 onboarding steps locally</div>
+          </div>
+          <span class="font-mono text-sm text-[#0284C7] dark:text-[#29A9F8]">↓</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       INLINE TOAST NOTIFICATION (Replaces browser alert() cleanly)
+       ========================================================================= -->
+  <div
+    id="toast"
+    role="status"
+    aria-live="polite"
+    class="pointer-events-none opacity-0 translate-y-2 fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-[90] rounded-xl bg-[#0F172A] text-white border border-[#29A9F8]/40 px-4 py-2.5 shadow-xl font-mono text-xs flex items-center gap-2"
+  >
+    <span class="w-2 h-2 rounded-full bg-[#29A9F8]"></span>
+    <span id="toast-message">Copied to clipboard</span>
+  </div>
+
+  <!-- =========================================================================
+       VANILLA JAVASCRIPT: PRELOADER, THEME, ARCHITECTURE, EVENTS, CHECKLIST
+       ========================================================================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      /* -----------------------------------------------------------------------
+         HELPER: Safe LocalStorage Wrapper + Toast Feedback
+         ----------------------------------------------------------------------- */
+      function safeGet(key) {
+        try {
+          return localStorage.getItem(key);
+        } catch (err) {
+          return null;
+        }
+      }
+
+      function safeSet(key, value) {
+        try {
+          localStorage.setItem(key, value);
+        } catch (err) {
+          // Ignore storage errors in sandboxed/private iframes
+        }
+      }
+
+      var toastEl = document.getElementById('toast');
+      var toastMsg = document.getElementById('toast-message');
+      var toastTimer = null;
+
+      function showToast(message) {
+        if (!toastEl || !toastMsg) return;
+        toastMsg.textContent = message;
+        toastEl.classList.remove('opacity-0', 'translate-y-2');
+        toastEl.classList.add('opacity-100', 'translate-y-0');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          toastEl.classList.add('opacity-0', 'translate-y-2');
+          toastEl.classList.remove('opacity-100', 'translate-y-0');
+        }, 2400);
+      }
+
+      /* -----------------------------------------------------------------------
+         1. FAST, SKIPPABLE PRELOADER (1.2s MAX) WITH TEXT SCRAMBLE
+         ----------------------------------------------------------------------- */
+      var preloader = document.getElementById('preloader');
+      var preloaderTitle = document.getElementById('preloader-title');
+      var preloaderBar = document.getElementById('preloader-bar');
+      var preloaderStatus = document.getElementById('preloader-status');
+      var preloaderDismissed = false;
+
+      function dismissPreloader() {
+        if (preloaderDismissed || !preloader) return;
+        preloaderDismissed = true;
+        preloader.classList.add('is-hidden');
+        setTimeout(function () {
+          if (preloader && preloader.parentNode) {
+            preloader.style.display = 'none';
+          }
+        }, 380);
+      }
+
+      if (preloader) {
+        preloader.addEventListener('click', dismissPreloader);
+
+        var prefersReducedMotion =
+          window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (prefersReducedMotion) {
+          if (preloaderBar) preloaderBar.style.width = '100%';
+          setTimeout(dismissPreloader, 250);
+        } else {
+          var targetText = 'AWS STUDENT BUILDER GROUP · ASSAM DOWN TOWN UNIVERSITY';
+          var scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789·';
+          var totalDuration = 1050; // resolves cleanly under 1.2s cap
+          var startTime = performance.now();
+
+          function animatePreloader(now) {
+            if (preloaderDismissed) return;
+            var elapsed = now - startTime;
+            var progress = Math.min(elapsed / totalDuration, 1);
+
+            if (preloaderBar) {
+              preloaderBar.style.width = Math.round(progress * 100) + '%';
+            }
+
+            if (preloaderStatus) {
+              if (progress < 0.55) {
+                preloaderStatus.textContent = 'Initializing ap-south-1...';
+              } else if (progress < 0.9) {
+                preloaderStatus.textContent = 'Connecting FoCT · AdtU Cohort 10...';
+              } else {
+                preloaderStatus.textContent = 'Ready · Learn. Build. Connect.';
+              }
+            }
+
+            if (preloaderTitle) {
+              var resolvedCount = Math.floor(progress * targetText.length);
+              var output = '';
+              for (var i = 0; i < targetText.length; i++) {
+                if (i < resolvedCount || targetText[i] === ' ' || targetText[i] === '·') {
+                  output += targetText[i];
+                } else {
+                  output += scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+                }
+              }
+              preloaderTitle.textContent = output;
+            }
+
+            if (progress < 1) {
+              requestAnimationFrame(animatePreloader);
+            } else {
+              if (preloaderTitle) preloaderTitle.textContent = targetText;
+              setTimeout(dismissPreloader, 150);
+            }
+          }
+
+          requestAnimationFrame(animatePreloader);
+          // Hard safety cap at 1200ms
+          setTimeout(dismissPreloader, 1200);
+        }
+      }
+
+      /* -----------------------------------------------------------------------
+         2. LIGHT / DARK MODE TOGGLE (PERSISTED IN LOCALSTORAGE)
+         ----------------------------------------------------------------------- */
+      var themeToggleBtn = document.getElementById('theme-toggle');
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', function () {
+          var isDark = document.documentElement.classList.toggle('dark');
+          safeSet('aws-sbg-adtu-theme', isDark ? 'dark' : 'light');
+          showToast(isDark ? 'Dark Mode enabled' : 'Light Mode enabled');
+        });
+      }
+
+      /* -----------------------------------------------------------------------
+         3. INTERACTIVE BUILDER ARCHITECTURE VISUALIZER
+         ----------------------------------------------------------------------- */
+      var archStages = [
+        {
+          code: 'STAGE 01 // ACCESS & CLOUD FOUNDATIONS',
+          track: 'Beginner Friendly',
+          title: 'AWS Builder ID & Cloud Security Hygiene',
+          desc: 'Start clean before spinning up a single server. Configure your AWS Builder ID, lock down IAM least-privilege roles, set billing alarms, and master AWS CLI basics.',
+          tags: ['AWS Builder ID', 'IAM Roles & MFA', 'AWS CLI', 'Zero-Cost Guardrails'],
+          outcome: 'Outcome: Ready for Workshop 01',
+          lineX2: 48,
+        },
+        {
+          code: 'STAGE 02 // BACKEND & CONTAINERS',
+          track: 'Core Engineering',
+          title: 'Serverless Compute, FastAPI & Docker',
+          desc: 'Build clean Python REST APIs with FastAPI, package services cleanly into Docker containers, and explore event-driven compute using AWS Lambda and Amazon EC2.',
+          tags: ['AWS Lambda', 'Amazon EC2', 'FastAPI', 'Docker Containers'],
+          outcome: 'Outcome: Live Containerized API',
+          lineX2: 176,
+        },
+        {
+          code: 'STAGE 03 // APPLIED AI & DATA PIPELINES',
+          track: 'AI / DS Specialization',
+          title: 'Bedrock, SageMaker & RAG Architectures',
+          desc: 'Connect FoCT Data Science & AI coursework to cloud-scale AI. Build retrieval-augmented generation (RAG) assistants, store datasets in S3, and test managed foundation models.',
+          tags: ['Amazon Bedrock', 'Amazon SageMaker', 'RAG Pipelines', 'Amazon S3'],
+          outcome: 'Outcome: Working Campus AI Assistant',
+          lineX2: 304,
+        },
+        {
+          code: 'STAGE 04 // DEPLOYMENT & CERTIFICATION',
+          track: 'Production & Career',
+          title: 'CI/CD, CloudFront & CLF-C02 Readiness',
+          desc: 'Ship public web apps behind CloudFront, automate deployments with GitHub Actions, document architectures on AWS Builder Center, and drill for AWS Cloud Practitioner.',
+          tags: ['Amazon CloudFront', 'CI/CD Pipelines', 'API Gateway', 'CLF-C02 Certification'],
+          outcome: 'Outcome: Portfolio-Ready Cloud Project',
+          lineX2: 432,
+        },
+      ];
+
+      var currentArchIndex = 0;
+      var archNodes = document.querySelectorAll('.arch-node');
+      var archProgressLine = document.getElementById('arch-svg-progress');
+      var archCode = document.getElementById('arch-stage-code');
+      var archTrack = document.getElementById('arch-stage-track');
+      var archTitle = document.getElementById('arch-stage-title');
+      var archDesc = document.getElementById('arch-stage-desc');
+      var archTags = document.getElementById('arch-stage-tags');
+      var archOutcome = document.getElementById('arch-stage-outcome');
+      var archNextBtn = document.getElementById('arch-next-btn');
+
+      function selectArchStage(index) {
+        currentArchIndex = index;
+        var stage = archStages[index];
+        if (!stage) return;
+
+        archNodes.forEach(function (btn, idx) {
+          var active = idx === index;
+          btn.setAttribute('aria-selected', active ? 'true' : 'false');
+          var numEl = btn.querySelector('span:first-child');
+          if (active) {
+            btn.classList.remove('border-[var(--border-subtle)]', 'bg-[var(--bg-tint)]');
+            btn.classList.add('border-[#0284C7]', 'dark:border-[#29A9F8]', 'bg-[#29A9F8]/10');
+            if (numEl) {
+              numEl.classList.remove('text-[var(--text-muted)]');
+              numEl.classList.add('text-[#0284C7]', 'dark:text-[#29A9F8]');
+            }
+          } else {
+            btn.classList.add('border-[var(--border-subtle)]', 'bg-[var(--bg-tint)]');
+            btn.classList.remove('border-[#0284C7]', 'dark:border-[#29A9F8]', 'bg-[#29A9F8]/10');
+            if (numEl) {
+              numEl.classList.add('text-[var(--text-muted)]');
+              numEl.classList.remove('text-[#0284C7]', 'dark:text-[#29A9F8]');
+            }
+          }
+        });
+
+        if (archProgressLine) {
+          archProgressLine.setAttribute('x2', String(stage.lineX2));
+        }
+        if (archCode) archCode.textContent = stage.code;
+        if (archTrack) archTrack.textContent = stage.track;
+        if (archTitle) archTitle.textContent = stage.title;
+        if (archDesc) archDesc.textContent = stage.desc;
+        if (archOutcome) archOutcome.textContent = stage.outcome;
+
+        if (archTags) {
+          archTags.innerHTML = '';
+          stage.tags.forEach(function (tag) {
+            var pill = document.createElement('span');
+            pill.className =
+              'font-mono text-[11px] px-2.5 py-1 rounded-md bg-[var(--surface)] border border-[var(--border-subtle)] text-[var(--text-primary)]';
+            pill.textContent = tag;
+            archTags.appendChild(pill);
+          });
+        }
+      }
+
+      archNodes.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var idx = parseInt(btn.getAttribute('data-arch-stage'), 10);
+          selectArchStage(idx);
+        });
+      });
+
+      if (archNextBtn) {
+        archNextBtn.addEventListener('click', function () {
+          selectArchStage((currentArchIndex + 1) % archStages.length);
+        });
+      }
+
+      /* -----------------------------------------------------------------------
+         4. EVENTS FILTERING & EVENT DETAIL MODAL
+         ----------------------------------------------------------------------- */
+      var eventsData = {
+        'kickoff-ai-api': {
+          badge: 'Launching Soon (Post-Exams) · Event 01',
+          title: 'AWS Cloud Kickoff & Deploying Your First AI API',
+          meta: 'Venue: FoCT B Block · AdtU & Hybrid · Free for AdtU Students',
+          desc: 'Our official Cohort 10 launch session! We will onboard every attendee onto AWS Builder Center, demystify core cloud primitives, and walk step-by-step through deploying a live Python/FastAPI AI endpoint.',
+          agenda: [
+            'Welcome to AWS SBG AdtU: Cohort 10 roadmap & Core Team intro (15 min)',
+            'Live AWS Builder Center onboarding & student verification walkthrough (20 min)',
+            'Hands-on Lab: Building & deploying your first Python/FastAPI AI API (50 min)',
+            'Open Q&A, peer networking & Meetup group photo (15 min)',
+          ],
+          prereq: 'Bring a laptop with Python 3.10+ & VS Code installed. Zero prior AWS experience required.',
+          host: 'Led by Sourav Chakraborty (SBGL) & Akash Kalita (Technical Lead).',
+        },
+        'docker-fastapi-lab': {
+          badge: 'Planned · Q1 2027 · Event 02',
+          title: 'Serverless & Containers Lab: Docker + FastAPI on AWS',
+          meta: 'Venue: CS Lab · FoCT B Block · Hands-On Technical Workshop',
+          desc: 'Move past "it works on my machine." Learn how to write a clean production Dockerfile for a Python backend, test containers locally, and understand how AWS serverless and container services host real apps.',
+          agenda: [
+            'Containers vs. VMs vs. Serverless: Picking the right compute model (15 min)',
+            'Writing a multi-stage Dockerfile & .dockerignore for FastAPI (30 min)',
+            'Environment variables, CORS, and health-check best practices (25 min)',
+            'Deploying and testing live endpoints with peer code review (30 min)',
+          ],
+          prereq: 'Basic Python familiarity and Docker Desktop (or Linux Docker Engine) installed.',
+          host: 'Led by AWS SBG AdtU Technical & Events Core Team.',
+        },
+        'clf-c02-study-jam': {
+          badge: 'Planned · Q1 2027 · Event 03',
+          title: 'AWS Cloud Practitioner (CLF-C02) 3-Week Study Jam',
+          meta: 'Venue: Hybrid · Meetup + Campus · Structured Peer Sprint',
+          desc: 'A focused 3-week certification prep cohort covering all four CLF-C02 exam domains: Cloud Concepts, Security & Compliance, Cloud Technology & Services, and Billing & Pricing.',
+          agenda: [
+            'Week 1: Cloud Concepts, Well-Architected Framework & Global Infrastructure',
+            'Week 2: Shared Responsibility Model, IAM, VPC basics & Core Compute/Storage',
+            'Week 3: Pricing Calculator, Support Plans & Full Timed Mock Exam Drill',
+            'Peer debrief: Reviewing tricky exam scenarios & free official practice tests',
+          ],
+          prereq: 'Open to all branches and semesters at AdtU. AWS Builder ID recommended.',
+          host: 'Peer-moderated weekly study circles hosted via Meetup & FoCT.',
+        },
+        'northeast-genai-sprint': {
+          badge: 'Planned · Q2 2027 · Event 04',
+          title: 'Northeast Student GenAI & RAG Builders Sprint',
+          meta: 'Venue: AdtU Campus · Guwahati · Mini-Buildathon',
+          desc: 'Form 2–4 member student teams to design and prototype practical AI applications—such as campus assistants, regional language helpers, or developer utilities—using RAG pipelines and cloud APIs.',
+          agenda: [
+            'Problem framing & RAG architecture blueprint kickoff (25 min)',
+            'Guided build sprint with Core Team technical mentors on the floor (3 hours)',
+            'Live 3-minute working demos (deployed links or local live runs)',
+            'Community feedback, Builder Center write-ups & showcase highlights',
+          ],
+          prereq: 'Teams of 2–4 students. Basic Git + Python or web prototyping skills helpful.',
+          host: 'Coordinated by Khomdram Sanahal (Director of Events) & Core Team.',
+        },
+      };
+
+      var filterButtons = document.querySelectorAll('.event-filter-btn');
+      var eventCards = document.querySelectorAll('.event-card');
+
+      filterButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var selected = btn.getAttribute('data-filter');
+
+          filterButtons.forEach(function (b) {
+            var isSelected = b === btn;
+            b.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+            if (isSelected) {
+              b.className =
+                'event-filter-btn px-4 py-2 rounded-full font-mono text-xs font-semibold bg-[#0284C7] dark:bg-[#29A9F8] text-white dark:text-[#080E1A] transition-colors';
+            } else {
+              b.className =
+                'event-filter-btn px-4 py-2 rounded-full font-mono text-xs font-semibold border border-[var(--border-subtle)] bg-[var(--surface)] text-[var(--text-muted)] hover:border-[#29A9F8] hover:text-[var(--text-primary)] transition-colors';
+            }
+          });
+
+          eventCards.forEach(function (card) {
+            var cats = (card.getAttribute('data-categories') || '').split(' ');
+            if (selected === 'all' || cats.indexOf(selected) !== -1) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          });
+        });
+      });
+
+      /* -----------------------------------------------------------------------
+         5. ACCESSIBLE MODAL CONTROLLER (EVENTS, ARTICLES, QUICK START)
+         ----------------------------------------------------------------------- */
+      var activeModalId = null;
+      var lastFocusedElement = null;
+
+      function openModal(modalId) {
+        var modal = document.getElementById(modalId);
+        if (!modal) return;
+        lastFocusedElement = document.activeElement;
+        activeModalId = modalId;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+
+        var closeBtn = modal.querySelector('[data-close-modal]');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeModal(modalId) {
+        var modal = document.getElementById(modalId);
+        if (!modal) return;
+        modal.classList.add('hidden');
+        activeModalId = null;
+        document.body.style.overflow = '';
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+          lastFocusedElement.focus();
+        }
+      }
+
+      // Wire Event Cards to Event Detail Modal
+      function openEventDetail(eventId) {
+        var item = eventsData[eventId];
+        if (!item) return;
+
+        document.getElementById('event-modal-badge').textContent = item.badge;
+        document.getElementById('event-modal-title').textContent = item.title;
+        document.getElementById('event-modal-meta').textContent = item.meta;
+        document.getElementById('event-modal-desc').textContent = item.desc;
+        document.getElementById('event-modal-prereq').textContent = item.prereq;
+        document.getElementById('event-modal-host').textContent = item.host;
+
+        var agendaList = document.getElementById('event-modal-agenda');
+        agendaList.innerHTML = '';
+        item.agenda.forEach(function (point) {
+          var li = document.createElement('li');
+          li.textContent = point;
+          agendaList.appendChild(li);
+        });
+
+        openModal('event-modal');
+      }
+
+      eventCards.forEach(function (card) {
+        var id = card.getAttribute('data-event-id');
+        card.addEventListener('click', function () {
+          openEventDetail(id);
+        });
+        card.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openEventDetail(id);
+          }
+        });
+      });
+
+      // Wire Publication Cards to Article Modal
+      var articlesData = {
+        'aws-builder-center-guide': {
+          tag: 'ONBOARDING GUIDE · 5 MIN READ',
+          title: 'Getting Started with AWS Builder Center & Cloud Foundations at AdtU',
+          paragraphs: [
+            'Every AWS Student Builder Group member starts with one free identity: an AWS Builder ID. Unlike a full AWS billing account, your Builder ID does not require a credit card and immediately gives you access to AWS Builder Center articles, learning spaces, and community events.',
+            'Step 1 — Use a consistent email: Sign up at community.aws using the same email you plan to use for campus workshops and Credly badges. If you have your official @adtu.in email, keep a recent university document handy before starting student verification.',
+            'Step 2 — Practice safe sandbox habits: Whenever you move into hands-on cloud accounts later, turn on MFA for your root user, create a separate IAM developer user, and set a $1 Zero-Spend Budget Alert before launching compute resources.',
+            'Step 3 — Learn with peers: Join our Meetup chapter so you can build alongside AdtU teammates rather than debugging alone.',
+          ],
+        },
+        'fastapi-cloud-checklist': {
+          tag: 'BACKEND & DEPLOYMENT · 7 MIN READ',
+          title: "From Local FastAPI to Cloud: A Student Builder's Deployment Checklist",
+          paragraphs: [
+            'Shipping your first Python AI or backend project beyond localhost takes discipline more than complexity. Use this 5-point checklist we follow during AWS SBG AdtU workshops:',
+            '1. Never commit secrets: Store API keys and JWT secrets in a local .env file listed inside .gitignore, and provide a safe .env.example template in your GitHub repo.',
+            '2. Add a /health endpoint: Cloud load balancers and container orchestrators rely on a lightweight GET /health route returning HTTP 200 to verify your service is alive.',
+            '3. Lock down CORS explicitly: Avoid wildcard "*" origins in production when handling credentials—explicitly allow only your deployed frontend URL.',
+            '4. Containerize cleanly: Pin dependencies in requirements.txt, use a slim Python base image (python:3.11-slim), and run Uvicorn bound to 0.0.0.0 so containers accept external traffic.',
+          ],
+        },
+      };
+
+      document.querySelectorAll('.article-card').forEach(function (card) {
+        function handleOpenArticle() {
+          var id = card.getAttribute('data-article-id');
+          var art = articlesData[id];
+          if (!art) return;
+
+          document.getElementById('article-modal-tag').textContent = art.tag;
+          document.getElementById('article-modal-title').textContent = art.title;
+          var bodyEl = document.getElementById('article-modal-body');
+          bodyEl.innerHTML = '';
+          art.paragraphs.forEach(function (text) {
+            var p = document.createElement('p');
+            p.textContent = text;
+            bodyEl.appendChild(p);
+          });
+          openModal('article-modal');
+        }
+
+        card.addEventListener('click', handleOpenArticle);
+        card.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleOpenArticle();
+          }
+        });
+      });
+
+      // Quick Start Modal
+      var openQuickstartBtn = document.getElementById('open-quickstart-btn');
+      if (openQuickstartBtn) {
+        openQuickstartBtn.addEventListener('click', function () {
+          openModal('quickstart-modal');
+        });
+      }
+
+      var jumpChecklistBtn = document.getElementById('quickstart-jump-checklist');
+      if (jumpChecklistBtn) {
+        jumpChecklistBtn.addEventListener('click', function () {
+          closeModal('quickstart-modal');
+          var target = document.getElementById('resources');
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+
+      // Close modal buttons & backdrop clicks
+      document.querySelectorAll('[data-close-modal]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          closeModal(btn.getAttribute('data-close-modal'));
+        });
+      });
+
+      ['event-modal', 'article-modal', 'quickstart-modal'].forEach(function (id) {
+        var modal = document.getElementById(id);
+        if (modal) {
+          modal.addEventListener('click', function (e) {
+            if (e.target === modal) closeModal(id);
+          });
+        }
+      });
+
+      // Escape key closes any open modal
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && activeModalId) {
+          closeModal(activeModalId);
+        }
+      });
+
+      /* -----------------------------------------------------------------------
+         6. INTERACTIVE 4-STEP ONBOARDING CHECKLIST (LOCALSTORAGE)
+         ----------------------------------------------------------------------- */
+      var CHECKLIST_KEY = 'aws-sbg-adtu-checklist';
+      var checkboxes = document.querySelectorAll('.checklist-box');
+      var checklistCounter = document.getElementById('checklist-counter');
+      var checklistBar = document.getElementById('checklist-progress-bar');
+      var checklistStatusMsg = document.getElementById('checklist-status-msg');
+      var resetChecklistBtn = document.getElementById('reset-checklist-btn');
+
+      function loadChecklistState() {
+        var saved = safeGet(CHECKLIST_KEY);
+        if (!saved) return {};
+        try {
+          return JSON.parse(saved) || {};
+        } catch (e) {
+          return {};
+        }
+      }
+
+      function updateChecklistUI(notifyOnComplete) {
+        var state = {};
+        var doneCount = 0;
+        var total = checkboxes.length;
+
+        checkboxes.forEach(function (box) {
+          var step = box.getAttribute('data-step');
+          state[step] = box.checked;
+          if (box.checked) doneCount++;
+        });
+
+        safeSet(CHECKLIST_KEY, JSON.stringify(state));
+
+        var pct = Math.round((doneCount / total) * 100);
+        if (checklistCounter) checklistCounter.textContent = doneCount + ' / ' + total;
+        if (checklistBar) checklistBar.style.width = pct + '%';
+
+        if (checklistStatusMsg) {
+          if (doneCount === total) {
+            checklistStatusMsg.textContent = 'All 4 steps complete — see you at Workshop 01!';
+            checklistStatusMsg.classList.add('text-[#0284C7]', 'dark:text-[#29A9F8]', 'font-semibold');
+            if (notifyOnComplete) showToast('Onboarding checklist complete!');
+          } else {
+            checklistStatusMsg.textContent =
+              doneCount === 0
+                ? 'Complete all 4 steps to get lab-ready.'
+                : total - doneCount + ' step' + (total - doneCount > 1 ? 's' : '') + ' left to get lab-ready.';
+            checklistStatusMsg.classList.remove('text-[#0284C7]', 'dark:text-[#29A9F8]', 'font-semibold');
+          }
+        }
+      }
+
+      // Hydrate saved checkboxes on load
+      var initialChecklist = loadChecklistState();
+      checkboxes.forEach(function (box) {
+        var step = box.getAttribute('data-step');
+        if (initialChecklist[step]) {
+          box.checked = true;
+        }
+        box.addEventListener('change', function () {
+          updateChecklistUI(true);
+        });
+      });
+      updateChecklistUI(false);
+
+      if (resetChecklistBtn) {
+        resetChecklistBtn.addEventListener('click', function () {
+          checkboxes.forEach(function (box) {
+            box.checked = false;
+          });
+          updateChecklistUI(false);
+          showToast('Checklist progress reset');
+        });
+      }
+
+      /* -----------------------------------------------------------------------
+         7. COPY EMAIL BUTTON (Uses execCommand for iFrame Compatibility)
+         ----------------------------------------------------------------------- */
+      var copyEmailBtn = document.getElementById('copy-email-btn');
+      if (copyEmailBtn) {
+        copyEmailBtn.addEventListener('click', function () {
+          var emailText = 'souravchakraborty.bcsm@adtu.in';
+          var tempInput = document.createElement('textarea');
+          tempInput.value = emailText;
+          tempInput.setAttribute('readonly', '');
+          tempInput.style.position = 'fixed';
+          tempInput.style.opacity = '0';
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          try {
+            document.execCommand('copy');
+            showToast('Email copied: ' + emailText);
+          } catch (err) {
+            showToast('Email: ' + emailText);
+          }
+          document.body.removeChild(tempInput);
+        });
+      }
+
+      /* -----------------------------------------------------------------------
+         8. SCROLL REVEAL & ACTIVE MOBILE DOCK / NAVBAR SPY
+         ----------------------------------------------------------------------- */
+      var revealItems = document.querySelectorAll('.reveal-item');
+      if ('IntersectionObserver' in window) {
+        var revealObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        revealItems.forEach(function (el) {
+          revealObserver.observe(el);
+        });
+      } else {
+        revealItems.forEach(function (el) {
+          el.classList.add('is-visible');
+        });
+      }
+
+      // Active state sync for Mobile Bottom Dock
+      var dockItems = document.querySelectorAll('.dock-item');
+      var trackedIds = ['home', 'pillars', 'events', 'team', 'join'];
+      var trackedSections = trackedIds
+        .map(function (id) {
+          return document.getElementById(id);
+        })
+        .filter(Boolean);
+
+      function setActiveDock(id) {
+        dockItems.forEach(function (link) {
+          var isMatch = link.getAttribute('data-dock-target') === id;
+          if (isMatch) {
+            link.classList.add('text-[#0284C7]', 'dark:text-[#29A9F8]', 'bg-[#29A9F8]/10');
+            link.classList.remove('text-[var(--text-muted)]');
+          } else {
+            link.classList.remove('text-[#0284C7]', 'dark:text-[#29A9F8]', 'bg-[#29A9F8]/10');
+            link.classList.add('text-[var(--text-muted)]');
+          }
+        });
+      }
+
+      if ('IntersectionObserver' in window && trackedSections.length) {
+        var dockObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                setActiveDock(entry.target.id);
+              }
+            });
+          },
+          { rootMargin: '-35% 0px -50% 0px' }
+        );
+        trackedSections.forEach(function (sec) {
+          dockObserver.observe(sec);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
